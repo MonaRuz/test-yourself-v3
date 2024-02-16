@@ -1,0 +1,13 @@
+body{
+  font-family: 'Montserrat', sans-serif;
+
+  --main-bg-color:#252627;
+  --negation-color:#ffb3ba;
+  --title-color:#ffdfba;
+  --menu-color:#ffffba;
+  --positive-color:#baffc9;
+  --text-color:#bae1ff;
+
+  background-color: var(--main-bg-color);
+  padding: 5px 50px;
+}

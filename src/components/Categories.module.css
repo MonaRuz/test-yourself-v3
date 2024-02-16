@@ -1,0 +1,8 @@
+.box{
+    display: flex;
+    flex-wrap: wrap;
+}
+.instructions{
+    color:var(--text-color);
+    padding: 10px;
+}

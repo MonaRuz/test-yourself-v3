@@ -1,0 +1,29 @@
+.test{
+    max-width: 700px;
+    margin: 0 auto;
+}
+.question{
+    color: var(--positive-color);
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 10px;
+    text-align: center;
+}
+.answer{
+    color:var(--text-color);
+    text-align: center;
+}
+.progress{
+    color: var(--text-color);
+    text-align: center;
+}
+.btnBox{
+    display: flex;
+    justify-content: center;
+}
+.instructions{
+    color: var(--text-color);
+    padding-top: 20px;
+    border-top: 1px solid var(--text-color);
+    font-size: 12px;
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+.form {
+	text-align: center;
+}
+.input {
+    border: 3px solid var(--positive-color);
+	width: 250px;
+    height: 30px;
+    text-align: center;
+    background: transparent;
+    outline: none;
+    color: var(--positive-color);
+    font-size: 16px;
+}
+.searchIcon{
+    color: var(--positive-color);
+    font-size: 30px;
+    margin: 3px 10px;
+}
+.formBox{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,11 @@
+.error{
+    border: 2px solid var(--negation-color);
+    max-width: 540px;
+    margin: 0 auto;
+}
+.errorMessage{
+    text-align: center;
+    color: var(--negation-color);
+    padding: 0 10px;
+    font-size: 20px;
+}
