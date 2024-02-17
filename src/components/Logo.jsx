@@ -3,11 +3,9 @@ import styles from "./Logo.module.css"
 
 export default function Logo() {
 	return (
-		<Link to='/'>
-			<img className={styles.logo}
-				src='/src/assets/TestYS.png'
-				alt='testys logo'
-			/>
+		<Link className={styles.logoBox}  to='/'>
+			<h1 className={styles.logo}>TestYS</h1>
+			<p className={styles.logoText}>test yourself!</p>
 		</Link>
 	)
 }

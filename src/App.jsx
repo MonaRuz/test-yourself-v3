@@ -45,7 +45,7 @@ export default function App() {
 							element={<Questions />}
 						/>
 						<Route
-							path='new-question'
+							path='questions/:category/new-question'
 							element={<NewQuestion />}
 						/>
 						<Route

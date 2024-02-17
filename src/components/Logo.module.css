@@ -1,3 +1,17 @@
+.logoBox{
+    text-decoration: none;  
+    margin-bottom: 20px; 
+}
 .logo{
-    width: 200px;
+    color: var(--positive-color);
+    font-size: 50px;
+    margin:0;
+    padding-top: 5px;
+}
+.logoText{
+    color: var(--negation-color);
+    margin: 0;
+    padding-left: 10px;
+    font-size: 20px;
+    font-style: italic;
 }

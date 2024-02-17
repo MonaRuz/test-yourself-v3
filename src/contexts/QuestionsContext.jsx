@@ -44,10 +44,33 @@ function QuestionsProvider({ children }) {
 		}
 	}
 
+	async function createQuestion(newQuestion,category) {
+		try {
+			const res = await fetch(`${BASE_URL}/${category}`,{
+				method:"POST",
+				body:JSON.stringify(newQuestion),
+				headers:{
+					"Content-Type":"application/json"
+				}
+			})
+
+			if (!res.ok)
+				throw new Error("Something went wrong with creating question.")
+
+			const data = await res.json()
+			console.log(data);
+		} catch (err) {
+			console.error(err.message)
+			setError("Something went wrong with questions fetching!")
+		}
+	}
+
+
+
 	
 
 	return (
-		<QuestionsContext.Provider value={{ questions, testQuestions,setTestQuestions, error,categories,getQuestions}}>
+		<QuestionsContext.Provider value={{ questions, testQuestions,setTestQuestions, error,categories,getQuestions,createQuestion}}>
 			{children}
 		</QuestionsContext.Provider>
 	)
