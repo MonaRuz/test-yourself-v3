@@ -5,7 +5,7 @@ import Error from "./Error"
 import { useQuestions } from "..//contexts/QuestionsContext"
 
 export default function Categories() {
-	const { error,  categories } = useQuestions()
+	const { error, categories } = useQuestions()
 
 	if (error) return <Error>{error}</Error>
 
@@ -19,7 +19,14 @@ export default function Categories() {
 			<div className={styles.box}>
 				<NewCategory />
 				{categories.map((category) => (
-					<Category categoryName={category.categoryName} numQuestions={category.numQuestions} progress={category.progress} highscore={category.highscore} currentScore={category.currentScore} key={category} />
+					<Category
+						categoryName={category.categoryName}
+						numQuestions={category.numQuestions}
+						progress={category.progress}
+						highscore={category.highscore}
+						currentScore={category.currentScore}
+						key={category}
+					/>
 				))}
 			</div>
 		</>

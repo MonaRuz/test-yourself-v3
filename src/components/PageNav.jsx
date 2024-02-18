@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Logo from "./Logo"
 import styles from "./PageNav.module.css"
 import Button from "./Button"

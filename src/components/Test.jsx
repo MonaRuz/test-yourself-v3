@@ -59,6 +59,9 @@ export default function Test() {
 		[testQuestions]
 	)
 
+	if (testQuestions.length === 0)
+		return <p className={styles.result}>Úspěšnost testu : {result}%</p>
+
 	if (testQuestions.length !== 0)
 		return (
 			<div className={styles.test}>
@@ -116,6 +119,5 @@ export default function Test() {
 				</p>
 			</div>
 		)
-	if (testQuestions.length === 0)
-		return <p className='result'>Úspěšnost testu byla {result}%</p>
+	
 }

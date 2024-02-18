@@ -11,3 +11,8 @@ body{
   background-color: var(--main-bg-color);
   padding: 5px 50px;
 }
+.not-found{
+  text-align: center;
+  color: var(--negation-color);
+  padding-top: 100px;
+}
