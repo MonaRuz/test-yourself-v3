@@ -5,6 +5,7 @@ import Question from "./Question"
 import { useQuestions } from "..//contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"
 import Button from "./Button"
+import Loader from "./Loader"
 
 const initialState = {
 	searchQuery: "",
@@ -26,11 +27,11 @@ function reducer(state, action) {
 }
 
 export default function Questions() {
-	const { questions, getQuestions } = useQuestions()
+	const { questions, getQuestions, isLoading } = useQuestions()
 
 	const { category } = useParams()
 	const [{ searchQuery, isOpen }, dispatch] = useReducer(reducer, initialState)
-	const navigate=useNavigate()
+	const navigate = useNavigate()
 
 	const searchedQuestions =
 		searchQuery.length > 0
@@ -47,11 +48,18 @@ export default function Questions() {
 		},
 		[category]
 	)
-
+	
+	if (isLoading) return <Loader />
 	return (
 		<div>
 			<div className={styles.header}>
-				<Button bgColor="var(--main-bg-color)" textColor="var(--positive-color)" onClick={()=>navigate("new-question")}>Add question</Button>
+				<Button
+					bgColor='var(--main-bg-color)'
+					textColor='var(--positive-color)'
+					onClick={() => navigate("new-question")}
+				>
+					Add question
+				</Button>
 				<SearchQuestion dispatch={dispatch} />
 			</div>
 			<ul className={styles.list}>
