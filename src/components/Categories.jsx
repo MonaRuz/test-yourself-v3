@@ -25,7 +25,7 @@ export default function Categories() {
 						progress={category.progress}
 						highscore={category.highscore}
 						currentScore={category.currentScore}
-						key={category}
+						key={category.id}
 					/>
 				))}
 			</div>

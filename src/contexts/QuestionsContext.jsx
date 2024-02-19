@@ -8,10 +8,13 @@ function QuestionsProvider({ children }) {
 	const [questions, setQuestions] = useState([])
 	const [testQuestions, setTestQuestions] = useState([])
 	const [error, setError] = useState("")
-	const[categories,setCategories]=useState([])
+	const[creatingError,setCreatingError]=useState("")
+	const [categories, setCategories] = useState([])
+	const[isLoading,setIsLoading]=useState(false)
 
 	useEffect(function () {
 		async function getCategories() {
+			setIsLoading(true)
 			try {
 				const res = await fetch(`${BASE_URL}/categories`)
 
@@ -23,12 +26,15 @@ function QuestionsProvider({ children }) {
 			} catch (err) {
 				console.error(err.message)
 				setError("Something went wrong with categories fetching!")
+			}finally{
+				setIsLoading(false)
 			}
 		}
 		getCategories()
 	}, [])
 
 	async function getQuestions(category) {
+		setIsLoading(true)
 		try {
 			const res = await fetch(`${BASE_URL}/${category}/`)
 
@@ -41,44 +47,75 @@ function QuestionsProvider({ children }) {
 		} catch (err) {
 			console.error(err.message)
 			setError("Something went wrong with questions fetching!")
+		}finally{
+			setIsLoading(false)
 		}
 	}
 
-	async function createQuestion(newQuestion,category) {
+	async function createQuestion(newQuestion, category) {
+		setIsLoading(true)
 		try {
-			const res = await fetch(`${BASE_URL}/${category}`,{
-				method:"POST",
-				body:JSON.stringify(newQuestion),
-				headers:{
-					"Content-Type":"application/json"
-				}
+			const res = await fetch(`${BASE_URL}/${category}`, {
+				method: "POST",
+				body: JSON.stringify(newQuestion),
+				headers: {
+					"Content-Type": "application/json",
+				},
 			})
 
 			if (!res.ok)
 				throw new Error("Something went wrong with creating question.")
-
-			const data = await res.json()
-			console.log(data);
 		} catch (err) {
 			console.error(err.message)
-			setError("Something went wrong with questions fetching!")
+			setCreatingError("Something went wrong with creating question.")
+		}finally{
+			setIsLoading(false)
 		}
 	}
 
+	async function deleteQuestion(category, id) {
+		setIsLoading(true)
+		try {
+			const res = await fetch(`${BASE_URL}/${category}/${id}`, {
+				method: "DELETE",
+			})
 
+			if (!res.ok)
+				throw new Error("Something went wrong with question deleting.")
 
-	
+			setQuestions((questions) =>
+				questions.filter((question) => question.id !== id)
+			)
+		} catch (err) {
+			console.error(err.message)
+			setError("Something went wrong with question deleting!")
+		}finally{
+			setIsLoading(false)
+		}
+	}
 
 	return (
-		<QuestionsContext.Provider value={{ questions, testQuestions,setTestQuestions, error,categories,getQuestions,createQuestion}}>
+		<QuestionsContext.Provider
+			value={{
+				questions,
+				testQuestions,
+				setTestQuestions,
+				creatingError,
+				categories,
+				getQuestions,
+				createQuestion,
+				deleteQuestion,
+				isLoading
+			}}
+		>
 			{children}
 		</QuestionsContext.Provider>
 	)
 }
 
-function useQuestions(){
-    const context=useContext(QuestionsContext)
-    return context
+function useQuestions() {
+	const context = useContext(QuestionsContext)
+	return context
 }
 
-export {QuestionsProvider,useQuestions}
+export { QuestionsProvider, useQuestions }

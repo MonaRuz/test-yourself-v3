@@ -1465,10 +1465,16 @@
       "id": "70144da1-ccfe-4f50-80b2-b3ed925a9306",
       "question": "Jak a proč používat async/await?",
       "answer": "Čistší způsob psaní asynchronního kódu bez použití metody .then(). Funkce se označí jako async a uvnitř se kód, na který se má čekat, označí await, což zastaví kód uvnitř funkce, dokud se předcházející operace nedokončí."
+    },
+    {
+      "id": "62e1f987-2ade-490f-9e4d-b3aa5bc01211",
+      "question": "Jak se posílají data(objekt) pomocí metody POST na server?",
+      "answer": "Za await fetch(url, dáme jako druhý argument objekt, ve kterém je method:POST,body:JSON.stringify(newObject),headers:{'Content-Type':'application/json'}."
     }
   ],
   "categories": [
     {
+      "id": "84e422f7-e741-4f0e-ad3b-6fc875efff7c",
       "categoryName": "React",
       "numQuestions": 85,
       "highscore": 0,
@@ -1476,6 +1482,7 @@
       "currentScore": 0
     },
     {
+      "id": "6a8111c2-8472-454e-8893-c09e300a5c3c",
       "categoryName": "React-2",
       "numQuestions": 103,
       "highscore": 0,
@@ -1483,13 +1490,15 @@
       "currentScore": 0
     },
     {
+      "id": "3fb94003-ddca-4ddb-a7d1-4835487e050a",
       "categoryName": "React-3",
-      "numQuestions": 86,
+      "numQuestions": 87,
       "highscore": 0,
       "progress": 0,
       "currentScore": 0
     },
     {
+      "id": "84d71f2c-1f1e-4903-a550-92aea77b732e",
       "categoryName": "JavaScript",
       "numQuestions": 18,
       "highscore": 0,

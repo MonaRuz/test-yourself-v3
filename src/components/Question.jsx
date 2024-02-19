@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import styles from "./Question.module.css"
 import Button from "./Button"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
+import { useQuestions } from "../contexts/QuestionsContext"
 
 export default function Question({
 	id,
@@ -10,6 +11,14 @@ export default function Question({
 	isOpen,
     dispatch
 }) {
+	const {category}=useParams()
+	const{deleteQuestion}=useQuestions()
+
+	function handleClick(){
+		deleteQuestion(category,id)
+		
+	}
+		
 	return (
 		<div>
 			<li>
@@ -41,6 +50,7 @@ export default function Question({
 							<Button
 								bgColor='var(--main-bg-color)'
 								textColor='var(--negation-color)'
+								onClick={handleClick}
 							>
 								Delete question
 							</Button>

@@ -14,3 +14,11 @@
     border:1px solid var(--menu-color);
     color: var(--text-color)
 }
+.error{
+    color: var(--negation-color);
+    text-align: center;
+}
+.message{
+    color:var(--positive-color);
+    text-align: center;
+}

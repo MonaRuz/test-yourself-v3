@@ -48,8 +48,6 @@ export default function Questions() {
 		[category]
 	)
 
-	console.log(questions.length)
-
 	return (
 		<div>
 			<div className={styles.header}>
