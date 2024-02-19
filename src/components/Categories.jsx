@@ -11,9 +11,9 @@ export default function Categories() {
 	if(isLoading)return<Loader/>
 
 
+	if(error)return<Error>{error}</Error>
 	return (
 		<>
-			{error&&<Error>{error}</Error>}
 			<hr />
 			<p className={styles.instructions}>
 				Start test, edit or add questions in existing category, or create new

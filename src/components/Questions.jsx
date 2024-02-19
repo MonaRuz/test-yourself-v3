@@ -6,6 +6,7 @@ import { useQuestions } from "..//contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"
 import Button from "./Button"
 import Loader from "./Loader"
+import Error from "./Error"
 
 const initialState = {
 	searchQuery: "",
@@ -27,7 +28,7 @@ function reducer(state, action) {
 }
 
 export default function Questions() {
-	const { questions, getQuestions, isLoading } = useQuestions()
+	const { questions, getQuestions, isLoading ,error} = useQuestions()
 
 	const { category } = useParams()
 	const [{ searchQuery, isOpen }, dispatch] = useReducer(reducer, initialState)
@@ -48,8 +49,9 @@ export default function Questions() {
 		},
 		[category]
 	)
-	
+
 	if (isLoading) return <Loader />
+	if(error)return<Error>{error}</Error>
 	return (
 		<div>
 			<div className={styles.header}>

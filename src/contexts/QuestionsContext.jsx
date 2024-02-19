@@ -1,9 +1,4 @@
-import {
-	useEffect,
-	createContext,
-	useContext,
-	useReducer,
-} from "react"
+import { useEffect, createContext, useContext, useReducer } from "react"
 
 const BASE_URL = "http://localhost:8000"
 
@@ -12,7 +7,7 @@ const QuestionsContext = createContext()
 const initialState = {
 	questions: [],
 	testQuestions: [],
-	error: "",
+	error: null,
 	categories: [],
 	isLoading: false,
 }
@@ -23,12 +18,13 @@ function reducer(state, action) {
 			return {
 				...state,
 				isLoading: true,
+				error: null,
 			}
 		case "rejected":
 			return {
 				...state,
 				error: action.payload,
-				isLoading:false
+				isLoading: false,
 			}
 		case "categories/loaded":
 			return {
@@ -44,16 +40,18 @@ function reducer(state, action) {
 				isLoading: false,
 			}
 		case "question/created":
-			return{
+			return {
 				...state,
-				questions:[...state.questions,action.payload],
-				isLoading:false
+				questions: [...state.questions, action.payload],
+				isLoading: false,
 			}
 		case "question/deleted":
-			return{
+			return {
 				...state,
-				questions:state.questions.filter((question) => question.id !== action.payload),
-				isLoading:false
+				questions: state.questions.filter(
+					(question) => question.id !== action.payload
+				),
+				isLoading: false,
 			}
 		default:
 			throw new Error("Unknown action")
@@ -67,10 +65,8 @@ function QuestionsProvider({ children }) {
 	// const[creatingError,setCreatingError]=useState("")
 	// const [categories, setCategories] = useState([])
 	// const[isLoading,setIsLoading]=useState(false)
-	const [
-		{ questions, testQuestions, error, categories, isLoading },
-		dispatch,
-	] = useReducer(reducer, initialState)
+	const [{ questions, testQuestions, error, categories, isLoading }, dispatch] =
+		useReducer(reducer, initialState)
 
 	useEffect(function () {
 		async function getCategories() {
@@ -84,7 +80,8 @@ function QuestionsProvider({ children }) {
 				const data = await res.json()
 				dispatch({ type: "categories/loaded", payload: data })
 			} catch (err) {
-				dispatch({ type: "rejected", payload: err })
+				console.log(err.message)
+				dispatch({ type: "rejected", payload: err.message })
 			}
 		}
 		getCategories()
@@ -101,12 +98,12 @@ function QuestionsProvider({ children }) {
 			const data = await res.json()
 			dispatch({ type: "questions/loaded", payload: data })
 		} catch (err) {
-			dispatch({ type: "rejected", payload: err })
+			dispatch({ type: "rejected", payload: err.message })
 		}
 	}
 
 	async function createQuestion(newQuestion, category) {
-		dispatch({type:"loading"})
+		dispatch({ type: "loading" })
 		try {
 			const res = await fetch(`${BASE_URL}/${category}`, {
 				method: "POST",
@@ -117,14 +114,14 @@ function QuestionsProvider({ children }) {
 			})
 			if (!res.ok)
 				throw new Error("Something went wrong with creating question.")
-			dispatch({type:"question/created",payload:newQuestion})
+			dispatch({ type: "question/created", payload: newQuestion })
 		} catch (err) {
-			dispatch({type:"rejected",payload:err})
+			dispatch({ type: "rejected", payload: err.message })
 		}
 	}
 
 	async function deleteQuestion(category, id) {
-		dispatch({type:"loading"})
+		dispatch({ type: "loading" })
 		try {
 			const res = await fetch(`${BASE_URL}/${category}/${id}`, {
 				method: "DELETE",
@@ -132,13 +129,13 @@ function QuestionsProvider({ children }) {
 
 			if (!res.ok)
 				throw new Error("Something went wrong with question deleting.")
-			dispatch({type:"question/deleted",payload:id})
+			dispatch({ type: "question/deleted", payload: id })
 			// setQuestions((questions) =>
 			// 	questions.filter((question) => question.id !== id)
 			// )
 		} catch (err) {
-			dispatch({type:"rejected",payload:err})
-		} 
+			dispatch({ type: "rejected", payload: err.message })
+		}
 	}
 
 	return (
