@@ -8,7 +8,7 @@ import Loader from "./Loader"
 export default function NewQuestion() {
 	const [question, setQuestion] = useState("")
 	const [answer, setAnswer] = useState("")
-	const { createQuestion, creatingError, isLoading } = useQuestions()
+	const { createQuestion, error, isLoading } = useQuestions()
 	const { category } = useParams()
 	const [wasSend, setWasSend] = useState(false)
 	const navigate = useNavigate()
@@ -25,9 +25,11 @@ export default function NewQuestion() {
 		await createQuestion(newQuestion, category)
 		// navigate(-1)
 	}
-
+console.log(error);
 	return (
 		<div>
+			<p className={styles.p}>Write some qiestion and answer. Fields can't be empty.</p>
+			<hr />
 			<form className={styles.form}>
 				<label
 					className={styles.label}
@@ -68,22 +70,22 @@ export default function NewQuestion() {
 					>
 						Back
 					</Button>
-					<Button
+					{question&&answer&&<Button
 						bgColor='var(--main-bg-color)'
 						textColor='var(--positive-color)'
 						onClick={handleClick}
 					>
 						Add new question
-					</Button>
+					</Button>}
 				</div>
 			</form>
 			{isLoading && wasSend && <Loader />}
-			{!isLoading && creatingError && (
-				<p className={styles.error}>{creatingError}</p>
+			{!isLoading && error && (
+				<p className={styles.error}>{error}</p>
 			)}
-			{!isLoading && !creatingError && wasSend && (
+			{!isLoading && !error && wasSend && (
 				<p className={styles.message}>
-					new question was added,now you can add more.
+					New question was added, now you can add more.
 				</p>
 			)}
 		</div>

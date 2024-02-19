@@ -20,7 +20,7 @@ export default function Button({
 		border: `${borderWidth}px solid ${textColor}`,
 		borderRadius: `${borderRad}px`,
 		cursor:"pointer",
-		maxWidth:"200px"
+		maxWidth:"200px",
 	}
 
 	const invertedStyle = {

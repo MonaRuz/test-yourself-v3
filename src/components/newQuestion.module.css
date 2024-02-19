@@ -22,3 +22,7 @@
     color:var(--positive-color);
     text-align: center;
 }
+.p{
+    color: var(--text-color);
+    text-align: center;
+}

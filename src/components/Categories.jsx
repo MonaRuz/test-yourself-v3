@@ -3,14 +3,17 @@ import Category from "./Category"
 import NewCategory from "./NewCategory"
 import Error from "./Error"
 import { useQuestions } from "..//contexts/QuestionsContext"
+import Loader from "./Loader"
 
 export default function Categories() {
-	const { error, categories } = useQuestions()
+	const { error, categories,isLoading } = useQuestions()
 
-	if (error) return <Error>{error}</Error>
+	if(isLoading)return<Loader/>
+
 
 	return (
 		<>
+			{error&&<Error>{error}</Error>}
 			<hr />
 			<p className={styles.instructions}>
 				Start test, edit or add questions in existing category, or create new

@@ -1,8 +1,9 @@
+import styles from "./Loader.module.css"
+
 export default function Loader() {
 	return (
 		<>
-			<div className='loader'></div>
-			<p className='loading'>Loading...</p>
+			<div className={styles.loader}></div>
 		</>
 	)
 }
