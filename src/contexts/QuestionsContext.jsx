@@ -59,12 +59,6 @@ function reducer(state, action) {
 }
 
 function QuestionsProvider({ children }) {
-	// const [questions, setQuestions] = useState([])
-	// const [testQuestions, setTestQuestions] = useState([])
-	// const [error, setError] = useState("")
-	// const[creatingError,setCreatingError]=useState("")
-	// const [categories, setCategories] = useState([])
-	// const[isLoading,setIsLoading]=useState(false)
 	const [{ questions, testQuestions, error, categories, isLoading }, dispatch] =
 		useReducer(reducer, initialState)
 
