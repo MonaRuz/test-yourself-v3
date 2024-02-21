@@ -4,12 +4,23 @@ const BASE_URL = "http://localhost:8000"
 
 const QuestionsContext = createContext()
 
+function getRandomQuestion(min, max) {
+	min = Math.ceil(min)
+	max = Math.floor(max)
+	return Math.floor(Math.random() * (max - min) + min)
+}
+
 const initialState = {
 	questions: [],
 	testQuestions: [],
 	error: null,
 	categories: [],
 	isLoading: false,
+	showTestAnswer: false,
+	percentCounter: 0,
+	progress: 1,
+	currentTestQuestion: null,
+	status: "ready",
 }
 
 function reducer(state, action) {
@@ -53,14 +64,69 @@ function reducer(state, action) {
 				),
 				isLoading: false,
 			}
+		case "test/ready":
+			return {
+				...state,
+				status: "ready",
+			}
+		case "test/running":
+			return{
+				...state,
+				status:"active"
+			}
+		case "question/test/current":
+			return {
+				...state,
+				currentTestQuestion:
+					state.testQuestions[getRandomQuestion(0, state.testQuestions.length)],
+			}
+		case "answer/wrong":
+			return {
+				...state,
+				currentTestQuestion:
+					state.testQuestions[getRandomQuestion(0, state.testQuestions.length)],
+				showTestAnswer: false,
+				percentCounter: state.percentCounter + 1,
+			}
+		case "answer/correct":
+			return {
+				...state,
+				testQuestions: action.payload,
+				showTestAnswer: false,
+				currentTestQuestion:
+					action.payload[getRandomQuestion(0, action.payload.length)],
+				progress: state.progress + 1,
+			}
+		case "answer/show":
+			return {
+				...state,
+				showTestAnswer: true,
+			}
 		default:
 			throw new Error("Unknown action")
 	}
 }
 
 function QuestionsProvider({ children }) {
-	const [{ questions, testQuestions, error, categories, isLoading }, dispatch] =
-		useReducer(reducer, initialState)
+	const [
+		{
+			questions,
+			testQuestions,
+			error,
+			categories,
+			isLoading,
+			showTestAnswer,
+			percentCounter,
+			progress,
+			currentTestQuestion,
+			status,
+		},
+		dispatch,
+	] = useReducer(reducer, initialState)
+
+	const result = Math.ceil(
+		100 - (percentCounter / (questions.length + percentCounter)) * 100
+	)
 
 	useEffect(function () {
 		async function getCategories() {
@@ -143,6 +209,14 @@ function QuestionsProvider({ children }) {
 				createQuestion,
 				deleteQuestion,
 				isLoading,
+				showTestAnswer,
+				percentCounter,
+				result,
+				progress,
+				currentTestQuestion,
+				getRandomQuestion,
+				dispatch,
+				status,
 			}}
 		>
 			{children}

@@ -1,81 +1,74 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import Button from "./Button"
 import styles from "./Test.module.css"
-import {useQuestions} from "..//contexts/QuestionsContext"
+import { useQuestions } from "..//contexts/QuestionsContext"
 import { useParams } from "react-router-dom"
 
-
 export default function Test() {
-	const [showAnswer, setShowAnswer] = useState(false)
-	const [percentCounter, setpercentCounter] = useState(0)
-	const [progress, setProgress] = useState(1)
-	const [currentQuestion, setCurrentQuestion] = useState(null)
-	const {category}=useParams()
+	const { category } = useParams()
 
-	const{questions,testQuestions,setTestQuestions,getQuestions}=useQuestions()
-
-
-	const result = Math.ceil(
-		100 - (percentCounter / (questions.length + percentCounter)) * 100
-	)
-
-	function getRandomQuestion(min, max) {
-		min = Math.ceil(min)
-		max = Math.floor(max)
-		return Math.floor(Math.random() * (max - min) + min)
-	}
+	const {
+		questions,
+		testQuestions,
+		getQuestions,
+		showTestAnswer,
+		result,
+		progress,
+		currentTestQuestion,
+		dispatch,
+		status,
+	} = useQuestions()
 
 	function handleWrongAnswer() {
-		setCurrentQuestion(
-			testQuestions[getRandomQuestion(0, testQuestions.length)]
-		)
-		setShowAnswer(false)
-		setpercentCounter(percentCounter + 1)
+		dispatch({ type: "answer/wrong" })
 	}
 
 	function handleCorrectAnswer(id) {
 		let updatedQuestions = testQuestions.filter((question) => {
 			return question.id !== id
 		})
-		setTestQuestions(updatedQuestions)
-
-		setShowAnswer(false)
-		setCurrentQuestion(
-			updatedQuestions[getRandomQuestion(0, updatedQuestions.length)]
-		)
-		setProgress(progress + 1)
+		dispatch({ type: "answer/correct", payload: updatedQuestions })
 	}
-
-	useEffect(function(){
-		getQuestions(category)
-	},[category])
 
 	useEffect(
 		function () {
-			setCurrentQuestion(
-				testQuestions[getRandomQuestion(0, testQuestions.length)]
-			)
+			getQuestions(category)
 		},
-		[testQuestions]
+		[category]
 	)
+
+	useEffect(function () {
+		dispatch({ type: "question/test/current" })
+	}, [])
+	
+	if (status === "ready")
+		return (
+			<Button
+				bgColor='var(--main-bg-color)'
+				textColor='var(--positive-color)'
+				onClick={() => dispatch({ type: "test/running" })}
+			>
+				Start test
+			</Button>
+		)
 
 	if (testQuestions.length === 0)
 		return <p className={styles.result}>Úspěšnost testu : {result}%</p>
 
-	if (testQuestions.length !== 0)
+	if (status === "active")
 		return (
 			<div className={styles.test}>
 				<div className='test-question'>
-					{currentQuestion && (
-						<p className={styles.question}>{currentQuestion?.question}</p>
+					{currentTestQuestion && (
+						<p className={styles.question}>{currentTestQuestion?.question}</p>
 					)}
 
-					{showAnswer && (
-						<p className={styles.answer}>{currentQuestion?.answer}</p>
+					{showTestAnswer && (
+						<p className={styles.answer}>{currentTestQuestion?.answer}</p>
 					)}
 				</div>
 				<div className={styles.btnBox}>
-					{showAnswer && (
+					{showTestAnswer && (
 						<Button
 							textColor='var(--negation-color)'
 							bgColor='var(--main-bg-color)'
@@ -84,21 +77,21 @@ export default function Test() {
 							✘
 						</Button>
 					)}
-					{!showAnswer && (
+					{!showTestAnswer && (
 						<Button
 							textColor='var(--menu-color)'
 							bgColor='var(--main-bg-color)'
-							onClick={() => setShowAnswer(true)}
+							onClick={() => dispatch({ type: "answer/show" })}
 						>
 							Display answer
 						</Button>
 					)}
 
-					{showAnswer && (
+					{showTestAnswer && (
 						<Button
 							textColor='var(--positive-color)'
 							bgColor='var(--main-bg-color)'
-							onClick={() => handleCorrectAnswer(currentQuestion?.id)}
+							onClick={() => handleCorrectAnswer(currentTestQuestion?.id)}
 						>
 							✔
 						</Button>
@@ -119,5 +112,4 @@ export default function Test() {
 				</p>
 			</div>
 		)
-	
 }
