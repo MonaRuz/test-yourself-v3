@@ -68,9 +68,7 @@ export default function Questions() {
 				{searchedQuestions?.map((question) => (
 					<Question
 						key={question.id}
-						question={question.question}
-						answer={question.answer}
-						id={question.id}
+						question={question}
 						isOpen={question.id === isOpen}
 						dispatch={dispatch}
 					/>

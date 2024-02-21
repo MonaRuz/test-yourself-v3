@@ -8,9 +8,9 @@ import Loader from "./Loader"
 export default function NewQuestion() {
 	const [question, setQuestion] = useState("")
 	const [answer, setAnswer] = useState("")
+	const [wasSend, setWasSend] = useState(false)
 	const { createQuestion, error, isLoading } = useQuestions()
 	const { category } = useParams()
-	const [wasSend, setWasSend] = useState(false)
 	const navigate = useNavigate()
 
 	async function handleClick(e) {
@@ -25,7 +25,7 @@ export default function NewQuestion() {
 		await createQuestion(newQuestion, category)
 		// navigate(-1)
 	}
-console.log(error);
+
 	return (
 		<div>
 			<p className={styles.p}>Write some qiestion and answer. Fields can't be empty.</p>
