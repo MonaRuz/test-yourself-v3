@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 .question{
-    color: var(--positive-color);
+    color: var(--confirm-color);
     border-bottom: 1px solid var(--text-color);
     padding-bottom: 10px;
     text-align: center;

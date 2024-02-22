@@ -56,8 +56,7 @@ export default function Questions() {
 		<div>
 			<div className={styles.header}>
 				<Button
-					bgColor='var(--main-bg-color)'
-					textColor='var(--positive-color)'
+					type="confirm"
 					onClick={() => navigate("new-question")}
 				>
 					Add question

@@ -1,0 +1,65 @@
+.btn {
+	font-size: 18px;
+	color: var(--menu-color);
+	padding: 10px;
+	margin: 10px;
+	min-width: 150px;
+	max-width: 200px;
+	height: 45px;
+	background-color: var(--main-bg-color);
+    border: 1px solid var(--menu-color);
+	
+}
+
+.btn:hover{
+    color: var(--main-bg-color);
+    background-color: var(--menu-color);
+    cursor: "pointer";
+    border: 1px solid var(--main-bg-color);
+}
+
+.primary{
+    color: var(--title-color);
+    border: 1px solid var(--title-color);
+    
+}
+.primary:hover{
+    color: var(--main-bg-color);
+    background-color: var(--title-color);
+    cursor: pointer;
+}
+
+.confirm{
+    color:var(--confirm-color);
+    border:1px solid var(--confirm-color)
+}
+.confirm:hover{
+    color:var(--main-bg-color);
+    background-color:  var(--confirm-color);
+    cursor: pointer;
+}
+
+.negative{
+    color: var(--negation-color);
+    border: 1px solid var(--negation-color);
+}
+.negative:hover{
+    color:var(--main-bg-color);
+    background-color:  var(--negation-color);
+    cursor: pointer;
+}
+
+.login{
+    color:var(--confirm-color);
+    border:1px solid var(--confirm-color);
+    min-width: 100px;
+    max-width: 100px;
+    margin: 20px auto;
+}
+.login:hover{
+    color:var(--main-bg-color);
+    background-color:  var(--confirm-color);
+    cursor: pointer;
+}
+
+

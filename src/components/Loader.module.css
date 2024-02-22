@@ -15,7 +15,7 @@
 	margin: -8px 0 0 -8px;
 	width: 16px;
 	aspect-ratio: 1;
-	background: var(--positive-color);
+	background: var(--confirm-color);
 	animation: l1-1 2s infinite, l1-2 0.5s infinite;
 }
 .loader:after {

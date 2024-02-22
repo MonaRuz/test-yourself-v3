@@ -19,7 +19,7 @@
     text-align: center;
 }
 .message{
-    color:var(--positive-color);
+    color:var(--confirm-color);
     text-align: center;
 }
 .p{

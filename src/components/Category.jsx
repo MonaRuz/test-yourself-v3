@@ -31,16 +31,14 @@ export default function Category({
 			</p>
 			<div className={styles.buttons}>
 				<Button
-					textColor='var(--menu-color)'
-					bgColor='var(--main-bg-color)'
+					type="confirm"
 					onClick={() => navigate(`test/${categoryName}`)}
 				>
 					Test
 				</Button>
 
 				<Button
-					textColor='var(--menu-color)'
-					bgColor='var(--main-bg-color)'
+					type="primary"
 					onClick={() => navigate(`questions/${categoryName}`)}
 				>
 					Edit

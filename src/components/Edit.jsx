@@ -21,7 +21,7 @@ export default function Edit() {
 			<p className={styles.question}>{question}</p>
             <hr className={styles.line}/>
             <p className={styles.answer}>{answer}</p>
-			<Button bgColor="var(--main-bg-color)" textColor="var(--menu-color) " onClick={()=>navigate(-1)}>Back</Button>
+			<Button type="primary" onClick={()=>navigate(-1)}>Back</Button>
 		</div>
 	)
 }

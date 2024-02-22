@@ -11,8 +11,7 @@ export default function Homepage() {
 			<Intro/>
 			<NavLink to="app" className={styles.btn}>
 				<Button
-					textColor='var(--menu-color)'
-					bgColor='var(--main-bg-color)'
+					type="confirm"
 				>
 					To the app
 				</Button>

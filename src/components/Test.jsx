@@ -56,8 +56,7 @@ export default function Test() {
 			<div className={styles.btnBox}>
 				{showTestAnswer && (
 					<Button
-						textColor='var(--negation-color)'
-						bgColor='var(--main-bg-color)'
+						type="negative"
 						onClick={handleWrongAnswer}
 					>
 						✘
@@ -65,8 +64,7 @@ export default function Test() {
 				)}
 				{!showTestAnswer && (
 					<Button
-						textColor='var(--menu-color)'
-						bgColor='var(--main-bg-color)'
+						type="primary"
 						onClick={() => dispatch({ type: "answer/show" })}
 					>
 						Display answer
@@ -75,8 +73,7 @@ export default function Test() {
 
 				{showTestAnswer && (
 					<Button
-						textColor='var(--positive-color)'
-						bgColor='var(--main-bg-color)'
+						type="confirm"
 						onClick={() => handleCorrectAnswer(currentTestQuestion?.id)}
 					>
 						✔

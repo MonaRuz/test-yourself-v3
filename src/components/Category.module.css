@@ -11,9 +11,10 @@
     color: var(--title-color)
 }
 .values{
-    color: var(--positive-color);
+    color: var(--confirm-color);
 }
 .buttons{
     display: flex;
     flex-direction: column;
 }
+

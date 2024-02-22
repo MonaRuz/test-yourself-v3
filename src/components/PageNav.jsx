@@ -14,8 +14,7 @@ export default function PageNav() {
 				
 				<li>
 						<Button
-							textColor='var(--menu-color)'
-							bgColor='var(--main-bg-color)'
+							type="login"
 							onClick={()=>navigate("login")}
 						>
 							Login

@@ -39,16 +39,14 @@ export default function Question({ question, isOpen, dispatch }) {
 								to={`${question.id}`}
 							>
 								<Button
-									bgColor='var(--main-bg-color)'
-									textColor='var(--positive-color)'
+									type="primary"
 								>
 									Edit question
 								</Button>
 							</Link>
 
 							<Button
-								bgColor='var(--main-bg-color)'
-								textColor='var(--negation-color)'
+								type="negative"
 								onClick={handleClick}
 							>
 								Delete question

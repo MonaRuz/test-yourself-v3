@@ -2,17 +2,17 @@
 	text-align: center;
 }
 .input {
-    border: 2px solid var(--positive-color);
+    border: 2px solid var(--confirm-color);
 	width: 250px;
     height: 40px;
     text-align: center;
     background: transparent;
     outline: none;
-    color: var(--positive-color);
+    color: var(--confirm-color);
     font-size: 16px;
 }
 .searchIcon{
-    color: var(--positive-color);
+    color: var(--confirm-color);
     font-size: 30px;
     margin: 3px 10px;
 }

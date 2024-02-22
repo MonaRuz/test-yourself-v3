@@ -15,8 +15,8 @@
 	justify-content: space-between;
 }
 .question:hover{
-    border-bottom:1px solid var(--positive-color);
-    color: var(--positive-color);
+    border-bottom:1px solid var(--confirm-color);
+    color: var(--confirm-color);
 }
 .btn {
 	color: var(--menu-color);
@@ -26,7 +26,7 @@
     padding: 1px 1px 1px 1px;
 }
 .btn:hover{
-    color:var(--positive-color);
+    color:var(--confirm-color);
 }
 .btnBox{
     display: flex;
@@ -38,7 +38,7 @@
     margin: 0 10px;
 }
 .currentQuestion{
-    border-bottom:1px solid var(--positive-color);
-    color: var(--positive-color);
+    border-bottom:1px solid var(--confirm-color);
+    color: var(--confirm-color);
     margin-left: 30px;
 }
