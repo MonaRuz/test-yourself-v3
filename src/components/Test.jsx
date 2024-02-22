@@ -3,6 +3,8 @@ import Button from "./Button"
 import styles from "./Test.module.css"
 import { useQuestions } from "..//contexts/QuestionsContext"
 import { useParams } from "react-router-dom"
+import Loader from "./Loader"
+import Results from "./Results"
 
 export default function Test() {
 	const { category } = useParams()
@@ -12,11 +14,10 @@ export default function Test() {
 		testQuestions,
 		getQuestions,
 		showTestAnswer,
-		result,
 		progress,
 		currentTestQuestion,
 		dispatch,
-		status,
+		isLoading,
 	} = useQuestions()
 
 	function handleWrongAnswer() {
@@ -38,78 +39,64 @@ export default function Test() {
 	)
 
 	useEffect(function () {
-		dispatch({ type: "question/test/current" })
-	}, [])
-	
-	if (status === "ready")
-		return (
-			<Button
-				bgColor='var(--main-bg-color)'
-				textColor='var(--positive-color)'
-				onClick={() => dispatch({ type: "test/running" })}
-			>
-				Start test
-			</Button>
-		)
+		dispatch({ type: "question/test/current",payload:testQuestions })
+	}, [testQuestions])
 
-	if (testQuestions.length === 0)
-		return <p className={styles.result}>Úspěšnost testu : {result}%</p>
+	if (isLoading) return <Loader />
 
-	if (status === "active")
-		return (
-			<div className={styles.test}>
-				<div className='test-question'>
-					{currentTestQuestion && (
-						<p className={styles.question}>{currentTestQuestion?.question}</p>
-					)}
+	return (
+		<div className={styles.test}>
+			<div className='test-question'>
+				<p className={styles.question}>{currentTestQuestion?.question}</p>
 
-					{showTestAnswer && (
-						<p className={styles.answer}>{currentTestQuestion?.answer}</p>
-					)}
-				</div>
-				<div className={styles.btnBox}>
-					{showTestAnswer && (
-						<Button
-							textColor='var(--negation-color)'
-							bgColor='var(--main-bg-color)'
-							onClick={handleWrongAnswer}
-						>
-							✘
-						</Button>
-					)}
-					{!showTestAnswer && (
-						<Button
-							textColor='var(--menu-color)'
-							bgColor='var(--main-bg-color)'
-							onClick={() => dispatch({ type: "answer/show" })}
-						>
-							Display answer
-						</Button>
-					)}
+				{showTestAnswer && (
+					<p className={styles.answer}>{currentTestQuestion?.answer}</p>
+				)}
+			</div>
+			<div className={styles.btnBox}>
+				{showTestAnswer && (
+					<Button
+						textColor='var(--negation-color)'
+						bgColor='var(--main-bg-color)'
+						onClick={handleWrongAnswer}
+					>
+						✘
+					</Button>
+				)}
+				{!showTestAnswer && (
+					<Button
+						textColor='var(--menu-color)'
+						bgColor='var(--main-bg-color)'
+						onClick={() => dispatch({ type: "answer/show" })}
+					>
+						Display answer
+					</Button>
+				)}
 
-					{showTestAnswer && (
-						<Button
-							textColor='var(--positive-color)'
-							bgColor='var(--main-bg-color)'
-							onClick={() => handleCorrectAnswer(currentTestQuestion?.id)}
-						>
-							✔
-						</Button>
-					)}
-				</div>
-				<div>
-					<p className={styles.progress}>
-						Progress:
-						<strong>
-							{" "}
-							{progress} / {questions.length}
-						</strong>{" "}
-					</p>
-				</div>
-				<p className={styles.instructions}>
-					Answer the question as best you can, view the answer and see if you
-					answered correctly. <br /> Then click on the corresponding button.
+				{showTestAnswer && (
+					<Button
+						textColor='var(--positive-color)'
+						bgColor='var(--main-bg-color)'
+						onClick={() => handleCorrectAnswer(currentTestQuestion?.id)}
+					>
+						✔
+					</Button>
+				)}
+			</div>
+			<div>
+				<p className={styles.progress}>
+					Progress:
+					<strong>
+						{" "}
+						{progress} / {questions.length}
+					</strong>{" "}
 				</p>
 			</div>
-		)
+			<p className={styles.instructions}>
+				Answer the question as best you can, view the answer and see if you
+				answered correctly. <br /> Then click on the corresponding button.
+			</p>
+			{testQuestions === 0 && <Results />}
+		</div>
+	)
 }

@@ -20,7 +20,6 @@ const initialState = {
 	percentCounter: 0,
 	progress: 1,
 	currentTestQuestion: null,
-	status: "ready",
 }
 
 function reducer(state, action) {
@@ -64,21 +63,11 @@ function reducer(state, action) {
 				),
 				isLoading: false,
 			}
-		case "test/ready":
-			return {
-				...state,
-				status: "ready",
-			}
-		case "test/running":
-			return{
-				...state,
-				status:"active"
-			}
 		case "question/test/current":
 			return {
 				...state,
 				currentTestQuestion:
-					state.testQuestions[getRandomQuestion(0, state.testQuestions.length)],
+					action.payload[getRandomQuestion(0, action.payload.length)],
 			}
 		case "answer/wrong":
 			return {
@@ -119,7 +108,6 @@ function QuestionsProvider({ children }) {
 			percentCounter,
 			progress,
 			currentTestQuestion,
-			status,
 		},
 		dispatch,
 	] = useReducer(reducer, initialState)
@@ -216,7 +204,6 @@ function QuestionsProvider({ children }) {
 				currentTestQuestion,
 				getRandomQuestion,
 				dispatch,
-				status,
 			}}
 		>
 			{children}
