@@ -54,7 +54,15 @@ export default function Questions() {
 	if(error)return<Error>{error}</Error>
 	return (
 		<div>
+			<h3 className={styles.title}>Questions and answers in category {category}</h3>
 			<div className={styles.header}>
+				
+				<Button
+					type="negative"
+					onClick={() => navigate(-1)}
+				>
+					Back
+				</Button>
 				<Button
 					type="confirm"
 					onClick={() => navigate("new-question")}
@@ -63,6 +71,7 @@ export default function Questions() {
 				</Button>
 				<SearchQuestion dispatch={dispatch} />
 			</div>
+			
 			<ul className={styles.list}>
 				{searchedQuestions?.map((question) => (
 					<Question
