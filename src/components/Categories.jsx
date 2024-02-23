@@ -23,11 +23,7 @@ export default function Categories() {
 				<NewCategory />
 				{categories.map((category) => (
 					<Category
-						categoryName={category.categoryName}
-						numQuestions={category.numQuestions}
-						progress={category.progress}
-						highscore={category.highscore}
-						currentScore={category.currentScore}
+						category={category}
 						key={category.id}
 					/>
 				))}

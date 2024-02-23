@@ -39,7 +39,7 @@ export default function Question({ question, isOpen, dispatch }) {
 								to={`${question.id}`}
 							>
 								<Button
-									type="primary"
+									type="confirm"
 								>
 									Edit question
 								</Button>

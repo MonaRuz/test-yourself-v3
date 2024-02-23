@@ -1378,6 +1378,36 @@
       "id": "ddeb99d1-a702-425f-bea4-9305fc5d2747",
       "question": "Které nástroje využijeme, pokud chceme mít state přístupný globálně a zároveň jde o UI state?",
       "answer": "Context API + useState / useReducer, Redux, Zustand, Recoil nebo React Router."
+    },
+    {
+      "id": "c28a8a85-e965-46fd-8d3d-384a50e11851",
+      "question": "Jak zkombinujeme useReducer a useContext?",
+      "answer": "Vytvoříme custom Provider společně s custom hookem v souboru pro context. V tomto souboru vytvoříme u reducer a do kontextu si posíláme všechna potřebná data, cases a dispatch funkce."
+    },
+    {
+      "id": "16044c87-473f-4591-8614-d61d05993b13",
+      "question": "V jakých třech hlavních krocích probíhá vývoj autentifikace uživatele na front end aplikacích?",
+      "answer": "1) Nastavení získání dat od uživatele (email a heslo). 2) Nastatvení kontroly správnosti údajů vložených uživatelem, po potvrzení uživatele navigovat do aplikace a uložit uživatele do state proměnné. 3) Ochrana aplikace před nepřihlášenými uživateli."
+    },
+    {
+      "id": "a1e0f5ec-3f15-4632-be36-e1e6a1e0c9b8",
+      "question": "Jak zajistíme, aby se při navigování zpět v aplikaci uživatel nemohl vrátit na stránku login, ale vrátilo ho to na homepage?",
+      "answer": "V navigaci z login formuláře přidat objekt s 'replace': navigate('/app',{replace:true})."
+    },
+    {
+      "id": "49a5ae3c-ec67-4645-86ad-fd4ea1c28eb8",
+      "question": "K čemu je protected route a jak ho vytvořit?",
+      "answer": "Zabraňuje nepřihlášenému uživateli dostat se do naší aplikace. Ve složce pages si vytvoříme soubor s názvem ProtectedRoute, který by měl mít přístup k informaci o tom, jestli je uživatel přihlášený nebo ne, zpravidla z kontextu vytvořeného pro autentifikaci. Tato komponenta přijímá children prop, což je ve výsledku chráněná část aplikace. V effectu pak v podmínce nepřihlášeného uživatele navigujeme na homepage. Komponenta vrací pouze children. Obalíme do ní část aplikace, kterou chceme mít chráněnou."
+    },
+    {
+      "id": "40917241-0caf-4d71-987b-5a6a5a36ed4e",
+      "question": "Jak řešit situaci, kdy máme protected route, uživatel není přihlášený, snaží se dostat do aplikace, ale zobrazuje se chyba?",
+      "answer": "Je to tím, že se komponenty snaží načíst, i když nejsou přístupné. Do return části komponenty ProtectedRoute dáme podmínku: return isAutenticated ? children : null"
+    },
+    {
+      "id": "8cc9e26b-4914-4ee9-a1a8-b39ac95b170b",
+      "question": "Jak řešit situaci, kdy potřebujeme mít přístup ke kontextu už v komponentě App?",
+      "answer": "Obalíme Providerem komponentu App přímo v index.js souboru."
     }
   ],
   "JavaScript": [
@@ -1497,7 +1527,7 @@
     {
       "id": "3fb94003-ddca-4ddb-a7d1-4835487e050a",
       "categoryName": "React-3",
-      "numQuestions": 87,
+      "numQuestions": 93,
       "highscore": 0,
       "progress": 0,
       "currentScore": 0
