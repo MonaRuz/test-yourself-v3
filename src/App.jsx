@@ -11,6 +11,7 @@ import CreateNewCategory from "./components/CreateNewCategory"
 import Edit from "./components/Edit"
 import NewQuestion from "./components/NewQuestion"
 import { AuthProvider } from "./contexts/FakeAuthContext"
+import ProtectedRoute from "./pages/ProtectedRoute"
 
 export default function App() {
 	return (
@@ -30,9 +31,14 @@ export default function App() {
 							path='login'
 							element={<Login />}
 						/>
+
 						<Route
 							path='app'
-							element={<AppLayout />}
+							element={
+								<ProtectedRoute>
+									<AppLayout />
+								</ProtectedRoute>
+							}
 						>
 							<Route
 								index
