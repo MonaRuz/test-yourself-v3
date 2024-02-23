@@ -9,12 +9,14 @@ export default function NewQuestion() {
 	const [question, setQuestion] = useState("")
 	const [answer, setAnswer] = useState("")
 	const [wasSend, setWasSend] = useState(false)
+	const[notes,setNotes]=useState("")
 	const { createQuestion, error, isLoading } = useQuestions()
 	const { category } = useParams()
 	const navigate = useNavigate()
 
 	async function handleClick(e) {
 		e.preventDefault()
+		if(notes)return
 		const newQuestion = {
 			question,
 			answer,
@@ -23,7 +25,6 @@ export default function NewQuestion() {
 		setAnswer("")
 		setWasSend(true)
 		await createQuestion(newQuestion, category)
-		// navigate(-1)
 	}
 
 	return (
@@ -59,10 +60,17 @@ export default function NewQuestion() {
 					value={answer}
 					onChange={(e) => setAnswer(e.target.value)}
 				/>
+				<textarea
+					className={styles.honeyPot}
+					rows='6'
+					cols='10'
+					id='notes'
+					value={notes}
+					onChange={(e) => setNotes(e.target.value)}
+				/>
 				<div>
 					<Button
-						bgColor='var(--main-bg-color)'
-						textColor='var(--negation-color)'
+						type="negative"
 						onClick={(e) => {
 							e.preventDefault()
 							navigate(-1)
@@ -71,8 +79,7 @@ export default function NewQuestion() {
 						Back
 					</Button>
 					{question&&answer&&<Button
-						bgColor='var(--main-bg-color)'
-						textColor='var(--positive-color)'
+						type="confirm"
 						onClick={handleClick}
 					>
 						Add new question

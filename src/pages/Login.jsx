@@ -8,11 +8,13 @@ import { useEffect, useState } from "react"
 export default function Login() {
 	const[email,setEmail]=useState("monika@email.cz")
 	const[password,setPassword]=useState("heslo1")
+	const[name,setName]=useState("")
 	const{isAuthenticated,login}=useAuth()
 	const navigate=useNavigate()
 
 	function handleSubmit(e){
 		e.preventDefault()
+		if(name)return
 		if(email,password)login(email,password)
 	}
 
@@ -50,6 +52,13 @@ export default function Login() {
 					id='password'
 					value={password}
 					onChange={(e)=>setPassword(e.target.value)}
+				/>
+				{/* honeyPot */}
+				<input
+					className={styles.honeyPot}
+					type='text'
+					id='name'
+					onChange={(e)=>setName(e.target.value)}
 				/>
 				<Button
 					type="login"

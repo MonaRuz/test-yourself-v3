@@ -26,3 +26,6 @@
     color: var(--text-color);
     text-align: center;
 }
+.honeyPot{
+    display: none;
+}

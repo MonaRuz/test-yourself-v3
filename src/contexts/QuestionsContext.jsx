@@ -91,6 +91,12 @@ function reducer(state, action) {
 				...state,
 				showTestAnswer: true,
 			}
+		case "restart":
+			return{
+				...state,
+				progress:1,
+				percentCounter:0
+			}
 		default:
 			throw new Error("Unknown action")
 	}

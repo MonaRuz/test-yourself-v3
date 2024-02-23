@@ -43,7 +43,8 @@ export default function Test() {
 	}, [testQuestions])
 
 	if (isLoading) return <Loader />
-
+	if(testQuestions.length === 0) return <Results />
+console.log(testQuestions);
 	return (
 		<div className={styles.test}>
 			<div className='test-question'>
@@ -93,7 +94,7 @@ export default function Test() {
 				Answer the question as best you can, view the answer and see if you
 				answered correctly. <br /> Then click on the corresponding button.
 			</p>
-			{testQuestions === 0 && <Results />}
+			
 		</div>
 	)
 }
