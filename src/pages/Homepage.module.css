@@ -1,5 +1,5 @@
 
-.btn{
-    display: block;
-    text-align: center;
+.intro{
+    display: flex;
+    justify-content: center;
 }

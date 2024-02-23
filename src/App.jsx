@@ -10,63 +10,66 @@ import Questions from "./components/Questions"
 import CreateNewCategory from "./components/CreateNewCategory"
 import Edit from "./components/Edit"
 import NewQuestion from "./components/NewQuestion"
+import { AuthProvider } from "./contexts/FakeAuthContext"
 
 export default function App() {
 	return (
-		<QuestionsProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route
-						index
-						element={<Homepage />}
-					/>
-					<Route
-						path="/"
-						element={<Homepage />}
-					/>
-					<Route
-						path='login'
-						element={<Login />}
-					/>
-					<Route
-						path='app'
-						element={<AppLayout />}
-					>
+		<AuthProvider>
+			<QuestionsProvider>
+				<BrowserRouter>
+					<Routes>
 						<Route
 							index
-							element={<Categories />}
+							element={<Homepage />}
 						/>
 						<Route
-							path='categories'
-							element={<Categories />}
+							path='/'
+							element={<Homepage />}
 						/>
 						<Route
-							path='test/:category'
-							element={<Test />}
+							path='login'
+							element={<Login />}
 						/>
 						<Route
-							path='questions/:category'
-							element={<Questions />}
-						/>
+							path='app'
+							element={<AppLayout />}
+						>
+							<Route
+								index
+								element={<Categories />}
+							/>
+							<Route
+								path='categories'
+								element={<Categories />}
+							/>
+							<Route
+								path='test/:category'
+								element={<Test />}
+							/>
+							<Route
+								path='questions/:category'
+								element={<Questions />}
+							/>
+							<Route
+								path='questions/:category/new-question'
+								element={<NewQuestion />}
+							/>
+							<Route
+								path='questions/:category/:id'
+								element={<Edit />}
+							/>
+							<Route
+								path='new-category'
+								element={<CreateNewCategory />}
+							/>
+						</Route>
 						<Route
-							path='questions/:category/new-question'
-							element={<NewQuestion />}
+							path='*'
+							element={<PageNotFound />}
 						/>
-						<Route
-							path='questions/:category/:id'
-							element={<Edit />}
-						/>
-						<Route
-							path='new-category'
-							element={<CreateNewCategory />}
-						/>
-					</Route>
-					<Route
-						path='*'
-						element={<PageNotFound />}
-					/>
-				</Routes>
-			</BrowserRouter>
-		</QuestionsProvider>
+					</Routes>
+				</BrowserRouter>
+			</QuestionsProvider>
+		</AuthProvider>
 	)
 }

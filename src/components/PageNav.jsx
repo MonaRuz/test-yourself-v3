@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom"
 import Logo from "./Logo"
 import styles from "./PageNav.module.css"
 import Button from "./Button"
+import { useAuth } from "../contexts/FakeAuthContext"
+import User from "./User"
 
 export default function PageNav() {
+	const{isAuthenticated}=useAuth()
 	const navigate=useNavigate()
 	return (
 		<nav>
@@ -13,12 +16,13 @@ export default function PageNav() {
 				</li>
 				
 				<li>
-						<Button
+						{!isAuthenticated&&<Button
 							type="login"
 							onClick={()=>navigate("login")}
 						>
 							Login
-						</Button>
+						</Button>}
+						{isAuthenticated&&<User/>}
 				</li>
 			</ul>
 		</nav>

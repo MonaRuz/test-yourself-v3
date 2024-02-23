@@ -1,0 +1,15 @@
+.user{
+    margin-top:20px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top:1px solid var(--text-color);
+}
+.name{
+    color: var(--confirm-color);
+    margin-left: 10px;
+}
+.icon{
+    color: var(--confirm-color);
+    font-size: 25px;
+}
