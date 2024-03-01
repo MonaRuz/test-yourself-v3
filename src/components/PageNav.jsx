@@ -18,7 +18,7 @@ export default function PageNav() {
 				<li>
 						{!isAuthenticated&&<Button
 							type="login"
-							onClick={()=>navigate("login")}
+							onClick={()=>navigate("/login")}
 						>
 							Login
 						</Button>}

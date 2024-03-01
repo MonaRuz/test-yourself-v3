@@ -1,8 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { QuestionsProvider } from "./contexts/QuestionsContext"
-import Homepage from "./pages/Homepage"
-import Login from "./pages/Login"
-import AppLayout from "./pages/AppLayout"
 import Test from "./components/Test"
 import PageNotFound from "./components/PageNotFound"
 import Categories from "./components/Categories"
@@ -12,12 +9,19 @@ import Edit from "./components/Edit"
 import NewQuestion from "./components/NewQuestion"
 import { AuthProvider } from "./contexts/FakeAuthContext"
 import ProtectedRoute from "./pages/ProtectedRoute"
+import { Suspense, lazy } from "react"
+import Loader from "./components/Loader"
+
+const Homepage = lazy(()=>import("./pages/Homepage"))
+const Login = lazy(()=>import("./pages/Login"))
+const AppLayout = lazy(()=>import("./pages/AppLayout"))
 
 export default function App() {
 	return (
 		<AuthProvider>
 			<QuestionsProvider>
 				<BrowserRouter>
+						<Suspense fallback={<Loader/>}>
 					<Routes>
 						<Route
 							index
@@ -74,6 +78,7 @@ export default function App() {
 							element={<PageNotFound />}
 						/>
 					</Routes>
+						</Suspense>
 				</BrowserRouter>
 			</QuestionsProvider>
 		</AuthProvider>

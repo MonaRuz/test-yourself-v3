@@ -63,7 +63,7 @@ function reducer(state, action) {
 				),
 				isLoading: false,
 			}
-		case "question/test/current":
+		case "question/test/firstQuestion":
 			return {
 				...state,
 				currentTestQuestion:

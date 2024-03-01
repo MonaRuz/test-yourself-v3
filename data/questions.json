@@ -1403,6 +1403,181 @@
       "id": "8cc9e26b-4914-4ee9-a1a8-b39ac95b170b",
       "question": "Jak řešit situaci, kdy potřebujeme mít přístup ke kontextu už v komponentě App?",
       "answer": "Obalíme Providerem komponentu App přímo v index.js souboru."
+    },
+    {
+      "id": "7d4de49e-ee69-4952-81f7-19599ae6ebda",
+      "question": "Jakými způsoby můžeme optimalizovat výkon React aplikace?",
+      "answer": "1) Předcházet zbytečným renderům. 2) Zvýšit rychlost aplikace a její reaktivity. 3) Redukovat bundle size."
+    },
+    {
+      "id": "efa97d50-7127-4606-8837-06b9081a7163",
+      "question": "Ve kterých třech situacích re-renderuje instance komponenty?",
+      "answer": "1) Změna state. 2)Změna kontextu. 3) Re-render parent komponenty."
+    },
+    {
+      "id": "d0030c47-c86c-41d5-abab-57df59472042",
+      "question": "Co je to wasted render a kdy může představovat problém?",
+      "answer": "Render, který neprodukuje žádnou změnu v DOM. Problémy způsobuje ve chvi, kdy re-render probíha příliš často a když jsou komponenty pomalé při renderu."
+    },
+    {
+      "id": "00592d73-f5dd-4a71-b7a2-fbd1d749e901",
+      "question": "Co je to Profiler v developer tool?",
+      "answer": "Profiler analyzuje rendery a re-rendery a případně podává informaci o důvodu re-renderu."
+    },
+    {
+      "id": "4a8bc5af-abc0-4298-b1c5-b726b31e39b2",
+      "question": "Jak a proč optimalizovat výkon aplikace pomocí children prop?",
+      "answer": "Máme-li zahnízděnou pomalou komponentu uvnitř rychlejší a update state probíhá pouze v rodičovské komponentě, můžeme dceřinnou komponentu poslat rodičovské jako children prop. Ta už bude předem vytvořená, když bude docházet k re-renderu rodičovské komponenty a nebude brzdit aplikaci. React v tomto případě bude vědět, zda v dceřinné komponentě došlo ke změně a je-li jí třeba skutečně re-renderovat. Podobný princip funguje i u kontextu, kam dceřinné komponenty posíláme jako children prop, tudíž React re-renderuje po změně consumer komponenty."
+    },
+    {
+      "id": "50539854-f929-47f9-8948-896ea93cf464",
+      "question": "Co je to memoizace?",
+      "answer": "Optimalizační technika, která vykoná pure funkci pouze jednou, výsledek uloží do cache a při opakovaném volání, pokud se nezmění argumenty, vrátí uložení výsledek, aniž by funkce musela znovu probíhat. pokud se argumenty změní, funkce se znovu volá."
+    },
+    {
+      "id": "75a37d1c-43df-4b30-9311-a09b47811faf",
+      "question": "Které tři React nástroje jsou založeny na konceptu memoizace a k čemi slouží?",
+      "answer": "1) funkce memo - memoizace komponent. 2) useMemo - memoizace objektů, 3) useCallback - memoizace funkcí. Všechny tři nástroje umožňují předcházet wasted renderům a zvyšují reaktivitu a rychlost aplikace."
+    },
+    {
+      "id": "407415d5-ddf6-4cb4-9003-8d207c6bd896",
+      "question": "Co je memo funkce?",
+      "answer": "Funkce k vytváření komponent, které nererenderují po re-renderu rodičovské komponenty, pokud props zůstávají stejné. Na tuto funkci mají vliv pouze props, takže po změmě lokálního state nebo kontextu komponenta rerenderuje."
+    },
+    {
+      "id": "0be7f81e-4bea-488c-ba8b-1851cd95bc7a",
+      "question": "Co je to memoized component?",
+      "answer": "Komponenta vytvořená pomocí memo funkce."
+    },
+    {
+      "id": "b5f1ad73-cabe-470b-8dc8-8122ecab3583",
+      "question": "Kdy dává smysl použít memo funkci?",
+      "answer": "Pouze u masivních komponent, které pomalu renderují, nebo u kterých se re-render děje příliš často."
+    },
+    {
+      "id": "4a9b9b88-60b8-474f-82b6-bda2b740f107",
+      "question": "Jak použít memo funkci?",
+      "answer": "Komponentu obalíme proměnné stejného názvu jako komponenta a s funkcí memo: const SlowComponent=memo(function SlowComponent ({myProp}){...})"
+    },
+    {
+      "id": "e86bd5f1-b4dc-4afe-8840-257cc53f3314",
+      "question": "Kdy nám nebude fungovat memo funkce a proč?",
+      "answer": "Když jako props dceřinné konponentě posíláme funkci nebo objekt. Po každém renderu je komponenta znovu vytvořena včrtne funkcí a objektů. JS chápe dvě stejně vypadající funkce a objekty jako dvě různé a dceřinná komponenta bude chápat přijímané props pokaždém renderu jako nové, i když budou stejné."
+    },
+    {
+      "id": "85db49ce-a178-401c-aa99-98abd199d2cf",
+      "question": "Co je to useMemo a useCallback?",
+      "answer": "Jsou to hooky poskytované Reactem, které umožňují stabilizaci objektů a funkcí napříč re-rendery. useMemo memoizuje objekty, zatímco useCalback memoizuje funkce a je určitou odnoží useMemo. Obsahují dependency array, ve kterém se nacházejí hodnoty ('inputs'), při jejichž změně se hodnota v hooku znovu vytvoří."
+    },
+    {
+      "id": "854c30e2-2d96-47dd-b888-29733a917955",
+      "question": "V jakých třech situacích bychom měli použít useMemo nebo useCallback?",
+      "answer": "1) Memoizace props v zájmu prevence před wasted renders. 2) Memoizace hodnot v zájmu prevence před opakovanými náročnými výpočty. 3) Memoizace hodnot použitých v dependency array jiného hooku."
+    },
+    {
+      "id": "58f06592-5c17-4bab-948b-651d82cac725",
+      "question": "Co je to useMemo a k čemu se používá?",
+      "answer": "Hook poskytovaný Reactem, který stabilizuje objekty napříč rendery, takže jsou uloženy do cache a vraceny při volání funkce, ale pouze tehdy, pokud se nezmění 'input' v dependency array. Hodí se tehdy, když do funkce memo posíláme objekt."
+    },
+    {
+      "id": "a874f175-04cb-44c8-af82-dd5b16698519",
+      "question": "Jak použít useMemo?",
+      "answer": "Vytvoříme callback funkci přiřazenou proměnné se stejným názvem jako měl původní objekt a uvnitř si necháme vrátit objekt. Součástí funkce je i dependency array, ve kterém jsou uvedeny hodnoty, které když se změní, funkce se vykoná znovu. Když se nezmení, objekt je vracen z paměti a funkce se znovu nevolá. const objectOptions=useMemo(()=>{return{show:true,title:${someTitle}}},[someTitle])."
+    },
+    {
+      "id": "aac5586a-c91e-47c4-a449-a0eeab00d30a",
+      "question": "Co je to useCallback a jak tento hook použít?",
+      "answer": "Hook poskytovaný reactem, který se stará o memoizaci funkcí, tedy o jejich stabilizaci, napříč rendery. Má dependeny array, ve kterém jsou hodnoty, jejichž změna spustí volání funkce uvnitř hooku: const myFunction=useCallback(function myFunction(value){setState(value)},[])."
+    },
+    {
+      "id": "d9c89bee-fd4f-4a6e-adc5-e2144e39d0da",
+      "question": "V čem jsou odlišné useMemo a useCallback hooky?",
+      "answer": "useMemo ukládá do paměti výsledek callback funkce, tedy objekt, zatímco useCallback nevolá hned funkci uvnitř, ale ji samotnou uloží do paměti."
+    },
+    {
+      "id": "339e59fe-0fa9-4ea9-bdee-384f949d9c76",
+      "question": "Proč není třeba dávat setter funkce do dependency array a není třeba je memoizovat?",
+      "answer": "Protože React těmto funkcím garantuje stabilní identitu."
+    },
+    {
+      "id": "eb11604e-db81-4e4a-a289-b432f1b87f72",
+      "question": "Které tři podmínky by měly být splněny, abychom optimalizovali aplikaci v contextAPI?",
+      "answer": "1) State v kontextu se často mění. 2) Kontext má hodně consumer komponent. 3) Aplikace je pomalá a seká se."
+    },
+    {
+      "id": "37daf815-77be-455f-ae18-32e8ab30fc8b",
+      "question": "Proč když updatujeme state nad custom Providerem, re-renderují některé komponenty z důvodu změny kontextu, i když state, který jsme updatovali s kontextem nemá nic společného? Jak tento problém vyřešit?",
+      "answer": "Protože v custom Provideru máme value, abychom mohli posílat hodnoty do kontextu, ale value je objekt, takže pro něj platí to samé, co pro ostatní objekty a to je fakt, že při každém renderu je tento objekt znovu vytvořen, protože JavaScript ho vnímá jako zcela nový. Řešením je použití hooku useMemo a memoizovat tento objekt."
+    },
+    {
+      "id": "f1c4b126-0f38-40bf-9c1b-daea5ab0e121",
+      "question": "Proč může být problematické mít mnoho hodnot a state proměnných v jednom kontextu?",
+      "answer": "Protože při změně jakékoliv hodnoty v kontextu re-renderují všechny consumer komponenty bez ohledu na to, kterou hodnotu z kontextu konzumují. Ideální je mít jeden kontext na jeden state."
+    },
+    {
+      "id": "302aef42-872e-4ad0-8d15-62f8d6dba907",
+      "question": "Co uděláme, máme-li například effect, v jehož dependency array by měla být funkce, která ale způsobuje infinite loop?",
+      "answer": "Použijeme useCallback a obalíme do něj funkci."
+    },
+    {
+      "id": "5799713a-6fb1-47fd-b11d-baada68cc91e",
+      "question": "Která optimalizační technika je nejdůležitější a využitelná téměř ve všech aplikacích?",
+      "answer": "Je to redukce 'bundle size', tedy 'lazy loading'."
+    },
+    {
+      "id": "423d4282-a807-4b2a-aa05-ba31f1ad6234",
+      "question": "Co je to 'bundle'?",
+      "answer": "JavaScript soubor, který si uživatel stahuje do klienta ve chvíli, kdy navštíví naši aplikaci. Tento soubor se stáhne pouze jednou a pak běží už jen na straně klienta."
+    },
+    {
+      "id": "63c8e314-e7d7-4c09-b4f0-fcce31c9ec2a",
+      "question": "Co je to 'code splitting'?",
+      "answer": "Rozdělení bundle do více částí, které jsou potom uživatelem stahovány postupně, až ve chvíli, kdy je jich nezbytně třeba."
+    },
+    {
+      "id": "2f2f74d3-ab99-4956-b35f-bd44cacd940a",
+      "question": "Jak zmenšit 'bundle size'?",
+      "answer": "Zakomentujeme nebo smažeme import komponenty, kterou chceme od hlavního bundle oddělit. Pak vytvoříme proměnnou o stejném názvu jako komponenta a k ní přiřadíme funkci lazy(), kterou poskytuje React. V této funkci je callback funkce, kde je teprve umístěn import: const Homepage=lazy(()=>import'./pages/Homepage'). Webpack, Vite nebo jiný bundler pak automaticky oddělí takové soubory do oddělených menších bundles, které jsou staženy až ve chvíli, kdy je uživatel v skutečně potřebuje. Součástí je i komponenta Suspense, kterou taktéž poskytuje React a která umožňuje komponentu pozastavit, dokud nebude stažena. Ta obsahuje prop 'fallback', která v sobě může mít nějaký loader. Tato komponenta obaluje všechny komponenty, které chceme mít staženy odděleně, například: <Suspense fallback={<Loader/>}><Route...><Route...>...</Suspense>."
+    },
+    {
+      "id": "d17d1f93-863a-4cb2-91e4-58978e44d10a",
+      "question": "Jaká jsou doporučení při optimalizace aplikace?",
+      "answer": "1) Najít slabá místa aplikace pomocí profileru nebo vizuálně. 2) Opravit skutečné problémy pomocí memoizace náročných re-renderů a výpočtů. 3) Kontext optimalizovat pouze tehdy, když se často mění a má mnoho consumers. 4) Kontext optimalizovat buď pomocí memoizace hodnot kontextu + child komponenty, nebo rozdělit kontext do dvou, kdy jeden bude pro state proměnné a druhý pro state updates. 5) Vždy implementovat code splitting + lazy loading pro SPA routy."
+    },
+    {
+      "id": "384329ce-bdd6-4fa3-9f25-fe421e7c386a",
+      "question": "Co nedělat při optimalizaci aplikace?",
+      "answer": "1) Neoptimalizovat předčasně a bezdůvodně. 2) Pokud není důvod, nepoužívat optimalizační nástroje memo, useMemo a useCallback, protože sami přinášejí výpočetní zátěž. 3) Neoptimalizovat kontext, pokud není pomalý nebo pokud nemá mnoho consumers."
+    },
+    {
+      "id": "50f20a0a-5155-4356-8c69-85d14a10810c",
+      "question": "Jaká jsou pravidla pro dependency arrays?",
+      "answer": "1) Každá proměnná použitá v effectu musí být v dependencies. 2) Jakákoliv hodnota, kterou komponenta odebírá z kontextu musí být v dependencies. 3) Každá reaktivná hodnota musí být v dependencies. 4) Při používání ESLintu se hodnoty v dependencies určují automaticky, nikdy tedy nevypínat toto nastavení (exhaustive-deps) v ESLintu a neignorovat jeho doporučení. 5) Nedávat do dependencies objekty a pole, protože jsou po každém renderu vytvářeny znovu a React je bude brát vždy jako nové a změna spustí znovu spuštění effectu. Pokud je nutné je tam dát, je nutné použít k tomu vhodnou techniku."
+    },
+    {
+      "id": "5ce29898-f2e3-482d-abb4-75ccf80ebc2d",
+      "question": "Co můžeme udělat, když musíme dát do dependency array funkci, která způsobuje příliš časté re-rendery(infinite loops)?",
+      "answer": "1) Do effectu přímo vložíme funkci namísto pohého volání funkce uvnitř effectu. 2) Pokud není možný 1. bod, protože potřebujeme funkci volat na více místech, můžeme funkci memoizovat pomocí useCallback hooku. 3) Pokud funkce neodkazuje na žádnou reaktivní hodnotu, můžeme ji dát mimo komponentu, takže se nebude vytvářet znovu každý render."
+    },
+    {
+      "id": "006a8485-0113-4eeb-ac3e-a294abd43a2f",
+      "question": "Co můžeme udělat když potřebujeme odebrat objekt z dependency array?",
+      "answer": "1) Místo objektu můžeme dát do dependencies primitivní hodnutu, tedy pouze konkrétní property objektu, kterou potřebujeme. 2) Pokud to není možný první bod, přesuneme objekt mimo komponentu. 3) Objekt můžeme memoizovat pomocí useMemo hooku."
+    },
+    {
+      "id": "d8510130-bee2-461f-8191-7b90fab7dd72",
+      "question": "Co udělat, když máme v dependency array příliš mnoho hodnot, které jsou vzájemně propojené?",
+      "answer": "Použijeme reducer (useReducer)."
+    },
+    {
+      "id": "ae188f88-a2f2-4d39-a3b7-1ce6181a91c3",
+      "question": "Ve kterých třech případech je nejčastěji nadužíván useEffect a co je v těchto případech dobré použít místo něho?",
+      "answer": "1) Odpověď na event ze strany uživatele -> použít event handler funkci, dokonce i když jde o side-effect. 2) Fetchování dat při on mount komponenty -> použít externí knihovnu pro fetchování dat jako React Query. 3) Synchronizace změny state s jinou state proměnnou -> použít derived state a event handler, pokud je to možné."
+    },
+    {
+      "id": "fe741b85-bc92-4f72-8dab-7f664b2d0118",
+      "question": "Proč musí mít useEffect dependency array a proč do něj musíme dávat hodnoty, které má sledovat?",
+      "answer": "Protože pokud dependency array mít nebude, bude se spouštět po každém renderu. Sledované hodnoty do dependencies musíme dávat proto, že funkce v effectu se prvním renderu uzavře nad proměnnými a má pak přístup pouze k těmto původním hodnotám, nikoliv k updatovaným. Jde tedy o 'stale closure'."
     }
   ],
   "JavaScript": [
@@ -1500,6 +1675,11 @@
       "id": "62e1f987-2ade-490f-9e4d-b3aa5bc01211",
       "question": "Jak se posílají data(objekt) pomocí metody POST na server?",
       "answer": "Za await fetch(url, dáme jako druhý argument objekt, ve kterém je method:POST,body:JSON.stringify(newObject),headers:{'Content-Type':'application/json'}."
+    },
+    {
+      "id": "cae6d211-0159-499f-b7aa-ca3a988e4dd8",
+      "question": "Co je to 'closure'?",
+      "answer": "Vlastnost funkce, která způsobuje, že se funkce po svém vytvoření uzavře nad promměnnými v lexikálním scopu v době svého vzniku. Přístup má pak pouze k proměnným a jejich hodnotám v době a místě svého vzniku."
     }
   ],
   "categories": [
@@ -1522,7 +1702,7 @@
     {
       "id": "3fb94003-ddca-4ddb-a7d1-4835487e050a",
       "categoryName": "React-3",
-      "numQuestions": 93,
+      "numQuestions": 127,
       "highscore": 0,
       "progress": 0,
       "currentScore": 0
@@ -1530,7 +1710,7 @@
     {
       "id": "84d71f2c-1f1e-4903-a550-92aea77b732e",
       "categoryName": "JavaScript",
-      "numQuestions": 18,
+      "numQuestions": 20,
       "highscore": 0,
       "progress": 0,
       "currentScore": 0
