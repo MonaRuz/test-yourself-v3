@@ -1578,6 +1578,126 @@
       "id": "fe741b85-bc92-4f72-8dab-7f664b2d0118",
       "question": "Proč musí mít useEffect dependency array a proč do něj musíme dávat hodnoty, které má sledovat?",
       "answer": "Protože pokud dependency array mít nebude, bude se spouštět po každém renderu. Sledované hodnoty do dependencies musíme dávat proto, že funkce v effectu se prvním renderu uzavře nad proměnnými a má pak přístup pouze k těmto původním hodnotám, nikoliv k updatovaným. Jde tedy o 'stale closure'."
+    },
+    {
+      "question": "Co je to Redux?",
+      "answer": "Je to knihovna třetí strany, která se používá ke globálnímu ovládání states ve webových aplikacích (ne remote state). Je velmi podobný useReducer hooku v kombinaci s context API.",
+      "id": "TcOHbx6"
+    },
+    {
+      "question": "Jaké jsou dva typy Redux?",
+      "answer": "1) Classic Redux, 2) modern Redux toolkit.",
+      "id": "KmOgqBI"
+    },
+    {
+      "question": "Jaká je historie používání Redux?",
+      "answer": "Dříve se používal v téměř všech aplikacích, dokud neexistovaly alternativy. Dnes se už požívá méně, protože většina aplikací potřebuje ovládat globálně hlavně remote states, na které existují lepší nástroje.",
+      "id": "bfXZRSk"
+    },
+    {
+      "question": "Jaké odlišnosti má Redux knihovna oproti useReducer hooku?",
+      "answer": "1) Actions se neposílají přímo do reduceru, ale do 'store', kde může být jeden nebo více reducerů. 2) Obsahuje action creator funkci, která umožňuje automatizaci vytváření actions a umožňuje centralizaci actions.",
+      "id": "lFSo6Gc"
+    },
+    {
+      "question": "Jaký je rozdíl mezi reducer funkcí v useReducer a Redux?",
+      "answer": "Ve switchi je v Reduxu jako 'default' case vracen originální state namísto chyby. State tak nemusí být updatován a nebude to znamenat chybu: default: return state",
+      "id": "4QF7Ywp"
+    },
+    {
+      "question": "Jaká je konvence při psaní názvů case v Reduxu?",
+      "answer": "Dříve se psalo v UPPER_CASE, dnes se píše 'oblastState/událost'",
+      "id": "Ki94ppX"
+    },
+    {
+      "question": "Jaký je rozdíl mezi dispatch funkcí v useReduceru a Redux?",
+      "answer": " V Redux máme obvykle uložené úložiště do nějaké proměnné -> 'store', takže píšeme: store.dispatch({type:'type',payload:data})",
+      "id": "mkt6MsS"
+    },
+    {
+      "question": "Co je to action creator funkce a jak vypadá?",
+      "answer": "Je to funkce, která vrací action a používá se často spolu s Reduxem. Nejprve si vytvoříme funkci: function deposit(amount){return{type:'account/deposit',payload:amount}}. Potom můžeme v argumentu dispatch funkce namísto samotné action použít tuto funkci: store.dispatch(deposit(500)).",
+      "id": "y-NP6Aw"
+    },
+    {
+      "question": "Jak spojíme více reducerů do rootReduceru v Redux?",
+      "answer": "Pomocí funkce combineReducers, kterou Redux poskytuje a ve které je objekt specifikující reducery, které mají býs spojeny v rootReduceru:\n const rootReducer=combineReducers({account:accountReducer,customer:customerReducer})",
+      "id": "L9v8Mgv"
+    },
+    {
+      "question": "Jak si vypíšeme do konzole obsah store v Reduxu?",
+      "answer": "console.log(store.getState())",
+      "id": "K8kBeWN"
+    },
+    {
+      "question": "Jak by měla vypadat profesionální struktura Redux souboru?",
+      "answer": "Soubor, kde máme veškerý kód kolem Reduxu si rozdělíme na oddělené soubory podle oblastí state, které používáme. Kolik máme initialStates a reducerů, tolik budeme mít souborů. Do odděleného souboru tedy dáme initialState, reducer a action creators k příslušné oblasti a v samostatném souboru také máme funkce combineReducers() a createStore(). Sem importujeme reducery. Z odděleného souboru exportujeme reducery defaultně a action creators jako named. ",
+      "id": "nnW8Lgi"
+    },
+    {
+      "question": "Jak propojíme Redux s React aplikací?",
+      "answer": "Nejprve si stáhneme package react-redux: npm i react-redux. Do místa, kde máme importovaný store (obvykle v index,js) naimportujeme Provider(z react-redux) a do něj obalíme App komponentu. Provider má jako prop 'store': root.render(<React,StrictMode><Provider store={store}><App/></Provider></React.StrictMode>). Všechny komponenty mají tak přístup ke store.",
+      "id": "k40ldxx"
+    },
+    {
+      "question": "Jak v komponentě získáme data ze store v Reduxu?",
+      "answer": "V komponentě ze store čteme pomocí hooku useSelector(z react-redux) ve kterém \n v callback funkci vybíráme hodnoty, které potřebujeme a měly by být  co nejvíce konkrétní: const data=useSelector((store)=>store.customer.fullName). Proměnnou pak můžeme použít v JSX.",
+      "id": "x_F5Yds"
+    },
+    {
+      "question": "Jak poslat v Redux action do reduceru z React komponenty?",
+      "answer": "Namísto dispatch funkce u useReduceru se používá useDispatch() custom hook poskytovaný Reduxem. Ale pokud si tento hook uložíme do proměnné s názvem dispatch, můžeme poslat action ( nebo action creator funkci) tak, jak se posílá i u useReduceru: const dispatch=useDispatch();dispatch(deposit(200)).",
+      "id": "3_92gGp"
+    },
+    {
+      "question": "Jak v Redux získáme přístup z komponenty do store a to k více hodnotám ze stejné oblasti state?",
+      "answer": "Pomocí useSelector hooku a destructuring objektu: const{balance,loan}=useSelector((store)=>store.account)",
+      "id": "hEQEVep"
+    },
+    {
+      "question": "Jak se v minulosti, kdy neexistovaly hooky jako useSelector nebo useDispatch propojovaly komponenty se store v Reduxu?",
+      "answer": "Mimo komponentu se vytvořila funkce, obvykle nazvaná 'mapStateToProps()', která přijímala jako argument state a vracela objekt, kde jsme mohli definovat state proměnné, které chceme v komponentě přijímat: function mapStateToProps(state){return{balance:state.account.balance}}. Výsledek této funkce byla funkce nová, která měla v argumentu naši komponentu. Funkce mapStateToProps se volala v exportu komponenty: export default connect(mapStateToProps)(MyComponent).",
+      "id": "SMliVNj"
+    },
+    {
+      "question": "Proč se nedoporučuje dávat fetchování dat přímo do komponent?",
+      "answer": "Protože chceme mít komponenty čisté a chceme, aby kód pro fetchování byl umístěn někde na centrálním místě pro fetchování, místo aby byl takový kód roztroušen po celé aplikaci.",
+      "id": "YTG-ND7"
+    },
+    {
+      "question": "Kam vrámci Redux umístíme asynchronní kód a side effecty?",
+      "answer": "Do middleware funkce, protože v reduceru (store) musí být jen pure a komponenty chceme mít čisté.",
+      "id": "_aQrrvf"
+    },
+    {
+      "question": "Kde je umístěna middleware funkce?",
+      "answer": "Mezi dispatch action a přijetím action reducerem.",
+      "id": "fOTIMH0"
+    },
+    {
+      "question": "Co je to middleware funkce?",
+      "answer": "Funkce, která umožňuje v rámci Redux rozběhnout nějaký kód a uložit něco do action.payload v době po dispatch ale ještě než dorazí do store.  ",
+      "id": "5XTGCjy"
+    },
+    {
+      "question": "Jaká je nejpopulárnější knihovna pro middleware?",
+      "answer": "Redux Thunk",
+      "id": "YIHFW56"
+    },
+    {
+      "question": "V jakých třech krocích implementujeme thunk middleware pro Redux?",
+      "answer": "1) Nainstalujeme si redux-thunk. 2) Middleware aplikujeme na store. 3) Použijeme middleware v action creator funkcích.  ",
+      "id": "DMfI08J"
+    },
+    {
+      "question": "Jak řekneme store, že chceme, aby aplikace používala thunk middleware?",
+      "answer": "Do druhého argumentu funkce ceateStore() dáme funkci applyMiddleware poskytovanou Reduxem a ta bude mít v argumentu funkci thunk: const store=createStore(rootReducer,applyMiddleware(thunk)).",
+      "id": "m7bdhqj"
+    },
+    {
+      "question": "Kam a jek píšeme thunk middleware funkci?",
+      "answer": "Uvnitř action creator funkce, kde bude asynchronní funkce s argumenty dispatch a getState. Tato funkce je middleware, obsahuje asynchronní kód a na konci vrátí další dispatch, který teprve odešle action se získanými daty do store.",
+      "id": "ZZDCPsc"
     }
   ],
   "JavaScript": [
@@ -1702,7 +1822,7 @@
     {
       "id": "3fb94003-ddca-4ddb-a7d1-4835487e050a",
       "categoryName": "React-3",
-      "numQuestions": 127,
+      "numQuestions": 151,
       "highscore": 0,
       "progress": 0,
       "currentScore": 0

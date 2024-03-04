@@ -33,22 +33,28 @@ export default function Test() {
 		dispatch({ type: "answer/correct", payload: updatedQuestions })
 	}
 
-	useEffect(
-		function () {
-			getQuestions(category)
-		},
-		[category]
-	)
+	// useEffect(
+	// 	function () {
+	// 		getQuestions(category)
+	// 	},
+	// 	[category]
+	// )
+
+	function handleGetQuestions(){
+		getQuestions(category)
+		setIsRunning(true)
+
+	}
 
 	useEffect(
 		function () {
 			dispatch({ type: "question/test/firstQuestion", payload: testQuestions })
 		},
-		[testQuestions]
+		[testQuestions,dispatch]
 	)
 
 	if (isLoading) return <Loader />
-	if (testQuestions.length === 0) return <Results />
+	if (testQuestions.length === 0 && isRunning) return <Results />
 
 	return (
 		<div className={styles.test}>
@@ -63,7 +69,7 @@ export default function Test() {
 						</Button>
 						<Button
 							type='confirm'
-							onClick={() => setIsRunning(true)}
+							onClick={handleGetQuestions}
 						>
 							Start Test
 						</Button>

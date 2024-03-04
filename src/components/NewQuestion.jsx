@@ -29,7 +29,7 @@ export default function NewQuestion() {
 
 	return (
 		<div>
-			<p className={styles.p}>Write some qiestion and answer. Fields can't be empty.</p>
+			<p className={styles.p}>Write some question and answer. Fields can't be empty.</p>
 			<hr />
 			<form className={styles.form}>
 				<label
