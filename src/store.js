@@ -1,30 +1,15 @@
 import { combineReducers, createStore } from "redux"
+import categoriesReducer from "./features/categories/categoriesSlice"
+import categoryTestReducer from "./features/categoryTest/categoryTestSlice"
+import fakeAuthReducer from "./features/fakeAuth/fakeAuthSlice"
+import questionsReducer from "./features/questions/questionsSlice"
 
-const rootReducer=combineReducers({
-    categories:categoriesReducer,
-    questions:questionsReducer,
-    test:testReducer,
-    authenticate:authReducer
-
+const rootReducer = combineReducers({
+	categories: categoriesReducer,
+	questions: questionsReducer,
+	categoryTest: categoryTestReducer,
+	authenticate: fakeAuthReducer,
 })
 
-const store=createStore(rootReducer)
-
-function getRandomQuestion(min, max) {
-	min = Math.ceil(min)
-	max = Math.floor(max)
-	return Math.floor(Math.random() * (max - min) + min)
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+const store = createStore(rootReducer)
+ export default store

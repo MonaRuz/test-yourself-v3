@@ -1,10 +1,16 @@
+function getRandomQuestion(min, max) {
+	min = Math.ceil(min)
+	max = Math.floor(max)
+	return Math.floor(Math.random() * (max - min) + min)
+}
+
 const initialStateQuestions = {
 	questions: [],
 	error: null,
 	isLoading: false,
 }
 
-function questionsReducer(state = initialStateQuestions, action) {
+export default function questionsReducer(state = initialStateQuestions, action) {
 	switch (action.type) {
 		case "loadingQuestions":
 			return {
@@ -42,18 +48,19 @@ function questionsReducer(state = initialStateQuestions, action) {
 	}
 }
 
-function loadingQuestions(){
+export function loadingQuestions(){
     return{type:"loadingQuestions"}
 }
-function rejectedQuestions(errMessage){
+export function rejectedQuestions(errMessage){
     return{type:"rejectedQuestions",payload:errMessage}
 }
-function loadedQuestions(questions){
+export function loadedQuestions(questions){
     return{type:"loadedQuestions",payload:questions}
 }
-function questionCreate(newQuestion){
+export function questionCreate(newQuestion){
     return{type:"questionCreate",payload:newQuestion}
 }
-function questionDelete(question){
+export function questionDelete(question){
     return{type:"questionDelete",payload:question}
 }
+

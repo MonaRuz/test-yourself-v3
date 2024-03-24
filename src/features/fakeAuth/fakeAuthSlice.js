@@ -5,7 +5,7 @@ const initialStateAuth = {
 	isAuthenticated: false,
 }
 
-function authReducer(state = initialStateAuth, action) {
+export default function authReducer(state = initialStateAuth, action) {
 	switch (action.type) {
 		case "login":
         return{
@@ -24,10 +24,10 @@ function authReducer(state = initialStateAuth, action) {
 	}
 }
 
-function login(user){
+export function login(user){
     return{type:"login",payload:user}
 }
 
-function logout(){
+export function logout(){
     return{type:"logout"}
 }

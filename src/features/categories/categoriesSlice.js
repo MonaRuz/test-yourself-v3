@@ -4,7 +4,7 @@ const initialStateCategories = {
 	isLoading: false,
 }
 
-function categoriesReducer(state = initialStateCategories, action) {
+export default function categoriesReducer(state = initialStateCategories, action) {
 	switch (action.type) {
 		case "loadingCategories":
 			return {
@@ -29,12 +29,12 @@ function categoriesReducer(state = initialStateCategories, action) {
 	}
 }
 
-function loadingCategories(){
+export function loadingCategories(){
     return{type:"loadingCategories"}
 }
-function rejectedCategories(errMessage){
+export function rejectedCategories(errMessage){
     return{type:"rejectedCategories",payload:errMessage}
 }
-function loadedCategories(categories){
+export function loadedCategories(categories){
     return{type:"loadedCategories",payload:categories}
 }

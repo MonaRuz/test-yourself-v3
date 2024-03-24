@@ -9,7 +9,7 @@ const initialStateTest = {
 	currentTestQuestion: null,
 }
 
-function testReducer(state = initialStateTest, action) {
+export default function testReducer(state = initialStateTest, action) {
 	switch (action.type) {
         case "firstQuestion":
             return{
@@ -50,18 +50,18 @@ function testReducer(state = initialStateTest, action) {
 	}
 }
 
-function firstQuestion(testQuestions){
+export function firstQuestion(testQuestions){
     return{type:"firstQuestion",payload:testQuestions}
 }
-function wrongAnswer(){
+export function wrongAnswer(){
     return{type:"wrongAnswer"}
 }
-function correctAnswer(updatedQuestions){
+export function correctAnswer(updatedQuestions){
     return{type:"correctAnswer",payload:updatedQuestions}
 }
-function showAnswer(){
+export function showAnswer(){
     return{type:"showAnswer"}
 }
-function restart(){
+export function restart(){
     return{type:"restart"}
 }
