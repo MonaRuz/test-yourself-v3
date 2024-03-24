@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import styles from "./Category.module.css"
-import Button from "./Button"
+import Button from "../../components/Button"
 
 export default function Category({ category }) {
 	const navigate = useNavigate()

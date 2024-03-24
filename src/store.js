@@ -1,4 +1,14 @@
-// import { createStore } from "redux"
+import { combineReducers, createStore } from "redux"
+
+const rootReducer=combineReducers({
+    categories:categoriesReducer,
+    questions:questionsReducer,
+    test:testReducer,
+    authenticate:authReducer
+
+})
+
+const store=createStore(rootReducer)
 
 function getRandomQuestion(min, max) {
 	min = Math.ceil(min)
@@ -37,19 +47,19 @@ const initialStateAuth = {
 
 function categoriesReducer(state = initialStateCategories, action) {
 	switch (action.type) {
-		case "loading":
+		case "loadingCategories":
 			return {
 				...state,
 				isLoading: true,
 				error: null,
 			}
-		case "rejected":
+		case "rejectedCategories":
 			return {
                 ...state,
                 error: action.payload,
 				isLoading: false,
             }
-        case "loaded":
+        case "loadedCategories":
             return{
                 ...state,
                 isLoading:false,
@@ -60,21 +70,31 @@ function categoriesReducer(state = initialStateCategories, action) {
 	}
 }
 
+function loadingCategories(){
+    return{type:"loadingCategories"}
+}
+function rejectedCategories(errMessage){
+    return{type:"rejectedCategories",payload:errMessage}
+}
+function loadedCategories(categories){
+    return{type:"loadedCategories",payload:categories}
+}
+
 function questionsReducer(state = initialStateQuestions, action) {
 	switch (action.type) {
-		case "loading":
+		case "loadingQuestions":
 			return {
 				...state,
 				isLoading: true,
 				error: null,
 			}
-		case "rejected":
+		case "rejectedQuestions":
 			return {
                 ...state,
                 error: action.payload,
 				isLoading: false,
             }
-        case "loaded":
+        case "loadedQuestions":
             return{
                 ...state,
                 isLoading:false,
@@ -98,27 +118,31 @@ function questionsReducer(state = initialStateQuestions, action) {
 	}
 }
 
+function loadingQuestions(){
+    return{type:"loadingQuestions"}
+}
+function rejectedQuestions(errMessage){
+    return{type:"rejectedQuestions",payload:errMessage}
+}
+function loadedQuestions(questions){
+    return{type:"loadedQuestions",payload:questions}
+}
+function questionCreate(newQuestion){
+    return{type:"questionCreate",payload:newQuestion}
+}
+function questionDelete(question){
+    return{type:"questionDelete",payload:question}
+}
+
 function testReducer(state = initialStateTest, action) {
 	switch (action.type) {
-		case "loading":
-			return {
-				...state,
-				isLoading: true,
-				error: null,
-			}
-		case "rejected":
-			return {
-                ...state,
-                error: action.payload,
-				isLoading: false,
-            }
         case "firstQuestion":
             return{
                 ...state,
                 currentTestQuestion:
 					action.payload[getRandomQuestion(0, action.payload.length)],
             }
-            case "answer/wrong":
+            case "wrongAnswer":
                 return {
                     ...state,
                     currentTestQuestion:
@@ -126,7 +150,7 @@ function testReducer(state = initialStateTest, action) {
                     showTestAnswer: false,
                     percentCounter: state.percentCounter + 1,
                 }
-            case "answer/correct":
+            case "correctAnswer":
                 return {
                     ...state,
                     testQuestions: action.payload,
@@ -135,7 +159,7 @@ function testReducer(state = initialStateTest, action) {
                         action.payload[getRandomQuestion(0, action.payload.length)],
                     progress: state.progress + 1,
                 }
-            case "answer/show":
+            case "showAnswer":
                 return {
                     ...state,
                     showTestAnswer: true,
@@ -149,6 +173,22 @@ function testReducer(state = initialStateTest, action) {
 		default:
 			return state
 	}
+}
+
+function firstQuestion(testQuestions){
+    return{type:"firstQuestion",payload:testQuestions}
+}
+function wrongAnswer(){
+    return{type:"wrongAnswer"}
+}
+function correctAnswer(updatedQuestions){
+    return{type:"correctAnswer",payload:updatedQuestions}
+}
+function showAnswer(){
+    return{type:"showAnswer"}
+}
+function restart(){
+    return{type:"restart"}
 }
 
 function authReducer(state = initialStateAuth, action) {
@@ -168,4 +208,12 @@ function authReducer(state = initialStateAuth, action) {
 		default:
 			return state
 	}
+}
+
+function login(user){
+    return{type:"login",payload:user}
+}
+
+function logout(){
+    return{type:"logout"}
 }

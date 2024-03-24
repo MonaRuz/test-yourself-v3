@@ -1,22 +1,22 @@
 import { useNavigate, useParams } from "react-router-dom"
-import Button from "./Button"
+import Button from "../../components/Button"
 import styles from "./newQuestion.module.css"
-import { useQuestions } from "../contexts/QuestionsContext"
+import { useQuestions } from "../../contexts/QuestionsContext"
 import { useState } from "react"
-import Loader from "./Loader"
+import Loader from "../../components/Loader"
 
 export default function NewQuestion() {
 	const [question, setQuestion] = useState("")
 	const [answer, setAnswer] = useState("")
 	const [wasSend, setWasSend] = useState(false)
-	const[notes,setNotes]=useState("")
+	const [notes, setNotes] = useState("")
 	const { createQuestion, error, isLoading } = useQuestions()
 	const { category } = useParams()
 	const navigate = useNavigate()
 
 	async function handleClick(e) {
 		e.preventDefault()
-		if(notes)return
+		if (notes) return
 		const newQuestion = {
 			question,
 			answer,
@@ -29,7 +29,9 @@ export default function NewQuestion() {
 
 	return (
 		<div>
-			<p className={styles.p}>Write some question and answer. Fields can't be empty.</p>
+			<p className={styles.p}>
+				Write some question and answer. Fields can't be empty.
+			</p>
 			<hr />
 			<form className={styles.form}>
 				<label
@@ -70,7 +72,7 @@ export default function NewQuestion() {
 				/>
 				<div>
 					<Button
-						type="negative"
+						type='negative'
 						onClick={(e) => {
 							e.preventDefault()
 							navigate(-1)
@@ -78,18 +80,18 @@ export default function NewQuestion() {
 					>
 						Back
 					</Button>
-					{question&&answer&&<Button
-						type="confirm"
-						onClick={handleClick}
-					>
-						Add new question
-					</Button>}
+					{question && answer && (
+						<Button
+							type='confirm'
+							onClick={handleClick}
+						>
+							Add new question
+						</Button>
+					)}
 				</div>
 			</form>
 			{isLoading && wasSend && <Loader />}
-			{!isLoading && error && (
-				<p className={styles.error}>{error}</p>
-			)}
+			{!isLoading && error && <p className={styles.error}>{error}</p>}
 			{!isLoading && !error && wasSend && (
 				<p className={styles.message}>
 					New question was added, now you can add more.

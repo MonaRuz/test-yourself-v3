@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom"
 import styles from "./Question.module.css"
-import Button from "./Button"
+import Button from "../../components/Button"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
-import { useQuestions } from "../contexts/QuestionsContext"
+import { useQuestions } from "../../contexts/QuestionsContext"
 
 export default function Question({ question, isOpen, dispatch }) {
 	const { category } = useParams()
@@ -38,15 +38,11 @@ export default function Question({ question, isOpen, dispatch }) {
 								className={styles.link}
 								to={`${question.id}`}
 							>
-								<Button
-									type="confirm"
-								>
-									Edit question
-								</Button>
+								<Button type='confirm'>Edit question</Button>
 							</Link>
 
 							<Button
-								type="negative"
+								type='negative'
 								onClick={handleClick}
 							>
 								Delete question

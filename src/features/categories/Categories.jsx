@@ -1,17 +1,16 @@
 import styles from "./Categories.module.css"
 import Category from "./Category"
 import NewCategory from "./NewCategory"
-import Error from "./Error"
-import { useQuestions } from "..//contexts/QuestionsContext"
-import Loader from "./Loader"
+import Error from "../../components/Error"
+import { useQuestions } from "../../contexts/QuestionsContext"
+import Loader from "../../components/Loader"
 
 export default function Categories() {
-	const { error, categories,isLoading } = useQuestions()
+	const { error, categories, isLoading } = useQuestions()
 
-	if(isLoading)return<Loader/>
+	if (isLoading) return <Loader />
 
-
-	if(error)return<Error>{error}</Error>
+	if (error) return <Error>{error}</Error>
 	return (
 		<>
 			<hr />

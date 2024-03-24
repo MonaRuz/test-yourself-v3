@@ -3,7 +3,7 @@ import Logo from "./Logo"
 import styles from "./PageNav.module.css"
 import Button from "./Button"
 import { useAuth } from "../contexts/FakeAuthContext"
-import User from "./User"
+import User from "../features/fakeAuth/User"
 
 export default function PageNav() {
 	const{isAuthenticated}=useAuth()

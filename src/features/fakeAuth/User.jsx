@@ -1,5 +1,5 @@
-import { useAuth } from "../contexts/FakeAuthContext"
-import Button from "./Button"
+import { useAuth } from "../../contexts/FakeAuthContext"
+import Button from "../../components/Button"
 import { FaRegCircleUser } from "react-icons/fa6"
 import styles from "./User.module.css"
 import { useNavigate } from "react-router-dom"
