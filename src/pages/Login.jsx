@@ -4,6 +4,7 @@ import PageNav from "../components/PageNav"
 import styles from "./Login.module.css"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { login } from "../features/fakeAuth/fakeAuthSlice"
 
 const FAKE_USER={
     name:"Monika",
@@ -20,7 +21,7 @@ export default function Login() {
 	const isAuthenticated=useSelector((store)=>store.authenticate.isAuthenticated)
 
 	function handleLogin(email,password){
-        if(email===FAKE_USER.email && password===FAKE_USER.password)dispatch({type:"login",payload:FAKE_USER})
+        if(email===FAKE_USER.email && password===FAKE_USER.password)dispatch(login(FAKE_USER))
     }
 
 	function handleSubmit(e){
