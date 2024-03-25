@@ -7,7 +7,6 @@ import Questions from "./features/questions/Questions"
 import CreateNewCategory from "./features/categories/CreateNewCategory"
 import Edit from "./features/questions/Edit"
 import NewQuestion from "./features/questions/NewQuestion"
-import { AuthProvider } from "./contexts/FakeAuthContext"
 import ProtectedRoute from "./pages/ProtectedRoute"
 import { Suspense, lazy } from "react"
 import Loader from "./components/Loader"
@@ -18,7 +17,6 @@ const AppLayout = lazy(() => import("./pages/AppLayout"))
 
 export default function App() {
 	return (
-		<AuthProvider>
 			<QuestionsProvider>
 				<BrowserRouter>
 					<Suspense fallback={<Loader />}>
@@ -81,6 +79,5 @@ export default function App() {
 					</Suspense>
 				</BrowserRouter>
 			</QuestionsProvider>
-		</AuthProvider>
 	)
 }

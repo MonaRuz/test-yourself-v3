@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom"
 import Logo from "./Logo"
 import styles from "./PageNav.module.css"
 import Button from "./Button"
-import { useAuth } from "../contexts/FakeAuthContext"
 import User from "../features/fakeAuth/User"
+import { useSelector } from "react-redux"
 
 export default function PageNav() {
-	const{isAuthenticated}=useAuth()
+	const isAuthenticated=useSelector((store)=>store.authenticate.isAuthenticated)
 	const navigate=useNavigate()
 	return (
 		<nav>

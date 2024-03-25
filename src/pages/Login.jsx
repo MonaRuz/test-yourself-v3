@@ -1,21 +1,32 @@
 import { useNavigate } from "react-router-dom"
 import Button from "../components/Button"
 import PageNav from "../components/PageNav"
-import { useAuth } from "../contexts/FakeAuthContext"
 import styles from "./Login.module.css"
 import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
+const FAKE_USER={
+    name:"Monika",
+    email:"monika@email.cz",
+    password:"heslo1",
+}
 
 export default function Login() {
 	const[email,setEmail]=useState("monika@email.cz")
 	const[password,setPassword]=useState("heslo1")
 	const[name,setName]=useState("")
-	const{isAuthenticated,login}=useAuth()
 	const navigate=useNavigate()
+	const dispatch=useDispatch()
+	const isAuthenticated=useSelector((store)=>store.authenticate.isAuthenticated)
+
+	function handleLogin(email,password){
+        if(email===FAKE_USER.email && password===FAKE_USER.password)dispatch({type:"login",payload:FAKE_USER})
+    }
 
 	function handleSubmit(e){
 		e.preventDefault()
 		if(name)return
-		if(email,password)login(email,password)
+		if(email,password)handleLogin(email,password)
 	}
 
 	useEffect(function(){
