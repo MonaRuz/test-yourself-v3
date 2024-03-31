@@ -1,3 +1,5 @@
+const BASE_URL = "http://localhost:8000"
+
 const initialStateCategories = {
 	categories: [],
 	error: null,
@@ -36,5 +38,6 @@ export function rejectedCategories(errMessage){
     return{type:"rejectedCategories",payload:errMessage}
 }
 export function loadedCategories(categories){
-    return{type:"loadedCategories",payload:categories}
+	return({type:"loadedCategories",payload:categories})
+	
 }

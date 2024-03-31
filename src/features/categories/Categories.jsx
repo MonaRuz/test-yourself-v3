@@ -4,9 +4,18 @@ import NewCategory from "./NewCategory"
 import Error from "../../components/Error"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import Loader from "../../components/Loader"
+import { useEffect } from "react"
+import { loadedCategories } from "./categoriesSlice"
+// import { useSelector } from "react-redux"
 
 export default function Categories() {
-	const { error, categories, isLoading } = useQuestions()
+	// const categories=useSelector((store)=>store.categories.categories)
+
+	const { error, isLoading,categories } = useQuestions()
+
+	useEffect(function(){
+		loadedCategories()
+	},[])
 
 	if (isLoading) return <Loader />
 
