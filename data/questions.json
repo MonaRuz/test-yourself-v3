@@ -1830,6 +1830,16 @@
       "question": "Jakým způsobem zobrazíme loading indikátor na stránce při používání strategie render as you fetch?",
       "answer": "Použijeme useNavigation hook, jehož property state nám dává informaci, zda je aplikace nečinná (idle), probíhá loading, nebo submitting. Tato informace platí pro celou aplikaci, ne jen pro konkrétní stránku. V komponentě obalující všechny stránky (layout komponentě) si do proměnné uložíme informaci, zda se property state hooku useNavigation rovná 'loading' a na základě toho podmínečně renderujeme komponentu pro loading indikátor: const navigation = useNavigation(); const isLoading = navigation.state === 'loading';return <div> {isLoading && <Loader/>}<Hedarer/>...</div>",
       "id": "UYKVbyP"
+    },
+    {
+      "question": "Jak zacházet s chybami za použití funkce createBrowserRouter?",
+      "answer": "Vytvoření property errorElement v rámci routes, kde potřebujeme s chybami zacházet. Většinou potřebujeme handlovat jednak chyby s chybně zadanou url, kdy errorElement property umístíme do Parent Route, a jednak s chybami při fetchování, kdy errorElement umístíme tam, kde dochází k fetchování dat. errorElement property obsahuje obvykle nějakou komponentu vytvořenou pro tyto účely: {path:'/',element:<Home/>,erroeElement:<Error/>}. Tato komponenta může pomocí hooku useRouteError získat zprávu konkrétně pro danou chybu. Tento hook použijeme v komponentě, kterou máme uvedenou jako errorElement: const error = useRouteError(); return <div><p>{error.data || error.message}</p></div>. Obvykle tuto property dáváme tam, kde může docházet k chybám, tedy do rodičovské komponenty, kde zacházíme s chybami ohledně špatné cesty v url a v komponentách, kde fetchujeme nějaká data. ",
+      "id": "QpwfYjq"
+    },
+    {
+      "question": "Jak dostaneme parametr z url do loader funkce?",
+      "answer": "Pomocí argumentu {params}.",
+      "id": "Dj0gbj9"
     }
   ],
   "JavaScript": [
