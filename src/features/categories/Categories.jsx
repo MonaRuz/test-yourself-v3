@@ -1,25 +1,28 @@
 import styles from "./Categories.module.css"
 import Category from "./Category"
 import NewCategory from "./NewCategory"
-import Error from "../../UI/Error"
-import { useQuestions } from "../../contexts/QuestionsContext"
-import Loader from "../../UI/Loader"
-import { useEffect } from "react"
-import { loadedCategories } from "./categoriesSlice"
+import { getCategories } from "../../services/testysFakeApi"
+import { useLoaderData } from "react-router-dom"
+// import Error from "../../UI/Error"
+// import { useQuestions } from "../../contexts/QuestionsContext"
+// import Loader from "../../UI/Loader"
+// import { useEffect } from "react"
+// import { loadedCategories } from "./categoriesSlice"
 // import { useSelector } from "react-redux"
 
 export default function Categories() {
+	const categories=useLoaderData()
 	// const categories=useSelector((store)=>store.categories.categories)
 
-	const { error, isLoading, categories } = useQuestions()
+	// const { error, isLoading, categories } = useQuestions()
 
-	useEffect(function () {
-		loadedCategories()
-	}, [])
+	// useEffect(function () {
+	// 	loadedCategories()
+	// }, [])
 
-	if (isLoading) return <Loader />
+	// if (isLoading) return <Loader />
 
-	if (error) return <Error>{error}</Error>
+	// if (error) return <Error>{error}</Error>
 	return (
 		<>
 			<hr />
@@ -38,4 +41,9 @@ export default function Categories() {
 			</div>
 		</>
 	)
+}
+
+export async function loader(){
+	const categories=getCategories()
+	return categories
 }

@@ -1,36 +1,28 @@
 import {
-	BrowserRouter,
-	Route,
 	RouterProvider,
-	Routes,
+	// Routes,
 	createBrowserRouter,
 } from "react-router-dom"
-import { QuestionsProvider } from "./contexts/QuestionsContext"
+// import { QuestionsProvider } from "./contexts/QuestionsContext"
 import Test from "./features/categoryTest/Test"
-import PageNotFound from "./UI/PageNotFound"
-import Categories from "./features/categories/Categories"
+// import PageNotFound from "./UI/PageNotFound"
+import Categories,{loader as categoriesLoader} from "./features/categories/Categories"
 import Questions from "./features/questions/Questions"
 import CreateNewCategory from "./features/categories/CreateNewCategory"
 import Edit from "./features/questions/Edit"
 import NewQuestion from "./features/questions/NewQuestion"
 import ProtectedRoute from "./features/fakeAuth/ProtectedRoute"
-import { Suspense, lazy } from "react"
-import Loader from "./UI/Loader"
-import Error from "./UI/Error"
+// import Loader from "./UI/Loader"
+// import Error from "./UI/Error"
+import Homepage from "./UI/Homepage"
+import Login from "./features/fakeAuth/Login"
+import AppLayout from "./UI/AppLayout"
 
-const Homepage = lazy(() => import("./UI/Homepage"))
-const Login = lazy(() => import("./features/fakeAuth/Login"))
-const AppLayout = lazy(() => import("./UI/AppLayout"))
+
 
 const router = createBrowserRouter([
-	{
-		element: (
-			<Suspense fallback={<Loader />}>
-				<Routes />
-			</Suspense>
-		),
-		errorElement: <Error />,
-		children: [
+	
+		
 			{
 				path: "/",
 				element: <Homepage />,
@@ -42,39 +34,39 @@ const router = createBrowserRouter([
 			{
 				path: "/app",
 				element: (
-					<ProtectedRoute>
+					// <ProtectedRoute>
 						<AppLayout />
-					</ProtectedRoute>
+					// </ProtectedRoute>
 				),
 				children: [
 					{
-						path: "/categories",
+						path: "/app/categories",
 						element: <Categories />,
+						loader:categoriesLoader
 					},
 					{
-						path: "/test/:category",
+						path: "/app/test/:category",
 						element: <Test />,
 					},
 					{ 
-						path: "/questions/:category", 
+						path: "/app/questions/:category", 
 						element: <Questions /> 
 					},
 					{
-						path:'/questions/:category/new-question',
+						path:'/app/questions/:category/new-question',
 						element:<NewQuestion />
 					},
 					{
-						path:'/questions/:category/:id',
+						path:'/app/questions/:category/:id',
 						element:<Edit />
 					},
 					{
-						path:'/new-category',
+						path:'/app/new-category',
 						element:<CreateNewCategory />
 					}
 				],
 			},
-		],
-	},
+		
 ])
 
 export default function App() {
