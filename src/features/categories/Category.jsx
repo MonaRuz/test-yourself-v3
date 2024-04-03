@@ -27,14 +27,14 @@ export default function Category({ category }) {
 			<div className={styles.buttons}>
 				<Button
 					type='confirm'
-					onClick={() => navigate(`test/${category.categoryName}`)}
+					onClick={() => navigate(`/test/${category.categoryName}`)}
 				>
 					Test
 				</Button>
 
 				<Button
 					type='primary'
-					onClick={() => navigate(`questions/${category.categoryName}`)}
+					onClick={() => navigate(`/questions/${category.categoryName}`)}
 				>
 					Edit
 				</Button>

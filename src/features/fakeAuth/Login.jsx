@@ -34,8 +34,8 @@ export default function Login() {
 	}
 
 	useEffect(function () {
-		if (isAuthenticated) navigate("/app", { replace: true })
-	})
+		if (isAuthenticated) navigate("/categories", { replace: true })
+	},[isAuthenticated,navigate])
 
 	return (
 		<div className={styles.login}>

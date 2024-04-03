@@ -11,7 +11,7 @@ export async function getCategories() {
 }
 
 export async function getQuestions(category) {
-	const res = await fetch(`${BASE_URL}/${category}/`)
+	const res = await fetch(`${BASE_URL}/${category}`)
 
 	if (!res.ok) throw new Error("Something went wrong with questions fetching.")
 

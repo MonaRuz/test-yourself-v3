@@ -3,10 +3,11 @@ import styles from "./Questions.module.css"
 import SearchQuestion from "./SearchQuestion"
 import Question from "./Question"
 import { useQuestions } from "../../contexts/QuestionsContext"
-import { useNavigate, useParams } from "react-router-dom"
+import { useLoaderData, useNavigate, useParams } from "react-router-dom"
 import Button from "../../UI/Button"
 import Loader from "../../UI/Loader"
 import Error from "../../UI/Error"
+import { getQuestions } from "../../services/testysFakeApi"
 
 const initialState = {
 	searchQuery: "",
@@ -28,7 +29,8 @@ function reducer(state, action) {
 }
 
 export default function Questions() {
-	const { questions, getQuestions, isLoading, error } = useQuestions()
+	// const { questions, getQuestions, isLoading, error } = useQuestions()
+	const questions=useLoaderData()
 
 	const { category } = useParams()
 	const [{ searchQuery, isOpen }, dispatch] = useReducer(reducer, initialState)
@@ -50,8 +52,8 @@ export default function Questions() {
 		[category]
 	)
 
-	if (isLoading) return <Loader />
-	if (error) return <Error>{error}</Error>
+	// if (isLoading) return <Loader />
+	// if (error) return <Error>{error}</Error>
 	return (
 		<div>
 			<h3 className={styles.title}>
@@ -85,4 +87,9 @@ export default function Questions() {
 			</ul>
 		</div>
 	)
+}
+
+export async function loader({params}){
+	const questions= await getQuestions(params.category)
+	return questions
 }
