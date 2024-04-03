@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { QuestionsProvider } from "./contexts/QuestionsContext"
 import Test from "./features/categoryTest/Test"
-import PageNotFound from "./components/PageNotFound"
+import PageNotFound from "./UI/PageNotFound"
 import Categories from "./features/categories/Categories"
 import Questions from "./features/questions/Questions"
 import CreateNewCategory from "./features/categories/CreateNewCategory"
