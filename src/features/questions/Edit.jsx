@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import styles from "./Edit.module.css"
-import Button from "../../components/Button"
+import Button from "../../UI/Button"
 import { useQuestions } from "../../contexts/QuestionsContext"
 
 export default function Edit() {

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import Button from "../components/Button"
+import Button from "../UI/Button"
 import Intro from "../components/Intro"
 import PageNav from "../components/PageNav"
 import styles from "./Homepage.module.css"
