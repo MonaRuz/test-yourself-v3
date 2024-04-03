@@ -5,7 +5,7 @@ import Question from "./Question"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"
 import Button from "../../UI/Button"
-import Loader from "../../components/Loader"
+import Loader from "../../UI/Loader"
 import Error from "../../UI/Error"
 
 const initialState = {

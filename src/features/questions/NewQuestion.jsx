@@ -3,7 +3,7 @@ import Button from "../../UI/Button"
 import styles from "./newQuestion.module.css"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import { useState } from "react"
-import Loader from "../../components/Loader"
+import Loader from "../../UI/Loader"
 
 export default function NewQuestion() {
 	const [question, setQuestion] = useState("")

@@ -3,7 +3,7 @@ import Button from "../../UI/Button"
 import styles from "./Test.module.css"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"
-import Loader from "../../components/Loader"
+import Loader from "../../UI/Loader"
 import Results from "./Results"
 
 export default function Test() {
@@ -40,17 +40,16 @@ export default function Test() {
 	// 	[category]
 	// )
 
-	function handleGetQuestions(){
+	function handleGetQuestions() {
 		getQuestions(category)
 		setIsRunning(true)
-
 	}
 
 	useEffect(
 		function () {
 			dispatch({ type: "question/test/firstQuestion", payload: testQuestions })
 		},
-		[testQuestions,dispatch]
+		[testQuestions, dispatch]
 	)
 
 	if (isLoading) return <Loader />
@@ -59,21 +58,20 @@ export default function Test() {
 	return (
 		<div className={styles.test}>
 			{!isRunning ? (
-					<div className={styles.btnBox}>
-
-						<Button
-							type='negative'
-							onClick={() => navigate("/app")}
-						>
-							Back
-						</Button>
-						<Button
-							type='confirm'
-							onClick={handleGetQuestions}
-						>
-							Start Test
-						</Button>
-					</div>
+				<div className={styles.btnBox}>
+					<Button
+						type='negative'
+						onClick={() => navigate("/app")}
+					>
+						Back
+					</Button>
+					<Button
+						type='confirm'
+						onClick={handleGetQuestions}
+					>
+						Start Test
+					</Button>
+				</div>
 			) : (
 				<>
 					<div className='test-question'>
@@ -124,7 +122,7 @@ export default function Test() {
 						answered correctly. <br /> Then click on the corresponding button.
 					</p>
 					<div className={styles.btnBox}>
-					<Button
+						<Button
 							type='negative'
 							onClick={() => navigate("/app")}
 						>

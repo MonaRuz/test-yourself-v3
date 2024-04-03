@@ -3,7 +3,7 @@ import Category from "./Category"
 import NewCategory from "./NewCategory"
 import Error from "../../UI/Error"
 import { useQuestions } from "../../contexts/QuestionsContext"
-import Loader from "../../components/Loader"
+import Loader from "../../UI/Loader"
 import { useEffect } from "react"
 import { loadedCategories } from "./categoriesSlice"
 // import { useSelector } from "react-redux"
@@ -11,11 +11,11 @@ import { loadedCategories } from "./categoriesSlice"
 export default function Categories() {
 	// const categories=useSelector((store)=>store.categories.categories)
 
-	const { error, isLoading,categories } = useQuestions()
+	const { error, isLoading, categories } = useQuestions()
 
-	useEffect(function(){
+	useEffect(function () {
 		loadedCategories()
-	},[])
+	}, [])
 
 	if (isLoading) return <Loader />
 

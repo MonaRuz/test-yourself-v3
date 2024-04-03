@@ -9,7 +9,7 @@ import Edit from "./features/questions/Edit"
 import NewQuestion from "./features/questions/NewQuestion"
 import ProtectedRoute from "./pages/ProtectedRoute"
 import { Suspense, lazy } from "react"
-import Loader from "./components/Loader"
+import Loader from "./UI/Loader"
 
 const Homepage = lazy(() => import("./pages/Homepage"))
 const Login = lazy(() => import("./pages/Login"))
