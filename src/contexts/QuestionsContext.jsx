@@ -1,14 +1,11 @@
 import { useEffect, createContext, useContext, useReducer } from "react"
+import { getRandomQuestion } from "../utilities/helpers"
 
 const BASE_URL = "http://localhost:8000"
 
 const QuestionsContext = createContext()
 
-function getRandomQuestion(min, max) {
-	min = Math.ceil(min)
-	max = Math.floor(max)
-	return Math.floor(Math.random() * (max - min) + min)
-}
+
 
 const initialState = {
 	questions: [],
