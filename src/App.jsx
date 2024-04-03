@@ -7,12 +7,12 @@ import Questions from "./features/questions/Questions"
 import CreateNewCategory from "./features/categories/CreateNewCategory"
 import Edit from "./features/questions/Edit"
 import NewQuestion from "./features/questions/NewQuestion"
-import ProtectedRoute from "./pages/ProtectedRoute"
+import ProtectedRoute from "./features/fakeAuth/ProtectedRoute"
 import { Suspense, lazy } from "react"
 import Loader from "./UI/Loader"
 
 const Homepage = lazy(() => import("./UI/Homepage"))
-const Login = lazy(() => import("./pages/Login"))
+const Login = lazy(() => import("./features/fakeAuth/Login"))
 const AppLayout = lazy(() => import("./UI/AppLayout"))
 
 export default function App() {
