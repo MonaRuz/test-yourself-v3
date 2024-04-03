@@ -1,7 +1,7 @@
 import styles from "./Categories.module.css"
 import Category from "./Category"
 import NewCategory from "./NewCategory"
-import Error from "../../components/Error"
+import Error from "../../UI/Error"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import Loader from "../../components/Loader"
 import { useEffect } from "react"
