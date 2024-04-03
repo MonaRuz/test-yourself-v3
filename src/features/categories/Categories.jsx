@@ -1,17 +1,25 @@
 import styles from "./Categories.module.css"
 import Category from "./Category"
 import NewCategory from "./NewCategory"
-import Error from "./Error"
-import { useQuestions } from "..//contexts/QuestionsContext"
-import Loader from "./Loader"
+import Error from "../../components/Error"
+import { useQuestions } from "../../contexts/QuestionsContext"
+import Loader from "../../components/Loader"
+import { useEffect } from "react"
+import { loadedCategories } from "./categoriesSlice"
+// import { useSelector } from "react-redux"
 
 export default function Categories() {
-	const { error, categories,isLoading } = useQuestions()
+	// const categories=useSelector((store)=>store.categories.categories)
 
-	if(isLoading)return<Loader/>
+	const { error, isLoading,categories } = useQuestions()
 
+	useEffect(function(){
+		loadedCategories()
+	},[])
 
-	if(error)return<Error>{error}</Error>
+	if (isLoading) return <Loader />
+
+	if (error) return <Error>{error}</Error>
 	return (
 		<>
 			<hr />

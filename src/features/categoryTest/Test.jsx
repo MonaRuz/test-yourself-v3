@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import Button from "./Button"
+import Button from "../../components/Button"
 import styles from "./Test.module.css"
-import { useQuestions } from "..//contexts/QuestionsContext"
+import { useQuestions } from "../../contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"
-import Loader from "./Loader"
+import Loader from "../../components/Loader"
 import Results from "./Results"
 
 export default function Test() {

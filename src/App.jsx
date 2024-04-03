@@ -1,13 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { QuestionsProvider } from "./contexts/QuestionsContext"
-import Test from "./components/Test"
+import Test from "./features/categoryTest/Test"
 import PageNotFound from "./components/PageNotFound"
-import Categories from "./components/Categories"
-import Questions from "./components/Questions"
-import CreateNewCategory from "./components/CreateNewCategory"
-import Edit from "./components/Edit"
-import NewQuestion from "./components/NewQuestion"
-import { AuthProvider } from "./contexts/FakeAuthContext"
+import Categories from "./features/categories/Categories"
+import Questions from "./features/questions/Questions"
+import CreateNewCategory from "./features/categories/CreateNewCategory"
+import Edit from "./features/questions/Edit"
+import NewQuestion from "./features/questions/NewQuestion"
 import ProtectedRoute from "./pages/ProtectedRoute"
 import { Suspense, lazy } from "react"
 import Loader from "./components/Loader"
@@ -18,7 +17,6 @@ const AppLayout = lazy(() => import("./pages/AppLayout"))
 
 export default function App() {
 	return (
-		<AuthProvider>
 			<QuestionsProvider>
 				<BrowserRouter>
 					<Suspense fallback={<Loader />}>
@@ -81,6 +79,5 @@ export default function App() {
 					</Suspense>
 				</BrowserRouter>
 			</QuestionsProvider>
-		</AuthProvider>
 	)
 }

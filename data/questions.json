@@ -1635,7 +1635,7 @@
       "id": "nnW8Lgi"
     },
     {
-      "question": "Jak propojíme Redux s React aplikací?",
+      "question": "Jak propojíme 'classic' Redux s React aplikací?",
       "answer": "Nejprve si stáhneme package react-redux: npm i react-redux. Do místa, kde máme importovaný store (obvykle v index,js) naimportujeme Provider(z react-redux) a do něj obalíme App komponentu. Provider má jako prop 'store': root.render(<React,StrictMode><Provider store={store}><App/></Provider></React.StrictMode>). Všechny komponenty mají tak přístup ke store.",
       "id": "k40ldxx"
     },
@@ -1690,14 +1690,156 @@
       "id": "DMfI08J"
     },
     {
-      "question": "Jak řekneme store, že chceme, aby aplikace používala thunk middleware?",
-      "answer": "Do druhého argumentu funkce ceateStore() dáme funkci applyMiddleware poskytovanou Reduxem a ta bude mít v argumentu funkci thunk: const store=createStore(rootReducer,applyMiddleware(thunk)).",
+      "question": "Jak řekneme store, že chceme, aby aplikace používala thunk middleware v 'classic' Redux?",
+      "answer": "Do druhého argumentu funkce createStore() dáme funkci applyMiddleware poskytovanou Reduxem a ta bude mít v argumentu funkci thunk: const store=createStore(rootReducer,applyMiddleware(thunk)).",
       "id": "m7bdhqj"
     },
     {
-      "question": "Kam a jek píšeme thunk middleware funkci?",
+      "question": "Kam a jek píšeme thunk middleware funkci v 'classic' Redux?",
       "answer": "Uvnitř action creator funkce, kde bude asynchronní funkce s argumenty dispatch a getState. Tato funkce je middleware, obsahuje asynchronní kód a na konci vrátí další dispatch, který teprve odešle action se získanými daty do store.",
       "id": "ZZDCPsc"
+    },
+    {
+      "question": "Jak zprovoznit Redux devtools v 'classic Redux'?",
+      "answer": "1) Instalujeme si rozšíření Redux devtools v prohlížeči. 2) V projektu si instalujeme package: npm i @redux-devtools/extension. 3) V souboru s Reduxem importujeme funkci composeWithDevTools, do které obalíme middleware funkci: const store=createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk))).",
+      "id": "96U8Ihy"
+    },
+    {
+      "question": "K čemu může sloužit Redux devtools?",
+      "answer": "Můžeme sledovat jednotlivé actions a změny state. Lze se pohybovat i zpět v čase pomocí slideru a lze zde manuálně vytvářet dispatch pro testování actions. Pomocí tohoto nástroje se můžeme orientovat ve větší aplikaci, kde jsou states hodně komplexní a dobře se takto hledají bugy v aplikaci a jejich příčiny.",
+      "id": "BlzPOsS"
+    },
+    {
+      "question": "Co je to Redux Toolkit?",
+      "answer": "Moderní a preferovaný způsob psaní Redux kódu. Obsahuje 'best practices' za celou dobu existence Redux a je doporučován developery Reduxu. Umožňuje psát méně kódu a odstraňuje nutnost psát 'boilerplate' kód. Je to ale zároveň způsob kompatibilní s klasickým Reduxem.",
+      "id": "GVUZhpS"
+    },
+    {
+      "question": "Jaké tři hlavní výhody přináší Redux Toolkit?",
+      "answer": "1) Psaní méně kódu, state je  v reduceru 'muttable', takže můžeme upravovat state přímo v reduceru a na pozadí je pak kód pomocí knihovny Immer převeden zpět na 'immutable'. 2) Automaticky vytváří action creator funkce přímo z našich reducerů. 3) Automaticky nastavuje thunk middleware a Redux devtools.",
+      "id": "IxrWMRf"
+    },
+    {
+      "question": "Jak se vytváří store v RTK?",
+      "answer": "Pomocí metody configureStore(), kde uvnitř bude rootReducer označen jako reducer a ten obsahuje specifikaci našich reducerů: const store=configureStore({reducer:{account:accountReducer,customer: customerReducer}}).",
+      "id": "FDz2VCX"
+    },
+    {
+      "question": "Jaké tři hlavní výhody poskytuje použití RTK?",
+      "answer": "1) Automaticky vytvoří action creator funkce. 2) Usnadňuje psaní reducerů, kde nemusíme používat switch a cases. 3) Umožňuje přímo měnit state uvnitř reduceru.",
+      "id": "N6NZwoI"
+    },
+    {
+      "question": "Jak vyvtvoříme state slice pomocí RTK?",
+      "answer": "Nějaké proměnné přiřadíme funkci createSlice(), která má v argumentu objekt, kde je name, initialState a reducers. V reducers je opět objekt, kam dáváme na každou action jeden reducer. Z name a názvu reducerů se pak automaticky vytvoří action creatory ve formátu 'name/reducer'. V reducerech měníme state přímo: const accountSlice=createSlice({name:'account',initialState,reducers:{deposit(state,action){state.balance+=action.payload}...}). Exportujeme reducer jako default a actions pomocí destructuring jako named: export const{deposit,...}=accountSlice.actions;export default accountSlice.reducer.",
+      "id": "cl_-BFE"
+    },
+    {
+      "question": "Co je to funkce prepare() v RTK?",
+      "answer": "Funkce, která upravuje action.payload před tím, než se dostane přímo do reduceru. Často se tím řeší problém, kdy chceme v action.payload dvě hodnoty přesto, že v action creatorech, které RTK automaticky vytváří se v payload defaultně posílá jen jedna hodnota: requestLoan:{prepare(amount,purpose){return{payload:{amount,purpose}}};reducer(state.action){...co má být v reduceru...}}. Nebo lze pomocí této funkce napříkad přidat do reduceru další property, která v action není. ",
+      "id": "I9jHFlt"
+    },
+    {
+      "question": "Jaké jsou výhody použití context API + useReducer oproti Redux?",
+      "answer": "1) Je zabudovaný v Reactu. 2) Při jednom contextu nebo malém množství contextů jednoduché nastavení.",
+      "id": "hGuuz3o"
+    },
+    {
+      "question": "Jaké jsou výhody použití Redux oproti context API + useReducer?",
+      "answer": "1) Jednoduché přidávání dodatečných oblastí state (dalsích reducerů). 2) Podporuje middleware pro asynchronní operace. 3) Zabudovaná optimalizace výkonu. 4) Vynikající devtools.",
+      "id": "xHOjwc0"
+    },
+    {
+      "question": "Jaké jsou nevýhody použití contect API + useReducer oproti Redux?",
+      "answer": "1) Při dodatečném přidávání jiných oblastí state nutnost opakovat od začátku nastavování. 2) 'Peklo' v App. 3) Více práce při optimalizace výkonu. 4) Žádný mechanismus pro asynchronní operace.",
+      "id": "fSt4mSH"
+    },
+    {
+      "question": "Jaké jsou nevýhody použití Redux oproti contextAPI + useReducer?",
+      "answer": "1) Nutnost instalovat dodatečné packages. 2) Více kódu při prvním nastavování.",
+      "id": "-GR69eA"
+    },
+    {
+      "question": "Kdy upřednostnit použití context API + useReducer před Redux?",
+      "answer": "1) Pro management globálních state u malých aplikací. 2) Když chceme sdílet hodnotu, která nebude potřebovat častý update (barevné schéma, preferovaný jazyk, autorizace,...). 3) Když máme menší problém s prop-drilling. 4) Když potřebujeme ovládat state v lokálním sub-tree aplikace. ",
+      "id": "O2obTmy"
+    },
+    {
+      "question": "Kdy upřednostnit použití Redux před context API + useReducer?",
+      "answer": "1) Pro management globálních state ve velkých aplikacích. 2) Když máme mnoho globálních UI states, které často updatují (nákupní košík, komplexní vyhledávání,...). 3) Když máme komplexní state se zahnízděnými objekty či poli.",
+      "id": "XD2U7K_"
+    }
+  ],
+  "React-4": [
+    {
+      "question": "Jak plánovat vývoj větších aplikací?",
+      "answer": "1) Shromáždění požadavků a potřebných funkcí pro aplikaci. 2) Rozdělení aplikace na stránky. 3) Rozdělení aplikace na kategorie funkcí. 4) Rozhodování o tech-stacku.",
+      "id": "e88b970d-73e2-408b-95d9-89f48f82f705"
+    },
+    {
+      "question": "Jaké kroky zahrnuje rozdělení aplikace na stránky při plánování vývoje větší aplikace?",
+      "answer": "1) Rozmýšlení nad celkovým vzhledem a vzhledem stránek. 2) Rozbití celkového UI na komponenty. 3) Design a postavení statické verze aplikace.",
+      "id": "l1SfUm0"
+    },
+    {
+      "question": "Jaké kroky zahrnuje rozdělení aplikace na kategorie podle funkcí při plánování vývoje větší aplikace?",
+      "answer": "Přemýšlení o state managementu a data flow.",
+      "id": "lYqWIxr"
+    },
+    {
+      "question": "Jak by měla vypadat feature base file structure v projektu větší aplikace?",
+      "answer": "Ve složce src budeme mít složky features(uvnitř další složky podle funkcí aplikace), services(veškerý znovupoužitelný kód týkající se manipulace s API), UI(znovupoužitelné komponenty které nepatří do žádné z kategorií ve složce features) a utilities(helper funkce) a soubory App.jsx, index.css a main.jsx.",
+      "id": "tAxyLGa"
+    },
+    {
+      "question": "Jak v Reactu umožníme fetchování nebo loadování dat přímo v React Routeru?",
+      "answer": "Nainstalujeme si React Router knihovnu ve verzi 6 a výš, která disponuje funkcí createBrowserRouter.",
+      "id": "riTdQAL"
+    },
+    {
+      "question": "Jak definujeme a použijeme routes v rámci funkce createBrowserRouter? ",
+      "answer": "V souboru App.jsx si mimo komponentu definujeme proměnnou router, kam uložíme funkci createBrowserRouter. V této funkci budeme mít pole objektů, kde každý objekt bude jeden route. Každý route má path a element: const router=createBrowserRouter([{path:\"/\",element:<Home/>},...)]. Pak v komponentě router požijeme: return <RouterProvider router={router}/>",
+      "id": "s5IFdIk"
+    },
+    {
+      "question": "Jak vytvoříme child routes uvnitř funkce createBrowserRouter?",
+      "answer": "V objektu routu, který tvoří layout přidáme property children. Tato property bude obsahovat pole s objekty child routes.",
+      "id": "4WI1k4K"
+    },
+    {
+      "question": "Jak se nazývá Parent route, který nevyžaduje žádnou path property v rámci funkce createBrowserRouter?",
+      "answer": "Layout route.",
+      "id": "a6eAtr0"
+    },
+    {
+      "question": "Jak fetchovat data prostřednictvím moderní React Router knihovny?",
+      "answer": "1) V souboru stránky, kde chceme použít fetchovaná data vytvoříme mimo komponentu async funkci loader, která vrací fetchovaná data: export async function loader(){const data=await getData();return data} 2) Tuto funkci importujeme do souboru, kde je umístěn router ve funkci createBrowserRouter() a přejmenujeme jí. Potom tuto funkci použijeme uvnitř route, kde data potřebujeme jako property loader: {path:...,element:...,loader: dataLoader()}. 3) Získaná data použijeme v komponentě. ",
+      "id": "K-jehKa"
+    },
+    {
+      "question": "Jak se nazývá strategie fetchování prostřednictvím moderního React Routeru?",
+      "answer": "Render as you fetch.",
+      "id": "ErAoIrj"
+    },
+    {
+      "question": "Jaké jsou výhody fetchování dat prostřednictvím moderního React Routeru?",
+      "answer": "1) Jednotlivé routes jsou často úzce svázány s konkrétními daty, které si komponenta potřebuje fetchovat a takto máme v  React Routeru jak routing, tak za fetchování dat pro konkrétní routy, vše na jednom místě. 2) Strategie render as you fetch nezpůsobuje data loading waterfall, který způsobuje useEffect hook.",
+      "id": "9ScXIHZ"
+    },
+    {
+      "question": "Jakým způsobem zobrazíme loading indikátor na stránce při používání strategie render as you fetch?",
+      "answer": "Použijeme useNavigation hook, jehož property state nám dává informaci, zda je aplikace nečinná (idle), probíhá loading, nebo submitting. Tato informace platí pro celou aplikaci, ne jen pro konkrétní stránku. V komponentě obalující všechny stránky (layout komponentě) si do proměnné uložíme informaci, zda se property state hooku useNavigation rovná 'loading' a na základě toho podmínečně renderujeme komponentu pro loading indikátor: const navigation = useNavigation(); const isLoading = navigation.state === 'loading';return <div> {isLoading && <Loader/>}<Hedarer/>...</div>",
+      "id": "UYKVbyP"
+    },
+    {
+      "question": "Jak zacházet s chybami za použití funkce createBrowserRouter?",
+      "answer": "Vytvoření property errorElement v rámci routes, kde potřebujeme s chybami zacházet. Většinou potřebujeme handlovat jednak chyby s chybně zadanou url, kdy errorElement property umístíme do Parent Route, a jednak s chybami při fetchování, kdy errorElement umístíme tam, kde dochází k fetchování dat. errorElement property obsahuje obvykle nějakou komponentu vytvořenou pro tyto účely: {path:'/',element:<Home/>,erroeElement:<Error/>}. Tato komponenta může pomocí hooku useRouteError získat zprávu konkrétně pro danou chybu. Tento hook použijeme v komponentě, kterou máme uvedenou jako errorElement: const error = useRouteError(); return <div><p>{error.data || error.message}</p></div>. Obvykle tuto property dáváme tam, kde může docházet k chybám, tedy do rodičovské komponenty, kde zacházíme s chybami ohledně špatné cesty v url a v komponentách, kde fetchujeme nějaká data. ",
+      "id": "QpwfYjq"
+    },
+    {
+      "question": "Jak dostaneme parametr z url do loader funkce?",
+      "answer": "Pomocí argumentu {params}.",
+      "id": "Dj0gbj9"
     }
   ],
   "JavaScript": [
@@ -1822,7 +1964,15 @@
     {
       "id": "3fb94003-ddca-4ddb-a7d1-4835487e050a",
       "categoryName": "React-3",
-      "numQuestions": 151,
+      "numQuestions": 165,
+      "highscore": 0,
+      "progress": 0,
+      "currentScore": 0
+    },
+    {
+      "id": "1d663743-158e-4d64-a8f5-0a1442d14289",
+      "categoryName": "React-4",
+      "numQuestions": 0,
       "highscore": 0,
       "progress": 0,
       "currentScore": 0

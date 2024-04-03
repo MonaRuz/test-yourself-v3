@@ -1,15 +1,19 @@
-import { useAuth } from "../contexts/FakeAuthContext"
-import Button from "./Button"
+
+import Button from "../../components/Button"
 import { FaRegCircleUser } from "react-icons/fa6"
 import styles from "./User.module.css"
 import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { logout } from "./fakeAuthSlice"
 
 export default function User() {
-	const { user, logout } = useAuth()
 	const navigate = useNavigate()
+	const dispatch=useDispatch()
+	const user=useSelector((store)=>store.authenticate.user)
+	
 
 	function handleClick() {
-		logout()
+		dispatch(logout())
 		navigate("/")
 	}
 

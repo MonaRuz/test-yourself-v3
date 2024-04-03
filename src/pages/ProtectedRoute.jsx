@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "../contexts/FakeAuthContext"
 import { useEffect } from "react"
+import { useSelector } from "react-redux"
 
 
 export default function ProtectedRoute({children}) {
-    const {isAuthenticated}=useAuth()
     const navigate=useNavigate()
+    const isAuthenticated=useSelector((store)=>store.authenticate.isAuthenticated)
 
     useEffect(function(){
         if(!isAuthenticated)navigate("/")

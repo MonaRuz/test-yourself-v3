@@ -2,11 +2,11 @@ import { useEffect, useReducer } from "react"
 import styles from "./Questions.module.css"
 import SearchQuestion from "./SearchQuestion"
 import Question from "./Question"
-import { useQuestions } from "..//contexts/QuestionsContext"
+import { useQuestions } from "../../contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"
-import Button from "./Button"
-import Loader from "./Loader"
-import Error from "./Error"
+import Button from "../../components/Button"
+import Loader from "../../components/Loader"
+import Error from "../../components/Error"
 
 const initialState = {
 	searchQuery: "",
@@ -28,7 +28,7 @@ function reducer(state, action) {
 }
 
 export default function Questions() {
-	const { questions, getQuestions, isLoading ,error} = useQuestions()
+	const { questions, getQuestions, isLoading, error } = useQuestions()
 
 	const { category } = useParams()
 	const [{ searchQuery, isOpen }, dispatch] = useReducer(reducer, initialState)
@@ -51,27 +51,28 @@ export default function Questions() {
 	)
 
 	if (isLoading) return <Loader />
-	if(error)return<Error>{error}</Error>
+	if (error) return <Error>{error}</Error>
 	return (
 		<div>
-			<h3 className={styles.title}>Questions and answers in category {category}</h3>
+			<h3 className={styles.title}>
+				Questions and answers in category {category}
+			</h3>
 			<div className={styles.header}>
-				
 				<Button
-					type="negative"
+					type='negative'
 					onClick={() => navigate(-1)}
 				>
 					Back
 				</Button>
 				<Button
-					type="confirm"
+					type='confirm'
 					onClick={() => navigate("new-question")}
 				>
 					Add question
 				</Button>
 				<SearchQuestion dispatch={dispatch} />
 			</div>
-			
+
 			<ul className={styles.list}>
 				{searchedQuestions?.map((question) => (
 					<Question
