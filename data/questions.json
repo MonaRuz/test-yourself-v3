@@ -424,11 +424,6 @@
       "id": "40bc9a6b-ae23-4391-8940-7d15c29bbf5b",
       "question": "Co je to children props?",
       "answer": "Je to posílání samotného JSX jako props. Rodičovské komponentě rozdělíme otevírací a uzavírací tag a mezi ně vložíme obsah, který chceme poslat. V dceřinné komponentě přijmeme a použijeme tuto propsu jako children. Hodí se u vytváření generických komponent, kdy předem nevíme, jaký obsah v nich bude."
-    },
-    {
-      "question": "kjgkjgb",
-      "answer": "hmvjmvn ",
-      "id": "W9h70ZS"
     }
   ],
   "React-2": [

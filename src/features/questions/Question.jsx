@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom"
 import styles from "./Question.module.css"
 import Button from "../../UI/Button"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
+import { deleteQuestion } from "../../services/testysFakeApi"
 // import { useQuestions } from "../../contexts/QuestionsContext"
 
 export default function Question({ question, isOpen, dispatch }) {
@@ -10,6 +11,7 @@ export default function Question({ question, isOpen, dispatch }) {
 
 	function handleClick() {
 		deleteQuestion(category, question.id)
+		
 	}
 
 	return (

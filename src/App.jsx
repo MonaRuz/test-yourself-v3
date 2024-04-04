@@ -55,7 +55,6 @@ const router = createBrowserRouter([
 			{
 				path: "/questions/:category/new-question",
 				element: <NewQuestion />,
-				action:newQuestionAction
 			},
 			{
 				path: "/questions/:category/:id",
