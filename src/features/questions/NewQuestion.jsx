@@ -1,16 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom"
 import Button from "../../UI/Button"
 import styles from "./newQuestion.module.css"
-import { useQuestions } from "../../contexts/QuestionsContext"
+// import { useQuestions } from "../../contexts/QuestionsContext"
 import { useState } from "react"
 import Loader from "../../UI/Loader"
+import { createQuestion } from "../../services/testysFakeApi"
 
 export default function NewQuestion() {
 	const [question, setQuestion] = useState("")
 	const [answer, setAnswer] = useState("")
 	const [wasSend, setWasSend] = useState(false)
 	const [notes, setNotes] = useState("")
-	const { createQuestion, error, isLoading } = useQuestions()
+	// const { createQuestion, error, isLoading } = useQuestions()
 	const { category } = useParams()
 	const navigate = useNavigate()
 
@@ -90,13 +91,13 @@ export default function NewQuestion() {
 					)}
 				</div>
 			</form>
-			{isLoading && wasSend && <Loader />}
+			{/* {isLoading && wasSend && <Loader />}
 			{!isLoading && error && <p className={styles.error}>{error}</p>}
 			{!isLoading && !error && wasSend && (
 				<p className={styles.message}>
 					New question was added, now you can add more.
 				</p>
-			)}
+			)} */}
 		</div>
 	)
 }

@@ -14,7 +14,7 @@ import Questions, {
 } from "./features/questions/Questions"
 import CreateNewCategory from "./features/categories/CreateNewCategory"
 import Edit from "./features/questions/Edit"
-import NewQuestion from "./features/questions/NewQuestion"
+import NewQuestion,{action as newQuestionAction} from "./features/questions/NewQuestion"
 import ProtectedRoute from "./features/fakeAuth/ProtectedRoute"
 // import Loader from "./UI/Loader"
 // import Error from "./UI/Error"
@@ -55,6 +55,7 @@ const router = createBrowserRouter([
 			{
 				path: "/questions/:category/new-question",
 				element: <NewQuestion />,
+				action:newQuestionAction
 			},
 			{
 				path: "/questions/:category/:id",

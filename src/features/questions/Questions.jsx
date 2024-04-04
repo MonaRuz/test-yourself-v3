@@ -68,7 +68,7 @@ export default function Questions() {
 				</Button>
 				<Button
 					type='confirm'
-					onClick={() => navigate("new-question")}
+					onClick={() => navigate(`/questions/${category}/new-question`)}
 				>
 					Add question
 				</Button>
