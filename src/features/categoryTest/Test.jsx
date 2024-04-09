@@ -33,13 +33,6 @@ export default function Test() {
 		dispatch({ type: "answer/correct", payload: updatedQuestions })
 	}
 
-	// useEffect(
-	// 	function () {
-	// 		getQuestions(category)
-	// 	},
-	// 	[category]
-	// )
-
 	function handleGetQuestions(){
 		getQuestions(category)
 		setIsRunning(true)

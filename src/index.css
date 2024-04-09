@@ -10,8 +10,6 @@ body{
   --menu-color:#ffffba;
   --confirm-color:#baffc9;
   --text-color:#bae1ff;
-
-  padding: 5px 50px;
 }
 .not-found{
   text-align: center;

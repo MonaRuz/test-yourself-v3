@@ -10,12 +10,12 @@ export default function PageNav() {
 	const navigate=useNavigate()
 	return (
 		<nav>
-			<ul className={styles.nav}>
+			<ul className="flex flex-col items-center">
 				<li>
 					<Logo />
 				</li>
 				
-				<li>
+				<li className="flex flex-grow">
 						{!isAuthenticated&&<Button
 							type="confirm"
 							onClick={()=>navigate("/login")}
