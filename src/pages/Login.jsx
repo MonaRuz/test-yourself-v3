@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import Button from "../components/Button"
-import PageNav from "../components/PageNav"
+import Button from "../UI/Button"
+import PageNav from "../UI/PageNav"
 import styles from "./Login.module.css"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"

@@ -1,5 +1,5 @@
-import PageNav from "../components/PageNav"
-import Box from "../components/Box"
+import PageNav from "./PageNav"
+import Box from "./Box"
 
 
 export default function AppLayout() {

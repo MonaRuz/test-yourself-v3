@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { QuestionsProvider } from "./contexts/QuestionsContext"
 import Test from "./features/categoryTest/Test"
-import PageNotFound from "./components/PageNotFound"
+import PageNotFound from "./UI/PageNotFound"
 import Categories from "./features/categories/Categories"
 import Questions from "./features/questions/Questions"
 import CreateNewCategory from "./features/categories/CreateNewCategory"
@@ -9,11 +9,11 @@ import Edit from "./features/questions/Edit"
 import NewQuestion from "./features/questions/NewQuestion"
 import ProtectedRoute from "./pages/ProtectedRoute"
 import { Suspense, lazy } from "react"
-import Loader from "./components/Loader"
+import Loader from "./UI/Loader"
 
 const Homepage = lazy(() => import("./pages/Homepage"))
 const Login = lazy(() => import("./pages/Login"))
-const AppLayout = lazy(() => import("./pages/AppLayout"))
+const AppLayout = lazy(() => import("./UI/AppLayout"))
 
 export default function App() {
 	return (

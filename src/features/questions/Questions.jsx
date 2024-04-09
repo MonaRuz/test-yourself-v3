@@ -4,9 +4,9 @@ import SearchQuestion from "./SearchQuestion"
 import Question from "./Question"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"
-import Button from "../../components/Button"
-import Loader from "../../components/Loader"
-import Error from "../../components/Error"
+import Button from "../../UI/Button"
+import Loader from "../../UI/Loader"
+import Error from "../../UI/Error"
 
 const initialState = {
 	searchQuery: "",

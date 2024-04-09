@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import Button from "../components/Button"
-import Intro from "../components/Intro"
-import PageNav from "../components/PageNav"
+import Button from "../UI/Button"
+import Intro from "../UI/Intro"
+import PageNav from "../UI/PageNav"
 import styles from "./Homepage.module.css"
 
 export default function Homepage() {

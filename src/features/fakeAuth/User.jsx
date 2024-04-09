@@ -1,5 +1,5 @@
 
-import Button from "../../components/Button"
+import Button from "../../UI/Button"
 import { FaRegCircleUser } from "react-icons/fa6"
 import styles from "./User.module.css"
 import { useNavigate } from "react-router-dom"
