@@ -1840,6 +1840,36 @@
       "question": "Jak dostaneme parametr z url do loader funkce?",
       "answer": "Pomocí argumentu {params}.",
       "id": "Dj0gbj9"
+    },
+    {
+      "question": "Jak pošleme data z formuláře na API přes advanced React Router?",
+      "answer": "Pomocí funkce action a komponenty <Form method=\"POST\">. Tuto funkci můžeme psát přímo v routeru nebo v samostatném souboru. ",
+      "id": "G0QgqZI"
+    },
+    {
+      "question": "Jaké výhody má posílání dat na API prostřednictvím moderního React Routeru a komponenty Form?",
+      "answer": "Nemusíme používat state proměnné, controlled elements ani event handler funkci.",
+      "id": "IjEve3c"
+    },
+    {
+      "question": "Jak po odeslání formuláře Form, který poskytuje moderní React Router, odešleme uživatele na jinou stránku bez použití hooku useNavigate?",
+      "answer": "Pomocí funkce redirect(\"/path\") na konci action funkce.",
+      "id": "EwDXKCp"
+    },
+    {
+      "question": "K čemu se nejčastěji používá hook useActionData?",
+      "answer": "K zobrazení chyb z odesílání Form formuláře.",
+      "id": "pPv-2LF"
+    },
+    {
+      "question": "Jak zacházet s chybami v komponentě Form, kterou poskytuje moderní React Router?",
+      "answer": "Uvnitř funkce action si vytvoříme prázdný objekt pod proměnnou errors, kam pak pod podmínkou ukládáme texty konkrétních chyb. Tento kód musíme mít ve funkci action ještě před requestem, aby se chybná data neodeslala: const errors={}; if(!isValidPhoneNumber)errors.phone=\"Your phone number is not valid\";",
+      "id": "bkZ3HUB"
+    },
+    {
+      "question": "Jak v komponentě vypíšeme chyby získané z validace komponenty Form, kterou poskytuje moderní React Router?",
+      "answer": "Pomocí hooku useActionData().",
+      "id": "mPRUyGF"
     }
   ],
   "JavaScript": [
