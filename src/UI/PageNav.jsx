@@ -17,7 +17,7 @@ export default function PageNav() {
 				
 				<li>
 						{!isAuthenticated&&<Button
-							type="login"
+							type="confirm"
 							onClick={()=>navigate("/login")}
 						>
 							Login

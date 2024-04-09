@@ -73,7 +73,7 @@ export default function Login() {
 					onChange={(e)=>setName(e.target.value)}
 				/>
 				<Button
-					type="login"
+					type="confirm"
 					onClick={handleSubmit}
 				>
 					Login

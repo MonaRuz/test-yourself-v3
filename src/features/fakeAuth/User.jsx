@@ -22,7 +22,7 @@ export default function User() {
 			<FaRegCircleUser className={styles.icon} />
 			<h3 className={styles.name}>{user.name}</h3>
 			<Button
-				type='logout'
+				type='negative'
 				onClick={handleClick}
 			>
 				Logout
