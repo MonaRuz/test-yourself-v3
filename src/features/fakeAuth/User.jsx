@@ -18,9 +18,9 @@ export default function User() {
 	}
 
 	return (
-		<div className={styles.user}>
+		<div>
 			<FaRegCircleUser className={styles.icon} />
-			<h3 className={styles.name}>{user.name}</h3>
+			<h3 className={styles.name}>{user?.name}</h3>
 			<Button
 				type='negative'
 				onClick={handleClick}

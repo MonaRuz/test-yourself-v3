@@ -13,10 +13,6 @@ export default function Homepage() {
 		<div className='flex flex-col items-center justify-around h-dvh'>
 			<Logo />
 			<Intro />
-			<div className="text-4xl flex">
-				<div className="text-green-200">✔</div>
-				<div className="text-red-200">✘</div>
-			</div>
 			<Button
 				type='confirm'
 				onClick={handleClick}
