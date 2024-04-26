@@ -19,7 +19,9 @@ export default function User() {
 
 	return (
 		<div>
-			<FaRegCircleUser className={styles.icon} />
+			{user&&
+				<>
+					<FaRegCircleUser className={styles.icon} />
 			<h3 className={styles.name}>{user?.name}</h3>
 			<Button
 				type='negative'
@@ -27,6 +29,9 @@ export default function User() {
 			>
 				Logout
 			</Button>
+				</>
+				
+			}
 		</div>
 	)
 }

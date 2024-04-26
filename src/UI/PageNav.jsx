@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import Logo from "./Logo"
 import Button from "./Button"
 import User from "../features/fakeAuth/User"
@@ -9,6 +9,7 @@ export default function PageNav() {
 		(store) => store.authenticate.isAuthenticated
 	)
 	const navigate = useNavigate()
+	const isLogging = useSearchParams()
 	return (
 		<nav>
 			<ul className='flex flex-col items-center justify-between'>
@@ -17,17 +18,15 @@ export default function PageNav() {
 				</li>
 
 				<li>
-					{isAuthenticated && (
-						<>
+					{!isAuthenticated && !isLogging && (
 						<Button
 							type='confirm'
 							onClick={() => navigate("/login")}
 						>
 							Login
 						</Button>
-						<User />
-						</>
-						)}
+					)}
+					<User />
 				</li>
 			</ul>
 		</nav>

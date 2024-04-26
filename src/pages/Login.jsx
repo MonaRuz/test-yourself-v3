@@ -38,7 +38,7 @@ export default function Login() {
 
 	return (
 		<div className='h-dvh flex flex-col'>
-			<div className="mt-12">
+			<div className='mt-12'>
 				<PageNav />
 			</div>
 			<form className='flex flex-col my-auto sm:items-center'>
@@ -69,7 +69,7 @@ export default function Login() {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 				<input
-					className="hidden"
+					className='hidden'
 					type='text'
 					id='name'
 					onChange={(e) => setName(e.target.value)}
