@@ -18,17 +18,17 @@ export default function User() {
 	}
 
 	return (
-		<div>
+		<div className="my-3 flex flex-wrap items-center justify-center gap-1">
 			{user&&
 				<>
-					<FaRegCircleUser className={styles.icon} />
+					<FaRegCircleUser className="text-green-200 text-[20px]" />
 			<h3 className={styles.name}>{user?.name}</h3>
-			<Button
-				type='negative'
+			<button
+				className='text-sm text-red-200 border border-red-200 p-2 ml-4'
 				onClick={handleClick}
 			>
 				Logout
-			</Button>
+			</button>
 				</>
 				
 			}

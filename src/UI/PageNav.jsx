@@ -1,31 +1,21 @@
-import { useNavigate, useSearchParams } from "react-router-dom"
+"react-router-dom"
 import Logo from "./Logo"
-import Button from "./Button"
+
 import User from "../features/fakeAuth/User"
-import { useSelector } from "react-redux"
+
 
 export default function PageNav() {
-	const isAuthenticated = useSelector(
-		(store) => store.authenticate.isAuthenticated
-	)
-	const navigate = useNavigate()
-	const isLogging = useSearchParams()
+	
+
 	return (
-		<nav>
-			<ul className='flex flex-col items-center justify-between'>
+		<nav className="w-full">
+			<ul className='flex flex-col items-center justify-between border-b pb-2'>
 				<li>
 					<Logo />
 				</li>
 
 				<li>
-					{!isAuthenticated && !isLogging && (
-						<Button
-							type='confirm'
-							onClick={() => navigate("/login")}
-						>
-							Login
-						</Button>
-					)}
+					
 					<User />
 				</li>
 			</ul>
