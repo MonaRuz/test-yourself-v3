@@ -8,7 +8,7 @@ export default function Category({ category }) {
 	return (
 		
 		
-		<div className="w-full text-center p-3 my-2 bg-zinc-700 rounded-lg">
+		<div className="w-full text-center p-3 my-2 bg-zinc-700/50">
 			<h2 className=" text-pink-200 text-xl uppercase border-b border-pink-200 pb-1">{category.categoryName}</h2>
 			<p className="text-blue-200 pt-2">
 				<span className={styles.values}>{category.numQuestions}</span> questions
