@@ -1,20 +1,15 @@
 import { useNavigate } from "react-router-dom"
-import styles from "./NewCategory.module.css"
-import Button from "../../UI/Button"
 
 export default function NewCategory() {
 	const navigate = useNavigate()
 	return (
-		<div className={styles.newCategory}>
-			<h2 className={styles.title}>Add new category</h2>
-			<Button
-				textColor='var(--menu-color)'
-				bgColor='var(--main-bg-color)'
-				childrenSize={20}
+		<div className="flex border border-green-200 text-green-200 ">
+			<button 
+				className="text-green-200 uppercase p-1"
 				onClick={() => navigate("new-category")}
 			>
-				+
-			</Button>
+				New category
+			</button>
 		</div>
 	)
 }

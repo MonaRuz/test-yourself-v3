@@ -6,25 +6,27 @@ export default function Category({ category }) {
 	const navigate = useNavigate()
 
 	return (
-		<div className={styles.category}>
-			<h2 className={styles.title}>{category.categoryName}</h2>
-			<p>
+		
+		
+		<div className="w-full text-center p-3 my-2 bg-zinc-700 rounded-lg">
+			<h2 className=" text-pink-200 text-xl uppercase border-b border-pink-200 pb-1">{category.categoryName}</h2>
+			<p className="text-blue-200 pt-2">
 				<span className={styles.values}>{category.numQuestions}</span> questions
 			</p>
-			<p>
+			<p className="text-blue-200">
 				Progress:{" "}
 				<span className={styles.values}>
 					{category.progress} / {category.numQuestions}
 				</span>
 			</p>
-			<p>
+			<p className="text-blue-200">
 				Current score{" "}
 				<span className={styles.values}> {category.currentScore} </span>%
 			</p>
-			<p>
+			<p className="text-blue-200 mb-3">
 				Highscore: <span className={styles.values}>{category.highscore}</span> %
 			</p>
-			<div className={styles.buttons}>
+			<div className="flex gap-2">
 				<Button
 					type='confirm'
 					onClick={() => navigate(`test/${category.categoryName}`)}
@@ -40,5 +42,7 @@ export default function Category({ category }) {
 				</Button>
 			</div>
 		</div>
+		
+		
 	)
 }

@@ -21,13 +21,16 @@ export default function Categories() {
 
 	if (error) return <Error>{error}</Error>
 	return (
-		<>
-			<p className={styles.instructions}>
+		<>			
+			<p className="text-blue-200 text-center py-3">
 				Start test, edit or add questions in existing category, or create new
 				category with minimal one question and answer.
 			</p>
+			<NewCategory />
+			<h1 className="text-xl text-orange-200 text-center py-2">Your categories:</h1>
 			<div className={styles.box}>
-				<NewCategory />
+				
+				
 				{categories.map((category) => (
 					<Category
 						category={category}
