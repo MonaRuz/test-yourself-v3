@@ -16,7 +16,7 @@ export default function Question({ question, isOpen, dispatch }) {
 		<div>
 			<li>
 				<div
-					className={styles.questionBox}
+					className="flex justify-between"
 					onClick={() => dispatch({ type: "toggleOpen", payload: question.id })}
 				>
 					<p

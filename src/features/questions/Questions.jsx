@@ -54,10 +54,11 @@ export default function Questions() {
 	if (error) return <Error>{error}</Error>
 	return (
 		<div>
-			<h3 className={styles.title}>
+			<h3 className="text-yellow-200 underline text-center my-3">
 				Questions and answers in category {category}
 			</h3>
-			<div className={styles.header}>
+			<div >
+				<div className="flex gap-2 my-3">
 				<Button
 					type='negative'
 					onClick={() => navigate(-1)}
@@ -70,10 +71,12 @@ export default function Questions() {
 				>
 					Add question
 				</Button>
+				</div>
+				
 				<SearchQuestion dispatch={dispatch} />
 			</div>
 
-			<ul className={styles.list}>
+			<ul>
 				{searchedQuestions?.map((question) => (
 					<Question
 						key={question.id}
