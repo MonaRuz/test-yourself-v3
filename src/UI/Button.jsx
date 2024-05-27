@@ -1,7 +1,7 @@
 
 
 export default function Button({ onClick, children, type }) {
-	const base="text-lg h-11 sm:m-4 w-full bg-transparent cursor-poiter border hover:text-zinc-800 hover:border-zinc-800 font-bold sm:w-[200px]"
+	const base="md:text-lg h-11 sm:m-4 w-full bg-transparent cursor-poiter border hover:text-zinc-800 hover:border-zinc-800 font-bold sm:w-[200px]"
 
 	const styles={
 		primary: base + " text-lg text-orange-200 hover:bg-orange-200 border-orange-200 ",

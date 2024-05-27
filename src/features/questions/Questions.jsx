@@ -54,10 +54,10 @@ export default function Questions() {
 	if (error) return <Error>{error}</Error>
 	return (
 		<div>
-			<h3 className="text-yellow-200 underline text-center my-3">
+			<h3 className="text-yellow-200 uppercase text-center my-3">
 				Questions and answers in category {category}
 			</h3>
-			<div >
+			<div className=" border-b border-blue-200 pb-3">
 				<div className="flex gap-2 my-3">
 				<Button
 					type='negative'

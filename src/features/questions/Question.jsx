@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom"
 import styles from "./Question.module.css"
 import Button from "../../UI/Button"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
+import { FaTrash,FaEdit } from "react-icons/fa";
 import { useQuestions } from "../../contexts/QuestionsContext"
 
 export default function Question({ question, isOpen, dispatch }) {
@@ -16,12 +17,12 @@ export default function Question({ question, isOpen, dispatch }) {
 		<div>
 			<li>
 				<div
-					className="flex justify-between"
+					className="flex justify-between text-sm"
 					onClick={() => dispatch({ type: "toggleOpen", payload: question.id })}
 				>
 					<p
 						className={
-							!isOpen ? `${styles.question}` : `${styles.currentQuestion}`
+							!isOpen ? `text-green-200 m-2` : `text-green-200 m-2 border-b pb-2`
 						}
 					>
 						{question.question}
@@ -31,22 +32,21 @@ export default function Question({ question, isOpen, dispatch }) {
 					</p>
 				</div>
 				{isOpen && (
-					<div>
+					<div className="text-sm">
 						<p className={styles.answer}>{question.answer}</p>
-						<div className={styles.btnBox}>
+						<div className="m-2 flex justify-around items-center">
 							<Link
-								className={styles.link}
+								className="pt-1 text-blue-200 text-2xl"
 								to={`${question.id}`}
 							>
-								<Button type='confirm'>Edit question</Button>
+								<button > <FaEdit></FaEdit></button>
 							</Link>
 
-							<Button
-								type='negative'
-								onClick={handleClick}
-							>
-								Delete question
-							</Button>
+							
+							
+							<button className="text-red-300 text-xl" onClick={handleClick}><FaTrash></FaTrash></button>
+							
+
 						</div>
 					</div>
 				)}
