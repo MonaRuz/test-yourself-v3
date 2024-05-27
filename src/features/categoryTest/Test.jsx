@@ -52,20 +52,18 @@ export default function Test() {
 	return (
 		<div className={styles.test}>
 			{!isRunning ? (
-					<div className={styles.btnBox}>
+					<div className="flex flex-col mt-3">
 
-						<Button
-							type='negative'
+						<button className="text-red-200 border border-red-200 m-3 uppercase px-2 py-1"
 							onClick={() => navigate("/app")}
 						>
 							Back
-						</Button>
-						<Button
-							type='confirm'
+						</button>
+						<button className="text-blue-200 border border-blue-200 m-3 uppercase px-2 py-1"
 							onClick={handleGetQuestions}
 						>
 							Start Test
-						</Button>
+						</button>
 					</div>
 			) : (
 				<>
