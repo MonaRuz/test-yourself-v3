@@ -4,24 +4,29 @@ import Button from "../../UI/Button"
 import { useQuestions } from "../../contexts/QuestionsContext"
 
 export default function Edit() {
-	const{questions}=useQuestions()
+	const { questions } = useQuestions()
 	const { id } = useParams()
-	const navigate=useNavigate()
-	
-	const selectedQuestion = questions
-	.filter((question) => {
+	const navigate = useNavigate()
+
+	const selectedQuestion = questions.filter((question) => {
 		return question.id === id
 	})
-	
-	const[{question,answer}]=selectedQuestion
 
+	const [{ question, answer }] = selectedQuestion
 
 	return (
-		<div className={styles.edit}>
-			<p className={styles.question}>{question}</p>
-            <hr className={styles.line}/>
-            <p className={styles.answer}>{answer}</p>
-			<Button type="primary" onClick={()=>navigate(-1)}>Back</Button>
+		<div className='text-sm'>
+			<p className='text-blue-200 m-3'>{question}</p>
+			<hr />
+			<p className='text-green-200 m-3'>{answer}</p>
+			<div className="flex items-center justify-center">
+				<button
+					className='text-yellow-200 uppercase border border-yellow-200 px-2 py-1 mb-3 w-full'
+					onClick={() => navigate(-1)}
+				>
+					Back
+				</button>
+			</div>
 		</div>
 	)
 }
