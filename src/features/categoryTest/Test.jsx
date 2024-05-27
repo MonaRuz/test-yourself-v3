@@ -67,42 +67,40 @@ export default function Test() {
 					</div>
 			) : (
 				<>
-					<div className='test-question'>
-						<p className={styles.question}>{currentTestQuestion?.question}</p>
+					<div className='text-sm pt-3'>
+						<p className="text-green-200 mb-3">{currentTestQuestion?.question}</p>
 
 						{showTestAnswer && (
-							<p className={styles.answer}>{currentTestQuestion?.answer}</p>
+							<p className="text-yellow-200 my-3">{currentTestQuestion?.answer}</p>
 						)}
 					</div>
-					<div className={styles.btnBox}>
+					<div className="flex justify-around">
 						{showTestAnswer && (
-							<Button
-								type='negative'
+							<button className="text-red-300 border border-red-300 px-2"
 								onClick={handleWrongAnswer}
 							>
 								✘
-							</Button>
+							</button>
 						)}
 						{!showTestAnswer && (
-							<Button
-								type='primary'
+							<button
+							className="text-yellow-200 uppercase border border-yellow-200 px-2 py-1 mb-3 w-full"
 								onClick={() => dispatch({ type: "answer/show" })}
 							>
 								Display answer
-							</Button>
+							</button>
 						)}
 
 						{showTestAnswer && (
-							<Button
-								type='confirm'
+							<button className="text-green-200 border border-green-200 px-2"
 								onClick={() => handleCorrectAnswer(currentTestQuestion?.id)}
 							>
 								✔
-							</Button>
+							</button>
 						)}
 					</div>
 					<div>
-						<p className={styles.progress}>
+						<p className="text-blue-200 text-center mt-3">
 							Progress:
 							<strong>
 								{" "}
@@ -110,17 +108,16 @@ export default function Test() {
 							</strong>{" "}
 						</p>
 					</div>
-					<p className={styles.instructions}>
+					<p className="text-blue-200 text-xs border-t border-blue-200 my-3 py-2">
 						Answer the question as best you can, view the answer and see if you
 						answered correctly. <br /> Then click on the corresponding button.
 					</p>
 					<div className={styles.btnBox}>
-					<Button
-							type='negative'
+					<button className="text-red-200 border border-red-200 px-2 py-1 w-full uppercase"
 							onClick={() => navigate("/app")}
 						>
 							Stop Test
-						</Button>
+						</button>
 					</div>
 				</>
 			)}
