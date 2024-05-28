@@ -5,6 +5,7 @@ import styles from "./Results.module.css"
 
 export default function Results() {
 	const { result,getQuestions,dispatch } = useQuestions()
+
   const navigate=useNavigate()
   const {category}=useParams()
   function handleBack(){
@@ -14,6 +15,7 @@ export default function Results() {
     getQuestions(category)
     dispatch({type:"restart"})
   }
+
 	return (
 		<div>
 			<p className={styles.result}>Úspěšnost testu : {result}%</p>
