@@ -50,7 +50,7 @@ export default function Test() {
 	if (testQuestions.length === 0 && isRunning) return <Results />
 
 	return (
-		<div className={styles.test}>
+		<div className="text-center">
 			{!isRunning ? (
 					<div className="flex flex-col mt-3">
 
@@ -74,9 +74,9 @@ export default function Test() {
 							<p className="text-yellow-200 my-3">{currentTestQuestion?.answer}</p>
 						)}
 					</div>
-					<div className="flex justify-around">
+					<div className="flex justify-around my-4">
 						{showTestAnswer && (
-							<button className="text-red-300 border border-red-300 px-2"
+							<button className="text-red-300 border border-red-300 px-4 py-2"
 								onClick={handleWrongAnswer}
 							>
 								✘
@@ -92,7 +92,7 @@ export default function Test() {
 						)}
 
 						{showTestAnswer && (
-							<button className="text-green-200 border border-green-200 px-2"
+							<button className="text-green-200 border border-green-200 px-4 py-2"
 								onClick={() => handleCorrectAnswer(currentTestQuestion?.id)}
 							>
 								✔
@@ -100,7 +100,7 @@ export default function Test() {
 						)}
 					</div>
 					<div>
-						<p className="text-blue-200 text-center mt-3">
+						<p className="text-blue-200 text-center mt-3 text-xs">
 							Progress:
 							<strong>
 								{" "}
@@ -113,7 +113,7 @@ export default function Test() {
 						answered correctly. <br /> Then click on the corresponding button.
 					</p>
 					<div className={styles.btnBox}>
-					<button className="text-red-200 border border-red-200 px-2 py-1 w-full uppercase"
+					<button className="text-red-200 border border-red-200 px-2 py-1 w-full uppercase mb-5"
 							onClick={() => navigate("/app")}
 						>
 							Stop Test
