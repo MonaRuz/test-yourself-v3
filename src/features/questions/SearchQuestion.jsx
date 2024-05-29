@@ -3,7 +3,7 @@ import { IoIosSearch } from "react-icons/io";
 
 export default function SearchQuestion({ dispatch }) {
 	return (
-		<form className={styles.form}>
+		<form className="sm:m-auto sm:w-3/5">
 			<div>
 				<input
 					type='text'
