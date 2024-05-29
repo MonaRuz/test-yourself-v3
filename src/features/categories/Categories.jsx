@@ -26,8 +26,10 @@ export default function Categories() {
 				Start test, edit or add questions in existing categories, or create
 			</p>
 			<NewCategory />
-			<p className='text-blue-200 text-center py-5'>with minimal one question and answer.</p>
-			<div className={styles.box}>
+			<p className='text-blue-200 text-center py-5'>
+				with minimal one question and answer.
+			</p>
+			<div className='flex flex-col md:flex-row md:flex-wrap md:gap-3 items-center md:justify-center'>
 				{categories.map((category) => (
 					<Category
 						category={category}

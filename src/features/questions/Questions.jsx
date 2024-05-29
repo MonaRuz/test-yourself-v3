@@ -57,20 +57,18 @@ export default function Questions() {
 			<h3 className="text-yellow-200 uppercase text-center my-3">
 				Questions and answers in category {category}
 			</h3>
-			<div className=" border-b border-blue-200 pb-3">
-				<div className="flex gap-2 my-3">
-				<Button
-					type='negative'
+			<div className=" border-b border-blue-200 pb-3 flex flex-col">
+				<div className="flex gap-3 justify-around my-3 ">
+				<button className="text-red-200 border border-red-200 px-3 py-2 uppercase sm:w-30"
 					onClick={() => navigate(-1)}
 				>
 					Back
-				</Button>
-				<Button
-					type='confirm'
+				</button>
+				<button className=" text-green-200 border border-green-200 py-1 px-2 uppercase"
 					onClick={() => navigate("new-question")}
 				>
 					Add question
-				</Button>
+				</button>
 				</div>
 				
 				<SearchQuestion dispatch={dispatch} />
