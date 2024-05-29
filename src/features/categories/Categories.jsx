@@ -29,7 +29,7 @@ export default function Categories() {
 			<p className='text-blue-200 text-center py-5'>
 				with minimal one question and answer.
 			</p>
-			<div className='flex flex-col md:flex-row md:flex-wrap md:gap-3 items-center md:justify-center'>
+			<div className='flex flex-col md:grid md:grid-cols-3 md:gap-3 mb-5'>
 				{categories.map((category) => (
 					<Category
 						category={category}
