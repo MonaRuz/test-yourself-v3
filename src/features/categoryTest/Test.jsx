@@ -67,7 +67,7 @@ export default function Test() {
 					</div>
 			) : (
 				<>
-					<div className='text-sm pt-3'>
+					<div className='pt-3'>
 						<p className="text-green-200 mb-3">{currentTestQuestion?.question}</p>
 
 						{showTestAnswer && (

@@ -8,7 +8,7 @@ export default function SearchQuestion({ dispatch }) {
 				<input
 					type='text'
 					placeholder='Search in questions and answers'
-					className="placeholder:text-sm placeholder:text-center bg-inherit border border-green-200 w-full my-3"
+					className="placeholder:text-xs placeholder:text-center bg-inherit border border-green-200 w-full my-3 py-1 text-sm text-blue-200"
 					onChange={(e) => dispatch({type:"setSearchQuery",payload:e.target.value})}
 				/>
 			</div>

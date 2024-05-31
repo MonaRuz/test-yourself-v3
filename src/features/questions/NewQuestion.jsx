@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router-dom"
-import Button from "../../UI/Button"
 import styles from "./newQuestion.module.css"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import { useState } from "react"
@@ -29,7 +28,7 @@ export default function NewQuestion() {
 
 	return (
 		<div>
-			<p className={styles.p}>
+			<p className="text-blue-200 py-1">
 				Write some question and answer. Fields can't be empty.
 			</p>
 			<hr />
@@ -70,23 +69,21 @@ export default function NewQuestion() {
 					value={notes}
 					onChange={(e) => setNotes(e.target.value)}
 				/>
-				<div>
-					<Button
-						type='negative'
+				<div className="flex gap-3 py-3">
+					<button className="text-red-200 border border-red-200 px-3 py-2"
 						onClick={(e) => {
 							e.preventDefault()
 							navigate(-1)
 						}}
 					>
 						Back
-					</Button>
+					</button>
 					{question && answer && (
-						<Button
-							type='confirm'
+						<button className="text-green-200 border border-green-200 px-3 py-2"
 							onClick={handleClick}
 						>
 							Add new question
-						</Button>
+						</button>
 					)}
 				</div>
 			</form>
