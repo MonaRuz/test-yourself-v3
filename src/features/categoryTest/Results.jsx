@@ -1,7 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useQuestions } from "../../contexts/QuestionsContext"
-import Button from "../../UI/Button"
-import styles from "./Results.module.css"
 
 export default function Results() {
 	const { result, getQuestions, dispatch } = useQuestions()

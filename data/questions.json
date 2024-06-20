@@ -10,7 +10,7 @@
     {
       "id": "0a66d618-2982-43d3-aecf-53786a447a10",
       "question": "Jaký je rozdíl mezi imperativním a deklarativním kódem a jaký typ je využíván v Reactu a proč?",
-      "answer": "Deklarativní : Používáme výrazy, abychom řekli, čeho chceme dosáhnout, tvoříme tak méně kódu, který může být ale méně srozumitelný. Například metoda filter(). Imperativní : Používáme proměnné a jejich změny, abychom přesně popsali proces, který se má dít krok po kroku. Kód je více blízký přirozenému jazyku, a tak více srozumitelný, je však delší. Například cyklus for. React funguje na principu deklarativního programování, kde říkáme, jak má vypadat UI, nedefinujeme způsob, jakým se mají procesy dít. Díky tomu nemusíme manuálně vybírat a manipulovat s elementy DOM, což by byl dlouhý, nesrozumitelný, špagetovitý a chybový kód. React dělá za nás spoustu věcí na pozadí."
+      "answer": "1) Deklarativní : Používáme výrazy, abychom řekli, čeho chceme dosáhnout, tvoříme tak méně kódu, který může být ale méně srozumitelný. Například metoda filter(). 2) Imperativní : Používáme proměnné a jejich změny, abychom přesně popsali proces, který se má dít krok po kroku. Kód je více blízký přirozenému jazyku, a tak více srozumitelný, je však delší. Například cyklus for. React funguje na principu deklarativního programování, kde říkáme, jak má vypadat UI, nedefinujeme způsob, jakým se mají procesy dít. Díky tomu nemusíme manuálně vybírat a manipulovat s elementy DOM, což by byl dlouhý, nesrozumitelný, špagetovitý a chybový kód. React dělá za nás spoustu věcí na pozadí."
     },
     {
       "id": "fbd33c18-3e17-4387-b2bc-1d92ff10c68e",
@@ -49,7 +49,7 @@
     },
     {
       "id": "f14b2322-4a44-4ccf-9b46-5d3b8b08db84",
-      "question": "Jaké frameworky má React k dispozici?",
+      "question": "2 příklady React frameworků:",
       "answer": "NEXT.js, Remix"
     },
     {
@@ -80,7 +80,7 @@
     {
       "id": "7a1a5e9a-0ab3-4ad9-a0c9-8715127d7c0a",
       "question": "Co je to Spread operator a jak se používá?",
-      "answer": "Používá se k vytvoření nového pole, kam můžeme přidat další prvek, aniž bychom měli pole v poli. Lze ho použít i na objekty a může být umístěn jak na začátku, tak na konci pole. Const newArray=[…arr, var1, var2]. V rámci objektů lze pomocí tohoto operátoru přidávat i měnit vlastnosti. Const updatedObject = {…object, var1: val1}, kde var1 může být jak nová vlastnost, tak vlastnost původního objektu, ale přepsaná. Pozor, přepsání hodnot musí být až po spread operátoru, jinak se hodnota nepřepíše."
+      "answer": "Používá se k vytvoření nového pole nebo objektu, které bude obsahovat prvky jiného pole nebo objektu, aniž bychom měli pole v poli nebo objekt v objektu. Také se používá tam, kde potřebujeme iterabilně použít prvky pole nebo objektu vrámci nějaké funkce. Může být umístěn jak na začátku, tak na konci pole. Značí se třemi tečkami před názvem pole či objektu. Máme pole arr: const arr=[var1, var2] a chceme toto pole dát do nového: const newArray=[…arr, var3, var4]. Výsledkem bude [var1,var2,var3,var4].V rámci objektů lze pomocí tohoto operátoru přidávat i měnit vlastnosti. Const updatedObject = {…object, var1: val1}, kde var1 může být jak nová vlastnost, tak vlastnost původního objektu, ale přepsaná. Přepsání hodnot musí být až po spread operátoru, jinak se hodnota nepřepíše."
     },
     {
       "id": "f4c9f1c8-0fda-4e8c-8546-e83f4c8e4be9",
@@ -100,7 +100,7 @@
     {
       "id": "3b0d744c-b9ba-4da6-bff7-a844d9b52c6a",
       "question": "Jaké známe v JS short-circuiting operátory a jak se používají?",
-      "answer": "&&: Pokud je 1. operand true, vrátí se 2. hodnota, pokud je false, vrátí se false. true && “some string“ vrátí “some string“. false && “some string“ vrátí false. ||: Pokud je první hodnota true, vrací 1. hodnotu, pokud false, vrací druhou hodnotu. true || “some string“ vrátí true. false || “some string“ vrátí some string. Pro oba operátory platí, že fungují i pro truthy a falsey hodnoty."
+      "answer": "1) operátor &&: Pokud je 1. operand true, vrátí se 2. hodnota, pokud je false, vrátí se false. true && “some string“ vrátí “some string“. false && “some string“ vrátí false. 2) operátor ||: Pokud je první hodnota true, vrací 1. hodnotu, pokud false, vrací druhou hodnotu. true || “some string“ vrátí true. false || “some string“ vrátí some string. Pro oba operátory platí, že fungují i pro truthy a falsey hodnoty."
     },
     {
       "id": "75c3d87e-0c77-4a8d-a1c3-ae6c1cf1b865",
@@ -110,7 +110,7 @@
     {
       "id": "7360a06d-91cb-4008-8f0e-49b9f4f36b7c",
       "question": "Co je to optional chaining operator?",
-      "answer": "Logický operátor používaný pro podmíněný přístup k vlastnosti objektu. Pokud objekt vlastnost nemá, nevrátí se nám chyba, když se k ní snažíme přistoupit, přestože neexistuje. Používáme ho když máme více objektů, a některé vlastnosti obsahují a některé ne, nebo se objekt změní. Značí se otazníkem před tečkovou notací: object.subObject?.property"
+      "answer": "Je to logický operátor používaný pro podmíněný přístup k vlastnosti objektu. Pokud objekt vlastnost nemá, nevrátí se nám chyba, když se k ní snažíme přistoupit, přestože neexistuje. Používáme ho když máme více objektů, a některé vlastnosti obsahují a některé ne, nebo se objekt změní. Značí se otazníkem před tečkovou notací: object.subObject?.property"
     },
     {
       "id": "5d59cbe5-5bc4-417e-a76b-e68ce8bd8cc7",
@@ -123,24 +123,14 @@
       "answer": "const newArray = array.map(item => item * 2)\nconst newArray = array.map(item => item.title)"
     },
     {
-      "id": "8c0321c7-d3c4-4313-b0e4-54a7bb1a6c9c",
-      "question": "Jakými dvěma způsoby vytvoříme objekt pomocí metody map()?",
-      "answer": "const newArray = array.map(item => { return { title: item.title, author: item.author } })array.map(item => ({ title: item.title, author: item.author }))"
-    },
-    {
       "id": "78c78312-ff20-4e0d-a95b-021ad04b900f",
       "question": "Jak funguje metoda filter a jak vypadá?",
       "answer": "Filtrujeme pole pomocí nějaké podmínky: const newArray = array.filter(item => podmínka)"
     },
     {
-      "id": "f193c6c0-01dd-4671-9bd4-48d5d0d81a38",
-      "question": "Co je to reduce() metoda a jak se používá?",
-      "answer": "Je to nejuniverzálnější metoda, která by mohla nahradit i všechny ostatní. Známá je jednoduchá metoda k akumulaci prvků v poli: array.reduce((acc, item) => acc + item, 0). Tato metoda může být velmi komplexní."
-    },
-    {
       "id": "2e0656e3-4981-499a-b8c3-056007e9d7c7",
       "question": "K čemu se používá a jak vypadá sort() metoda?",
-      "answer": "Slouží k řazení původního pole, a vyžaduje 2 argumenty pro porovnávání: const sorted = array.sort((a, b) => a - b) (řazení prvků pole od nejmenšího po největší), const sorted = array.sort((a, b) => b - a) (opačné řazení). Pokud použijeme sort() metodu bez argumentů, řazení je automatické a prvky pole se řadí podle abecedy nebo podle 1.číslice čísel."
+      "answer": "Slouží k řazení původního pole, a může mít 2 argumenty pro porovnávání: const sorted = array.sort((a, b) => a - b) (řazení prvků pole od nejmenšího po největší), const sorted = array.sort((a, b) => b - a) (opačné řazení). Pokud použijeme sort() metodu bez argumentů, řazení je automatické a prvky pole se řadí podle abecedy nebo podle 1.číslice čísel."
     },
     {
       "id": "a4dbad4f-5236-4fb2-8c3a-22f8a5a5f442",
@@ -150,7 +140,7 @@
     {
       "id": "a24bb64e-3a0a-47cc-a38d-c601e7cbb896",
       "question": "Jak v Reactu přidáváme, mažeme a updatujeme prvky nebo objekty z pole?",
-      "answer": "Vždy tak, abychom neovlivnili originální datovou strukturu. Pro přidání prvku do pole (pokud jde o objekt), vytvoříme nový objekt a pomocí spread operátoru přidáme prvek do pole: const newArray = [...array, newObject]Pro mazání použijeme na pole metodu filter(): const newArray = array.filter(item => item.id !== 3). Update můžeme provést pomocí metod map(): const updatedArray = array.map(item => item.id === 1 ? { ...array, newProperty: value } : item)"
+      "answer": "1) Pro přidání prvku do pole vytvoříme nový prvek (většinou nový objekt) a pomocí spread operátoru přidáme tento prvek do nového pole: const newArray = [...array, newObject] 2) Pro mazání použijeme na pole metodu filter(): const newArray = array.filter(item => item.id !==3). 3) Update můžeme provést pomocí metod map(): const updatedArray = array.map(item => item.id === 1 ? { ...array, newProperty: value } : item). Vždy tak, abychom neovlivnili originální datovou strukturu."
     },
     {
       "id": "b435301a-58d7-4f76-bc19-f77fe143a2e7",
@@ -175,7 +165,7 @@
     {
       "id": "102f398b-8e32-4323-9e3b-5b96e0c94452",
       "question": "Co je to komponenta?",
-      "answer": "Základní stavební prvek, ze kterých React skládá výsledné UI. V Reactu není nic mimo komponenty. Je to kousek UI, který má svá data, logiku a vzhled. Komponenty lze vkládat do sebe a používat tak „nesting components“. Jsou znovupoužitelné a mohou si navzájem předávat data pomocí props."
+      "answer": "1) Základní stavební prvek, ze kterých React skládá výsledné UI. 2) Je to kousek UI, který má svá data, logiku a vzhled. 3) Komponenty lze vkládat do sebe a používat tak „nesting components“. 4) Mohou být znovupoužitelné a mohou si navzájem předávat data pomocí props."
     },
     {
       "id": "c27c415a-57c3-4cfb-9b36-bf43f51f7413",
@@ -235,7 +225,7 @@
     {
       "id": "bb8a160f-542f-4df2-a7b7-5113d1025ce2",
       "question": "Jaké rozdíly jsou mezi syntaxí stylování v HTML a v JSX?",
-      "answer": "V HTML píšeme dvouslovné CSS atributy s pomlčkou, zatímco v JSX používáme camelCase. Třídu v HTML udělujeme pomocí slova 'class', zatímco v JSX používáme 'className', protože slovo 'class' je v JS rezervováno."
+      "answer": "1) V HTML píšeme dvouslovné CSS atributy s pomlčkou, zatímco v JSX používáme camelCase. 2) Třídu v HTML udělujeme pomocí slova 'class', zatímco v JSX používáme 'className', protože slovo 'class' je v JS rezervováno."
     },
     {
       "id": "2eb4bfa9-ef94-4b82-8123-dc32e1e95ac5",
@@ -265,12 +255,12 @@
     {
       "id": "a0c6bfc0-e8f3-4d78-bc6c-54114e3d2c27",
       "question": "Jaká jsou pravidla pro JSX?",
-      "answer": "Lze je psát kdokoliv v komponentě, nechat projít funkcí, přiřadit k proměnné, v podmínce if/else, zatímco přímo v JSX nelze psát if/else podmínku a namísto ní lze použít ternární operátor nebo short circuit operandy. JSX může mít pouze jeden root. Aby komponenta vracela více elementů, je třeba je obalit do jiného rodičovského elementu, například fragmentu. V JSX musí být každý tag uzavřen. Všechny event handlery a ostatní vlastnosti (i CSS) musí být psány v camelCase. Inline CSS se píše jako objekt. I komentáře musí být uzavřeny ve zvlněných závorkách."
+      "answer": "1) Lze je psát kdekoliv v komponentě, nechat projít funkcí, přiřadit k proměnné, v podmínce if/else, zatímco přímo v JSX nelze psát if/else podmínku a namísto ní lze použít ternární operátor nebo short circuit operátory. 2) JSX může mít pouze jeden root. Aby komponenta vracela více elementů, je třeba je obalit do jiného rodičovského elementu, například fragmentu. 3) V JSX musí být každý tag uzavřen. 4) Všechny event handlery a ostatní vlastnosti (i CSS) musí být psány v camelCase. 5) Inline CSS se píše jako objekt. 6) Komentáře musí být uzavřeny ve zvlněných závorkách."
     },
     {
       "id": "1a4d647a-91fc-41aa-8e23-9c9247b2bfb8",
-      "question": "Jak v Reactu vytváříme seznamy?",
-      "answer": "Vytvoříme znovupoužitelnou komponentu reprezentující jeden prvek seznamu a pak pomocí metody map() necháme vytvořit dynamicky seznam tak, že do jednotlivých komponent necháváme posílat rozdílná data jako props, při každé iteraci. Prvky v seznamu musí mít unikátní klíč. Nelze použít forEach, protože nic nevrací, a v seznamu by nic nebylo."
+      "question": "Jak v Reactu dynamicky vytváříme seznamy?",
+      "answer": "1) Vytvoříme znovupoužitelnou komponentu reprezentující jeden prvek seznamu. 2) pak pomocí metody map() necháme vytvořit dynamicky seznam tak, že do jednotlivých komponent necháváme posílat rozdílná data jako props, při každé iteraci. 3) Prvky v seznamu musí mít unikátní klíč. 4) Nelze použít forEach, protože nic nevrací, a v seznamu by nic nebylo."
     },
     {
       "id": "e869b40d-5478-46cf-858a-60fcaea718e4",
@@ -315,7 +305,7 @@
     {
       "id": "3e3ad0df-3e72-4a41-ae05-69d6d2f1e7d8",
       "question": "Co je to state?",
-      "answer": "Nejdůležitější a nejpoužívanější hook v Reactu. Díky state si komponenta drží a updatuje svá vlastní data napříč celého jejího životního cyklu. Reprezentuje paměť komponenty. Pokud se state změní, komponenta re-renderuje. State udržuje synchronizaci dat s UI."
+      "answer": "Díky state si komponenta drží a updatuje svá vlastní data napříč celého jejího životního cyklu. Reprezentuje paměť komponenty. Pokud se state změní, komponenta re-renderuje. State udržuje synchronizaci dat s UI."
     },
     {
       "id": "2c42c1d8-9743-4d77-8d1a-1204601eb849",
@@ -330,7 +320,7 @@
     {
       "id": "42b11a1c-f59c-4e9c-84c4-942db4a6ef48",
       "question": "Jak vytváříme state?",
-      "answer": "1) Přidáme novou state proměnnou pomocí useState funkce, do jejíhož argumentu vložíme počáteční hodnotu platnou při prvním renderu: useState(var). Obvykle state uložíme do nějaké proměnné: const arr=useState(var). Výsledkem useState funkce je pole o dvou proměnných, kde 1. hodnota je počáteční nebo reprezentující aktuální hodnotu a 2. hodnota je funkce umožňující updatovat 1. hodnotu. Obvykle tak rovnou provádíme destructuring tohoto pole: [var,setVar]=useState(var).\n2) Použijeme ji v JSX\n3) Provedeme update state pomocí event handleru a pomocí setter funkce setState, nikdy samostatně."
+      "answer": "1) Přidáme novou state proměnnou pomocí useState funkce, do jejíhož argumentu vložíme počáteční hodnotu platnou při prvním renderu: useState(var). Obvykle state uložíme do nějaké proměnné: const arr=useState(var). Výsledkem useState funkce je pole o dvou proměnných, kde 1. hodnota je počáteční nebo reprezentující aktuální hodnotu a 2. hodnota je funkce umožňující updatovat 1. hodnotu. Obvykle tak rovnou provádíme destructuring tohoto pole: const[var,setVar]=useState(var).\n2) Použijeme ji v JSX\n3) Provedeme update state pomocí event handleru a pomocí setter funkce setState."
     },
     {
       "id": "4b5a8e58-b4fd-4e8d-b26d-2adcd7cc4471",
@@ -339,7 +329,7 @@
     },
     {
       "id": "9e2204a4-61ea-40c7-98eb-dba9a35f2a91",
-      "question": "Jak vypíšeme mnoho <option> elementů dynamicky?",
+      "question": "Jak vypíšeme například mnoho <option> elementů dynamicky?",
       "answer": "Pomocí array.from() takto: <select>{array.from({lenght: 20},(_,i)=>i+1).map((num)=>(<option value= {num} key={num}>{num}</option>))}</select>\nTakto dynamicky vytvoříme pole o dané délce, na které aplikujeme metodu map()."
     },
     {
@@ -364,7 +354,7 @@
     },
     {
       "id": "74cfe6d5-efb0-4d27-94e3-e44a712b56e0",
-      "question": "Jak aplikujeme controlled elements?",
+      "question": "Jak vytvoříme a použijeme controlled elements?",
       "answer": "Každé hodnotě, kterou očekáváme z inputu vytvoříme vlastní state proměnnou. Potom do jednotlivých inputů použijeme ttuto proměnnou jako value. Do inputů dáme také event listener, který umožní updatovat state: <input type=\"text\" value={state} onChange={(e)=>setState(e.target.value)}/>\nPo každé změně se do state proměnných uloží nová hodnota i bez submitu formuláře. Pozor na čísla, která jsou jako výsledek inputu vždy stringy."
     },
     {
@@ -375,7 +365,7 @@
     {
       "id": "f3c05cc4-98f5-4eeb-bbfd-7a407534c2f4",
       "question": "Jaké jsou rozdíly mezi state a props?",
-      "answer": "State jsou interní data, props jsou externí. State jsou jakousi pamětí komponenty, props se chovají spíše jako parametry funkce. State se updatují v samotné komponentě, props jsou read-only. Update státu způsobí re-render komponenty, stejně tak i změna props způsobí re-render. State se používá k interaktivitě, props umožňují rodičovské komponentě konfigurovat nastavení dceřinné komponentě."
+      "answer": "1) State jsou interní data, props jsou externí.2) State jsou jakousi pamětí komponenty, props se chovají spíše jako parametry funkce. 3) State se updatují v samotné komponentě, props jsou read-only. 4) State se používá k interaktivitě, props umožňují rodičovské komponentě konfigurovat nastavení dceřinné komponentě."
     },
     {
       "id": "fb3658ef-c23e-476d-9e2b-4f5c1851ac5d",
@@ -395,7 +385,7 @@
     {
       "id": "35186bd3-70a9-4c5e-9b6e-57151a268cb8",
       "question": "Jaké typy má state?",
-      "answer": "1) Lokální – Je piece of state umístění v jedné nebo několika málo komponentách, kde přístup k němu má jen tato a dceřinné komponenty.\n2) Globální – Piece of state, ke kterému potřebuje přístup velké množství komponent a který je umístěný tak, aby k němu měly přístup všechny komponenty. Jinak se mu také říká shared state."
+      "answer": "1) Lokální – Je piece of state umístění v jedné nebo několika málo komponentách. 2) Globální – Piece of state, ke kterému potřebuje přístup velké množství komponent a který je umístěný tak, aby k němu měly přístup všechny komponenty. Jinak se mu také říká shared state."
     },
     {
       "id": "b8b60152-f4b9-4c47-95a7-87516ef10a1c",
@@ -429,7 +419,7 @@
     },
     {
       "id": "40bc9a6b-ae23-4391-8940-7d15c29bbf5b",
-      "question": "Co je to children props?",
+      "question": "Co je to children prop a k čemu se často používá?",
       "answer": "Je to posílání samotného JSX jako props. Rodičovské komponentě rozdělíme otevírací a uzavírací tag a mezi ně vložíme obsah, který chceme poslat. V dceřinné komponentě přijmeme a použijeme tuto propsu jako children. Hodí se u vytváření generických komponent, kdy předem nevíme, jaký obsah v nich bude."
     }
   ],
@@ -1936,11 +1926,6 @@
       "answer": "const newArray = array.map(item => item * 2)\nconst newArray = array.map(item => item.title)"
     },
     {
-      "id": "b36b6d6b-cf91-477b-a2a4-ab037efa3173",
-      "question": "Jakými dvěma způsoby vytvoříme objekt pomocí metody map()?",
-      "answer": "const newArray = array.map(item => { return { title: item.title, author: item.author } })array.map(item => ({ title: item.title, author: item.author }))"
-    },
-    {
       "id": "1be35d35-e534-4197-998b-70f04acf2878",
       "question": "Jak funguje metoda filter a jak vypadá?",
       "answer": "Filtrujeme pole pomocí nějaké podmínky: const newArray = array.filter(item => podmínka)"
@@ -1948,12 +1933,7 @@
     {
       "id": "14cd797a-9f46-4861-960b-a32c08ef1ce4",
       "question": "Co je to reduce() metoda a jak se používá?",
-      "answer": "Je to nejuniverzálnější metoda, která by mohla nahradit i všechny ostatní. Známá je jednoduchá metoda k akumulaci prvků v poli: array.reduce((acc, item) => acc + item, 0). Tato metoda může být velmi komplexní."
-    },
-    {
-      "id": "7363d29a-f8a2-4c19-99fa-0d3e29080995",
-      "question": "K čemu se používá a jak vypadá sort() metoda?",
-      "answer": "Slouží k řazení původního pole, a vyžaduje 2 argumenty pro porovnávání: const sorted = array.sort((a, b) => a - b) (řazení prvků pole od nejmenšího po největší), const sorted = array.sort((a, b) => b - a) (opačné řazení). Pokud použijeme sort() metodu bez argumentů, řazení je automatické a prvky pole se řadí podle abecedy nebo podle 1.číslice čísel."
+      "answer": "Je to nejuniverzálnější metoda aplikovatelná na pole, která by mohla nahradit i všechny ostatní metody. Známá je jednoduchá metoda k akumulaci prvků v poli: array.reduce((acc, item) => acc + item, 0). Tato metoda může být velmi komplexní."
     },
     {
       "id": "58f2082e-360c-49a4-a3da-5235eddb04e2",

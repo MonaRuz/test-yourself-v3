@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Button from "../../UI/Button"
 import styles from "./Test.module.css"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"

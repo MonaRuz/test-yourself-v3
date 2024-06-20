@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import Button from "../UI/Button"
 import PageNav from "../UI/PageNav"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -74,12 +73,12 @@ export default function Login() {
 					id='name'
 					onChange={(e) => setName(e.target.value)}
 				/>
-				<Button
-					type='confirm'
+				<button
+					className="text-green-200 border border-green-200 px-3 py-2"
 					onClick={handleSubmit}
 				>
 					Login
-				</Button>
+				</button>
 			</form>
 		</div>
 	)

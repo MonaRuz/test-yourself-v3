@@ -1,10 +1,8 @@
 import { useEffect, useReducer } from "react"
-import styles from "./Questions.module.css"
 import SearchQuestion from "./SearchQuestion"
 import Question from "./Question"
 import { useQuestions } from "../../contexts/QuestionsContext"
 import { useNavigate, useParams } from "react-router-dom"
-import Button from "../../UI/Button"
 import Loader from "../../UI/Loader"
 import Error from "../../UI/Error"
 

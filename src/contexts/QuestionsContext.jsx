@@ -1,4 +1,5 @@
 import { useEffect, createContext, useContext, useReducer } from "react"
+import { db } from "../firebase/config"
 
 const BASE_URL = "http://localhost:8000"
 
@@ -151,6 +152,7 @@ function QuestionsProvider({ children }) {
 
 			const data = await res.json()
 			dispatch({ type: "questions/loaded", payload: data })
+			// console.log(data);
 		} catch (err) {
 			dispatch({ type: "rejected", payload: err.message })
 		}

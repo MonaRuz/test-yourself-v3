@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom"
 import styles from "./Question.module.css"
-import Button from "../../UI/Button"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
 import { FaTrash,FaEdit } from "react-icons/fa";
 import { useQuestions } from "../../contexts/QuestionsContext"
