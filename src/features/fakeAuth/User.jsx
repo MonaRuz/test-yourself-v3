@@ -25,7 +25,7 @@ export default function User() {
 						</div>
 
 						<button
-							className=' text-red-200 border border-red-200 w-full py-1 px-4'
+							className=' text-red-200 border border-red-200 w-full py-1 px-4 hover:bg-red-200 hover:text-zinc-900'
 							onClick={handleClick}
 						>
 							Logout
