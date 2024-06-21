@@ -9,16 +9,11 @@ export default function CreateNewCategory() {
   function handleSubmit(e){
     e.preventDefault()
 
-    
 
     setNewCategoryName("")
     setNewCategoryQuestion("")
     setNewCategoryAnswer("")
   }
-
-  console.log(newCategoryName);
-    console.log(newCategoryQuestion);
-    console.log(newCategoryAnswer);
 
 	return (
 		<div className='text-blue-200 text-center'>
@@ -54,7 +49,7 @@ export default function CreateNewCategory() {
 						className='bg-zinc-800 border border-yellow-200 w-full'
 					></textarea>
 				</label>
-        <button className="uppercase text-green-200 border border-green-200 w-full py-2 my-2">Create new category</button>
+        <button className="uppercase text-green-200 border border-green-200 w-full py-2 my-2 hover:bg-green-200 hover:text-zinc-900">Create new category</button>
 			</form>
 		</div>
 	)

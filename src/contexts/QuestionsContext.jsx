@@ -176,6 +176,24 @@ function QuestionsProvider({ children }) {
 		}
 	}
 
+	// async function createCategory(newCategory,newQuestion,newAnswer) {
+	// 	dispatch({ type: "loading" })
+	// 	try {
+	// 		const res = await fetch(`${BASE_URL}/${category}`, {
+	// 			method: "POST",
+	// 			body: JSON.stringify(newQuestion),
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 		})
+	// 		if (!res.ok)
+	// 			throw new Error("Something went wrong with creating question.")
+	// 		dispatch({ type: "question/created", payload: newQuestion })
+	// 	} catch (err) {
+	// 		dispatch({ type: "rejected", payload: err.message })
+	// 	}
+	// }
+
 	async function deleteQuestion(category, id) {
 		dispatch({ type: "loading" })
 		try {
