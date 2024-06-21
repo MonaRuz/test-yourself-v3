@@ -5,11 +5,13 @@ export default function CreateNewCategory() {
   const[newCategoryName,setNewCategoryName]=useState("")
   const[newCategoryQuestion,setNewCategoryQuestion]=useState("")
   const[newCategoryAnswer,setNewCategoryAnswer]=useState("")
+  const[newDescription,setNewDescription]=useState("")
+
 
   function handleSubmit(e){
     e.preventDefault()
 
-
+    if(newDescription)return
     setNewCategoryName("")
     setNewCategoryQuestion("")
     setNewCategoryAnswer("")
@@ -28,6 +30,15 @@ export default function CreateNewCategory() {
             value={newCategoryName}
             onChange={(e)=>setNewCategoryName(e.target.value)}
 						className='bg-zinc-800 border border-yellow-200 w-full'
+						type='text'
+					></input>
+				</label>
+        <label className="hidden">
+					<p>Description:</p>
+					<input
+            value={newDescription}
+            onChange={(e)=>setNewDescription(e.target.value)}
+						
 						type='text'
 					></input>
 				</label>
