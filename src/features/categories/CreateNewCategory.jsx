@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function CreateNewCategory() {
 
@@ -6,6 +7,8 @@ export default function CreateNewCategory() {
   const[newCategoryQuestion,setNewCategoryQuestion]=useState("")
   const[newCategoryAnswer,setNewCategoryAnswer]=useState("")
   const[newDescription,setNewDescription]=useState("")
+
+  const navigate=useNavigate()
 
 
   function handleSubmit(e){
@@ -15,6 +18,7 @@ export default function CreateNewCategory() {
     setNewCategoryName("")
     setNewCategoryQuestion("")
     setNewCategoryAnswer("")
+    navigate("/app/categories")
   }
 
 	return (
