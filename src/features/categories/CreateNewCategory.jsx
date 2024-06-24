@@ -2,69 +2,55 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 export default function CreateNewCategory() {
+	const [newCategoryName, setNewCategoryName] = useState("")
+	const [newDescription, setNewDescription] = useState("")
 
-  const[newCategoryName,setNewCategoryName]=useState("")
-  const[newCategoryQuestion,setNewCategoryQuestion]=useState("")
-  const[newCategoryAnswer,setNewCategoryAnswer]=useState("")
-  const[newDescription,setNewDescription]=useState("")
+	const navigate = useNavigate()
 
-  const navigate=useNavigate()
+	function handleSubmit(e) {
+		e.preventDefault()
 
+		if (newDescription) return
+		if (!newCategoryName) setNewCategoryName("")
 
-  function handleSubmit(e){
-    e.preventDefault()
-
-    if(newDescription)return
-    setNewCategoryName("")
-    setNewCategoryQuestion("")
-    setNewCategoryAnswer("")
-    navigate("/app/categories")
-  }
+		navigate("/app/categories")
+	}
 
 	return (
 		<div className='text-blue-200 text-center'>
-			<p className="text-sm pt-2">
-				Input name of your new category and your first question and answer in
-				this category.
+			<p className='text-sm pt-2 md:text-base'>
+				Input name of your new category.
 			</p>
 			<form onSubmit={handleSubmit}>
 				<label>
-					<p className="text-orange-200 py-2">Category name:</p>
+					<p className='text-orange-200 py-2'>Category name:</p>
 					<input
-            value={newCategoryName}
-            onChange={(e)=>setNewCategoryName(e.target.value)}
-						className='bg-zinc-800 border border-yellow-200 w-full'
+						value={newCategoryName}
+						onChange={(e) => setNewCategoryName(e.target.value)}
+						className='bg-zinc-800 border border-yellow-200 w-full h-9'
 						type='text'
 					></input>
 				</label>
-        <label className="hidden">
+				<label className='hidden'>
 					<p>Description:</p>
 					<input
-            value={newDescription}
-            onChange={(e)=>setNewDescription(e.target.value)}
-						
+						value={newDescription}
+						onChange={(e) => setNewDescription(e.target.value)}
 						type='text'
 					></input>
 				</label>
-				<label>
-					<p className="text-orange-200 py-2">Your first question:</p>
-					<textarea
-          value={newCategoryQuestion}
-          onChange={(e)=>setNewCategoryQuestion(e.target.value)}
-						className='bg-zinc-800 border border-yellow-200 w-full'
 
-	
-					></textarea>
-				</label>
-				<label>
-					<p className="text-orange-200 py-2">Your first answer:</p>
-					<textarea
-          value={newCategoryAnswer}
-          onChange={(e)=>setNewCategoryAnswer(e.target.value)}
-						className='bg-zinc-800 border border-yellow-200 w-full'
-					></textarea>
-				</label>
-        <button className="uppercase text-green-200 border border-green-200 w-full py-2 my-2 hover:bg-green-200 hover:text-zinc-900">Create new category</button>
+				<div className='flex justify-between gap-2  w-full my-5'>
+					<button className='uppercase text-red-200 border border-red-200  py-2 px-3 my-2 hover:bg-red-200 hover:text-zinc-900'>
+						Back
+					</button>
+					<button
+						onClick={() => navigate("/app/categories")}
+						className='uppercase text-green-200 border border-green-200 py-2 px-3 my-2 hover:bg-green-200 hover:text-zinc-900'
+					>
+						Create new category
+					</button>
+				</div>
 			</form>
 		</div>
 	)
