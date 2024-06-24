@@ -11,9 +11,10 @@ export default function CreateNewCategory() {
 		e.preventDefault()
 
 		if (newDescription) return
-		if (!newCategoryName) setNewCategoryName("")
-
-		navigate("/app/categories")
+		if (newCategoryName) {
+			console.log("test")
+			navigate("/app/categories")
+		} else alert("this fiel must be filled!")
 	}
 
 	return (
@@ -41,11 +42,15 @@ export default function CreateNewCategory() {
 				</label>
 
 				<div className='flex justify-between gap-2  w-full my-5'>
-					<button className='uppercase text-red-200 border border-red-200  py-2 px-3 my-2 hover:bg-red-200 hover:text-zinc-900'>
+					<button
+						type='button'
+						onClick={() => navigate("/app/categories")}
+						className='uppercase text-red-200 border border-red-200  py-2 px-3 my-2 hover:bg-red-200 hover:text-zinc-900'
+					>
 						Back
 					</button>
 					<button
-						onClick={() => navigate("/app/categories")}
+						type='submit'
 						className='uppercase text-green-200 border border-green-200 py-2 px-3 my-2 hover:bg-green-200 hover:text-zinc-900'
 					>
 						Create new category
