@@ -7,12 +7,15 @@ export default function CreateNewCategory() {
 
 	const navigate = useNavigate()
 
+	const newCategory={
+		
+	}
+
 	function handleSubmit(e) {
 		e.preventDefault()
 
 		if (newDescription) return
 		if (newCategoryName) {
-			console.log("test")
 			navigate("/app/categories")
 		} else alert("this fiel must be filled!")
 	}
