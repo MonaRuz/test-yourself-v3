@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import Intro from "../UI/Intro"
 import Logo from "../UI/Logo"
+import {collection,getDocs} from "firebase/firestore"
 
 export default function Homepage() {
 	const navigate = useNavigate()
